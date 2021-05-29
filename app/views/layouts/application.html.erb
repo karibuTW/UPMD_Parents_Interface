@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UPI</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag "application", "data-turbo-track": "reload" %>
+  </head>
+
+  <body>
+    <% flash.each do |type, message| %>
+      <div data-controller="notification">
+        <input data-notification-target="type" value="<%= type %>" type="hidden">
+        <input data-notification-target="message" value="<%= message %>" type="hidden">
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

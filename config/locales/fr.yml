@@ -1,0 +1,18 @@
+fr:
+  grades:
+    TPS: Toute Petite Section (TPS)
+    PS:  Petite Section (PS)
+    MS:  Moyenne Section (MS)
+    GS:  Grande Section (GS)
+    CP:  Cours Préparatoire (CP)
+    CE1:  Cours Élémentaire 1 (CE1)
+    CE2:  Cours Élémentaire 2 (CE2)
+    CM1:  Cours Moyen 1ère année (CM1)
+    CM2:  Cours Moyen 2ème année (CM2)
+    6e:  Sixième
+    5e:  Cinquième
+    4e:  Quatrième
+    3e:  Troisième
+    2nd:  Seconde
+    1ere:  Première
+    Term:  Terminale

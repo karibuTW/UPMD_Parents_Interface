@@ -1,0 +1,171 @@
+<div class="flex flex-wrap">
+  <div class="w-full md:w-1/2 bg-purple-500">
+    <div class="flex justify-center items-center h-16 md:h-screen">
+      <h2 class="text-2xl md:text-6xl uppercase text-white">Sign up</h2>
+    </div>
+  </div>
+  <div class="w-full md:w-1/2 p-5">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "w-full max-w-lg") do |f| %>
+      <div class="flex flex-wrap  mb-6">
+        <div class="w-full px-3 ">
+          <div class="field">
+            <% invalid = resource.errors.include?(:email) %>
+            <%= f.label :email, class: "form-label" %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",
+                              class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "example@example.com",
+                              required: true %>
+            <% if invalid %>
+              <% resource.errors.full_messages_for(:email).each do |error_message| %>
+                <p class="text-red-500 text-xs italic"><%= error_message %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <div class="field">
+            <% invalid = resource.errors.include?(:first_name) %>
+            <%= f.label :first_name, class: "form-label" %><br />
+            <%= f.text_field :first_name, autocomplete: "first_name",
+                             class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "John",
+                             required: true %>
+            <% if invalid %>
+              <% resource.errors.full_messages_for(:first_name).each do |error_message| %>
+                <p class="text-red-500 text-xs italic"><%= error_message %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="w-full md:w-1/2 px-3">
+          <div class="field">
+            <% invalid = resource.errors.include?(:last_name) %>
+            <%= f.label :last_name, class: "form-label" %><br />
+            <%= f.text_field :last_name, autocomplete: "last_name",
+                              class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "Doe",
+                              required: true %>
+            <% if invalid %>
+              <% resource.errors.full_messages_for(:last_name).each do |error_message| %>
+                <p class="text-red-500 text-xs italic"><%= error_message %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap mb-6">
+        <div class="w-full px-3 ">
+          <div class="field">
+            <% invalid = resource.errors.include?(:full_name) %>
+            <%= f.label :full_name, class: "form-label" %><br />
+            <%= f.text_field :full_name, autocomplete: "name",
+                              class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "John Doe",
+                              required: true %>
+            <% if invalid %>
+              <% resource.errors.full_messages_for(:full_name).each do |error_message| %>
+                <p class="text-red-500 text-xs italic"><%= error_message %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <div class="field">
+            <% invalid = resource.errors.include?(:password) %>
+            <%= f.label :password, class: "form-label" %>
+            <% if @minimum_password_length %>
+              <em class="form-label">(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "new-password",
+                                 class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "******",
+                                 required: true %>
+            <% if invalid %>
+              <% resource.errors.full_messages_for(:password).each do |error_message| %>
+                <p class="text-red-500 text-xs italic"><%= error_message %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="w-full md:w-1/2 px-3">
+          <div class="field">
+            <% invalid = resource.errors.include?(:password_confirmation) %>
+            <%= f.label :password_confirmation, class: "form-label" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",
+                                 class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "******",
+                                 required: true %>
+            <% if invalid %>
+              <% resource.errors.full_messages_for(:password_confirmation).each do |error_message| %>
+                <p class="text-red-500 text-xs italic"><%= error_message %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap mb-6">
+        <div class="w-full px-3 ">
+          <div class="field">
+            <% invalid = resource.errors.include?(:address) %>
+            <%= f.label :address, class: "form-label" %><br />
+            <%= f.text_area :address, autocomplete: "address",
+                            class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: Faker::Address.full_address,
+                            required: true %>
+            <% if invalid %>
+              <% resource.errors.full_messages_for(:address).each do |error_message| %>
+                <p class="text-red-500 text-xs italic"><%= error_message %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <div class="field">
+            <% invalid = resource.errors.include?(:phone_number) %>
+            <%= f.label :phone_number, "Phone number with country code", class: "form-label" %>
+            <%= f.phone_field :phone_number, autocomplete: "phone_number",
+                              class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "+33627899541",
+                              required: true %>
+            <% if invalid %>
+              <% resource.errors.full_messages_for(:phone_number).each do |error_message| %>
+                <p class="text-red-500 text-xs italic"><%= error_message %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="w-full md:w-1/2 px-3">
+          <div class="field">
+            <% invalid = resource.errors.include?(:preferred_language) %>
+            <%= f.label :preferred_language, class: "form-label" %>
+            <%= f.select :preferred_language, Parent.preferred_languages.keys.to_a, { prompt: "Select one" },
+                         class: "form-input #{invalid ? 'invalid' : 'valid'}",
+                         required: true %>
+            <% if invalid %>
+              <% resource.errors.full_messages_for(:preferred_language).each do |error_message| %>
+                <p class="text-red-500 text-xs italic"><%= error_message %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions w-full mx-3">
+        <%= f.submit "Sign up", class: "form-button" %>
+      </div>
+      <div class="p-3 text-purple-500">
+        <%= render "parents/shared/links" %>
+      </div>
+    <% end %>
+
+
+
+  </div>
+
+</div>

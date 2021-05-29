@@ -1,0 +1,2 @@
+module Parents::ProfileHelper
+end
