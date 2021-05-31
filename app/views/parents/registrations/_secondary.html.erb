@@ -83,7 +83,7 @@
       <% invalid = f.object.errors.include?(:phone_number) %>
       <%= f.label :phone_number, "Phone number with country code", class: "form-label" %>
       <%= f.phone_field :phone_number, autocomplete: "phone_number",
-                        class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "+33627899541" %>
+                        class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "+84627899541" %>
       <% if invalid %>
         <% f.object.errors.full_messages_for(:phone_number).each do |error_message| %>
           <p class="text-red-500 text-xs italic"><%= error_message %></p>
@@ -96,7 +96,7 @@
     <div class="field">
       <% invalid = f.object.errors.include?(:preferred_language) %>
       <%= f.label :preferred_language, class: "form-label" %>
-      <%= f.select :preferred_language, Parent.preferred_languages.keys.to_a, { prompt: "Select one" },
+      <%= f.select :preferred_language, locale_map(Parent.preferred_languages.keys.to_a), { prompt: "Select one" },
                    class: "form-input #{invalid ? 'invalid' : 'valid'}"%>
       <% if invalid %>
         <% f.object.errors.full_messages_for(:preferred_language).each do |error_message| %>

@@ -27,4 +27,32 @@ ActiveAdmin.register Viewer do
     end
     f.actions
   end
+
+  index do
+    selectable_column
+    id_column
+    column :email
+    column :first_name
+    column :last_name
+    actions
+  end
+
+  show do
+    attributes_table do
+      row :id
+      row :email
+      row :first_name
+      row :last_name
+    end
+  end
+
+  controller do
+    def update
+      if params[:viewer][:password].blank? && params[:viewer][:password_confirmation].blank?
+        params[:viewer].delete("password")
+        params[:viewer].delete("password_confirmation")
+      end
+      super
+    end
+  end
 end

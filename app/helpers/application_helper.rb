@@ -1,4 +1,6 @@
 module ApplicationHelper
+
+
   def select_for_grades
     Child.grades.keys.to_a.map do |grade|
       [ I18n.t("grades.#{grade}"), grade ]
@@ -7,5 +9,14 @@ module ApplicationHelper
 
   def second_parent(parent)
     parent.secondary_parent ||= SecondaryParent.new
+  end
+
+  def locale_map(keys)
+    locales = {
+      en: "English",
+      fr: "French",
+      vi: "Vietnamese"
+    }.freeze
+    keys.map { |l| [ locales[l.to_sym], l ] }
   end
 end
