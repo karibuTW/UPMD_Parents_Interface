@@ -14,5 +14,11 @@ ActiveAdmin.register Child do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+  filter :parent
+  filter :first_name
+  filter :last_name
+  filter :full_name
+  filter :birth_date
+  filter :grade, as: :select, collection: Child.grades.keys.to_a
+
 end

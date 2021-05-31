@@ -28,4 +28,34 @@ ActiveAdmin.register BusDriver do
     end
     f.actions
   end
+  
+  index do
+    selectable_column
+    id_column
+    column :email
+    column :first_name
+    column :last_name
+    column :company_name
+    actions
+  end
+
+  show do
+    attributes_table do
+      row :id
+      row :email
+      row :first_name
+      row :last_name
+      row :company_name
+    end
+  end
+
+  controller do
+    def update
+      if params[:bus_driver][:password].blank? && params[:bus_driver][:password_confirmation].blank?
+        params[:bus_driver].delete("password")
+        params[:bus_driver].delete("password_confirmation")
+      end
+      super
+    end
+  end
 end

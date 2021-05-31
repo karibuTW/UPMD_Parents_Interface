@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
 
 
   def home
+    redirect_to new_parent_session_path
   end
 
   protected
@@ -15,6 +16,7 @@ class StaticPagesController < ApplicationController
     if bus_driver_signed_in?
       redirect_to bus_drivers_root_path and return
     end
+
     redirect_to viewers_root_path if viewer_signed_in?
   end
 
