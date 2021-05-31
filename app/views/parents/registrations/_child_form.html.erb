@@ -1,0 +1,64 @@
+<div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>">
+  <div class="py-1">
+    <% invalid = f.object.errors.include?(:first_name) %>
+    <%= f.label :first_name, class: "form-label" %>
+    <%= f.text_field :first_name, class: "form-input #{invalid ? 'invalid' : 'valid'}" %>
+    <% if invalid %>
+      <% f.object.errors.full_messages_for(:first_name).each do |error_message| %>
+        <p class="text-red-500 text-xs italic"><%= error_message %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="py-1">
+    <% invalid = f.object.errors.include?(:last_name) %>
+    <%= f.label :last_name, class: "form-label" %>
+    <%= f.text_field :last_name, class: "form-input #{invalid ? 'invalid' : 'valid'}" %>
+    <% if invalid %>
+      <% f.object.errors.full_messages_for(:last_name).each do |error_message| %>
+        <p class="text-red-500 text-xs italic"><%= error_message %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="py-1">
+    <% invalid = f.object.errors.include?(:full_name) %>
+    <%= f.label :full_name, class: "form-label" %>
+    <%= f.text_field :full_name, class: "form-input #{invalid ? 'invalid' : 'valid'}" %>
+    <% if invalid %>
+      <% f.object.errors.full_messages_for(:full_name).each do |error_message| %>
+        <p class="text-red-500 text-xs italic"><%= error_message %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="py-1">
+    <% invalid = f.object.errors.include?(:birth_date) %>
+    <%= f.label :birth_date, class: "form-label" %>
+    <%= f.date_select :birth_date, { start_year: Date.today.year - 20, end_year: Date.today.year }, class: "#{invalid ? 'invalid' : 'valid'} appearance-none bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+    <% if invalid %>
+      <% f.object.errors.full_messages_for(:birth_date).each do |error_message| %>
+        <p class="text-red-500 text-xs italic"><%= error_message %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="py-1">
+    <% invalid = f.object.errors.include?(:grade) %>
+    <%= f.label :grade, class: "form-label" %>
+    <%= f.select :grade, select_for_grades, {}, class: "form-input #{invalid ? 'invalid' : 'valid'}" %>
+    <% if invalid %>
+      <% f.object.errors.full_messages_for(:grade).each do |error_message| %>
+        <p class="text-red-500 text-xs italic"><%= error_message %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+
+
+  <button type="button" data-action="nested-form#remove" class="form-button mb-6">
+    Remove
+  </button>
+
+  <%= f.hidden_field :_destroy %>
+</div>

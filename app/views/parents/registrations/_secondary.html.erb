@@ -1,0 +1,109 @@
+<div class="w-full px-3 ">
+
+  <div class="field">
+    <% invalid = f.object.errors.include?(:email) %>
+    <%= f.label :email, class: "form-label" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",
+                      class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "example@example.com" %>
+    <% if invalid %>
+      <% f.object.errors.full_messages_for(:email).each do |error_message| %>
+        <p class="text-red-500 text-xs italic"><%= error_message %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="flex flex-wrap mb-6">
+  <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+    <div class="field">
+      <% invalid = f.object.errors.include?(:first_name) %>
+      <%= f.label :first_name, class: "form-label" %><br />
+      <%= f.text_field :first_name, autocomplete: "first_name",
+                       class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "John" %>
+      <% if invalid %>
+        <% f.object.errors.full_messages_for(:first_name).each do |error_message| %>
+          <p class="text-red-500 text-xs italic"><%= error_message %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="w-full md:w-1/2 px-3">
+    <div class="field">
+      <% invalid = f.object.errors.include?(:last_name) %>
+      <%= f.label :last_name, class: "form-label" %><br />
+      <%= f.text_field :last_name, autocomplete: "last_name",
+                       class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "Doe" %>
+      <% if invalid %>
+        <% f.object.errors.full_messages_for(:last_name).each do |error_message| %>
+          <p class="text-red-500 text-xs italic"><%= error_message %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-wrap mb-6">
+  <div class="w-full px-3 ">
+    <div class="field">
+      <% invalid = f.object.errors.include?(:full_name) %>
+      <%= f.label :full_name, class: "form-label" %><br />
+      <%= f.text_field :full_name, autocomplete: "name",
+                       class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "John Doe" %>
+      <% if invalid %>
+        <% f.object.errors.full_messages_for(:full_name).each do |error_message| %>
+          <p class="text-red-500 text-xs italic"><%= error_message %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="flex flex-wrap mb-6">
+  <div class="w-full px-3 ">
+    <div class="field">
+      <% invalid = f.object.errors.include?(:address) %>
+      <%= f.label :address, class: "form-label" %><br />
+      <%= f.text_area :address, autocomplete: "address",
+                      class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: Faker::Address.full_address %>
+      <% if invalid %>
+        <% f.object.errors.full_messages_for(:address).each do |error_message| %>
+          <p class="text-red-500 text-xs italic"><%= error_message %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-wrap mb-6">
+  <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+    <div class="field">
+      <% invalid = f.object.errors.include?(:phone_number) %>
+      <%= f.label :phone_number, "Phone number with country code", class: "form-label" %>
+      <%= f.phone_field :phone_number, autocomplete: "phone_number",
+                        class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "+33627899541" %>
+      <% if invalid %>
+        <% f.object.errors.full_messages_for(:phone_number).each do |error_message| %>
+          <p class="text-red-500 text-xs italic"><%= error_message %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="w-full md:w-1/2 px-3">
+    <div class="field">
+      <% invalid = f.object.errors.include?(:preferred_language) %>
+      <%= f.label :preferred_language, class: "form-label" %>
+      <%= f.select :preferred_language, Parent.preferred_languages.keys.to_a, { prompt: "Select one" },
+                   class: "form-input #{invalid ? 'invalid' : 'valid'}"%>
+      <% if invalid %>
+        <% f.object.errors.full_messages_for(:preferred_language).each do |error_message| %>
+          <p class="text-red-500 text-xs italic"><%= error_message %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+<%= f.hidden_field :_destroy %>

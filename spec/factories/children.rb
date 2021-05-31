@@ -6,7 +6,7 @@
 #  birth_date :date             not null
 #  first_name :string           not null
 #  full_name  :string           not null
-#  grade      :integer          default(0)
+#  grade      :integer          default("TPS")
 #  last_name  :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

@@ -1,0 +1,2 @@
+module Viewers::ProfileHelper
+end

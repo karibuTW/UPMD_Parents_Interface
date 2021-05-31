@@ -1,2 +1,20 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="flex flex-col text-center items-center justify-center min-h-screen">
+  <div>
+    <h2 class=" text-3xl uppercase">Login</h2>
+  </div>
+  <div>
+    <div class="m-5">
+      <%= link_to "Parent", new_parent_session_path, class: "form-button" %>
+    </div>
+    <div class="m-5">
+      <%= link_to "Bus Provider", new_bus_driver_session_path, class: "form-button" %>
+    </div>
+    <div class="m-5">
+      <%= link_to "Viewer", new_viewer_session_path, class: "form-button" %>
+    </div>
+  </div>
+
+
+</div>
+
+

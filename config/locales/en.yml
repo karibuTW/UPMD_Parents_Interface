@@ -31,6 +31,7 @@
 
 en:
   hello: "Hello world"
+  test: Hi
   grades:
     TPS: Kindergarten (TPS)
     PS:  Kindergarten (PS)
