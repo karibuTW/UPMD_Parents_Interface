@@ -67,7 +67,6 @@ ActiveAdmin.register Parent do
           p "No secondary parent"
         end
       end
-
     end
 
     panel "Children" do
