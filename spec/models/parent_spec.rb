@@ -70,4 +70,26 @@ RSpec.describe Parent, type: :model do
     end
 
   end
+
+  describe "bus registration" do
+    it 'should know when new bus registration done' do
+      @parent = create(:parent)
+      @bus = create(:bus_service, parent: @parent)
+
+
+      expect(@parent.renewed_bus_service?).to eq(false)
+      expect(@parent.new_bus_service?).to eq(true)
+    end
+
+    it 'should know when bus registration renewed' do
+      @parent = create(:parent)
+      @bus = create(:bus_service, parent: @parent)
+
+      Setting.current_school_year_start = Time.now.year + 1
+      @bus2 = create(:bus_service, year: Setting.current_school_year_start, parent: @parent)
+
+      expect(@parent.renewed_bus_service?).to eq(true)
+      expect(@parent.new_bus_service?).to eq(false)
+    end
+  end
 end

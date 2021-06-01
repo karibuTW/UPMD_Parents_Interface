@@ -18,7 +18,8 @@ class Setting < RailsSettings::Base
   # Define your fields
   # field :host, type: :string, default: "http://localhost:3000"
   field :default_locale, default: "en", type: :string
-  field :bus_registration_year, default: "2021-2022"
+  field :current_school_year_start, default: Time.now.year, type: :integer
+  field :current_school_year_end, default: -> { self.current_school_year_start + 1 }, type: :integer
   # field :confirmable_enable, default: "0", type: :boolean
   # field :admin_emails, default: "admin@rubyonrails.org", type: :array
   # field :omniauth_google_client_id, default: (ENV["OMNIAUTH_GOOGLE_CLIENT_ID"] || ""), type: :string, readonly: true

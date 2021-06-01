@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_31_060248) do
+ActiveRecord::Schema.define(version: 2021_06_01_063116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,10 +62,11 @@ ActiveRecord::Schema.define(version: 2021_05_31_060248) do
   end
 
   create_table "bus_services", force: :cascade do |t|
-    t.string "year"
+    t.integer "year"
     t.bigint "parent_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_id", "year"], name: "index_bus_services_on_parent_id_and_year", unique: true
     t.index ["parent_id"], name: "index_bus_services_on_parent_id"
   end
 

@@ -34,6 +34,7 @@ class Parent < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+  include ParentCsvGenerator
   validates_plausible_phone :phone_number, presence: true, with: /\A\+\d+/
 
   phony_normalize :phone_number, normalize_when_valid: true
@@ -58,4 +59,30 @@ class Parent < ApplicationRecord
     attributes.except(:preferred_language, :_destroy).values.all?(&:blank?)
   }, allow_destroy: true
   accepts_nested_attributes_for :bus_services, reject_if: :all_blank, allow_destroy: true
+  
+  def current_bus_registration
+    bus_services.find_by year: Setting.current_school_year_start
+  end
+
+  def previous_bus_registration
+    bus_services.find_by(year: Setting.current_school_year_start - 1)
+  end
+
+  def has_current_bus_registration?
+    !current_bus_registration.nil?
+  end
+
+  def has_previous_bus_registration?
+    !previous_bus_registration.nil?
+  end
+  
+  def renewed_bus_service?
+    has_current_bus_registration? && has_previous_bus_registration?
+  end
+  
+  def new_bus_service?
+    has_current_bus_registration? && !has_previous_bus_registration?
+  end
+
+
 end

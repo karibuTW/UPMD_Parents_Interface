@@ -3,14 +3,15 @@
 # Table name: bus_services
 #
 #  id         :bigint           not null, primary key
-#  year       :string
+#  year       :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  parent_id  :bigint           not null
 #
 # Indexes
 #
-#  index_bus_services_on_parent_id  (parent_id)
+#  index_bus_services_on_parent_id           (parent_id)
+#  index_bus_services_on_parent_id_and_year  (parent_id,year) UNIQUE
 #
 # Foreign Keys
 #
@@ -18,7 +19,6 @@
 #
 FactoryBot.define do
   factory :bus_service do
-    year { "MyString" }
-    parent { nil }
+    association :parent
   end
 end

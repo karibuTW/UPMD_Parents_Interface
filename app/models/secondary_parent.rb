@@ -25,6 +25,8 @@
 class SecondaryParent < ApplicationRecord
   belongs_to :parent
 
+  include ParentCsvGenerator
+
   validates_plausible_phone :phone_number, presence: true, with: /\A\+\d+/
 
   phony_normalize :phone_number, normalize_when_valid: true
@@ -39,4 +41,13 @@ class SecondaryParent < ApplicationRecord
     fr: 1,
     vi: 2
   }
+
+  delegate :children, to: :parent
+  delegate :bus_services, to: :parent
+  delegate :current_bus_registration, to: :parent
+  delegate :previous_bus_registration, to: :parent
+  delegate :has_current_bus_registration?, to: :parent
+  delegate :has_previous_bus_registration?, to: :parent
+  delegate :renewed_bus_service?, to: :parent
+  delegate :new_bus_service?, to: :parent
 end

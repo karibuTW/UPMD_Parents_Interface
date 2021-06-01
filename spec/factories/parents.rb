@@ -34,7 +34,7 @@ FactoryBot.define do
     last_name { Faker::Name.last_name }
     full_name { Faker::Name.name }
     address { Faker::Address.full_address }
-    phone_number { Faker::PhoneNumber.cell_phone_with_country_code }
+    phone_number { "+911234567890" }
     email { Faker::Internet.email }
     password { Faker::Internet.password }
   end

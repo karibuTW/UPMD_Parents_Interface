@@ -10,7 +10,7 @@ ActiveAdmin.register Parent do
                 :first_name, :last_name, :full_name, :phone_number, :address, :preferred_language, :mailing_list,
                 children_attributes: %i[id _destroy first_name last_name full_name grade birth_date],
                 secondary_parent_attributes: %i[id _destroy email first_name last_name full_name
-                                                              address preferred_language phone_number primary_parent_id],
+                                                address preferred_language phone_number primary_parent_id],
                 bus_services_attributes: %i[id year _destroy]
   #
   # or
@@ -26,6 +26,7 @@ ActiveAdmin.register Parent do
   filter :last_name
   filter :full_name
   filter :mailing_list
+  filter :children_grade_eq, as: :select, label: "Grade of children", collection: Child.grades.keys.to_a
   index download_links: false do
     selectable_column
     id_column
@@ -37,6 +38,8 @@ ActiveAdmin.register Parent do
     column :address
     column :preferred_language
     column :mailing_list
+    column :new_bus_service?
+    column :renewed_bus_service?
     actions
 
   end
@@ -51,6 +54,8 @@ ActiveAdmin.register Parent do
       row :address
       row :preferred_language
       row :mailing_list
+      row :new_bus_service?
+      row :renewed_bus_service?
     end
 
     panel "Secondary parent" do
@@ -139,14 +144,14 @@ ActiveAdmin.register Parent do
 
 
   action_item :download_as_csv, only: [:index] do
-    a(href: download_as_csv_admin_parents_path(q: params[:q])) do
+    a(href: download_as_csv_admin_parents_path(q: params.to_unsafe_h[:q])) do
       'Download as csv'
     end
   end
 
   collection_action :download_as_csv, method: :get do
     # define your own headers
-    csv_headers = ["Registration Date", "Last Update",
+    csv_headers = ["Registration Date", "Last Update", "Bus",
                    "Parent", "First Name", "Last Name", "Full Name", "Language", "Email Address", "Phone Number",
                    "Address", "1st Child - First Name","1st Child - Last Name","1st Child - Full Name",
                    "1st Child - Date of Birth","1st Child - Age","1st Child - Grade Name","2nd Child - First Name",
@@ -162,69 +167,13 @@ ActiveAdmin.register Parent do
       # scoped_collection is provided by activeadmin and takes into account the filtering and scoping of the current collection
       parents = Parent.ransack(params[:q]).result.includes(:secondary_parent, :children)
       logger.debug parents
-      secondary_parents = parents.map { |p| p.secondary_parent }
+      secondary_parents = parents.map(&:secondary_parent)
       parents.each do |parent|
-        csv_row = []
-        # Create a convenience method in the Papplication model that returns a hash of question_text to answer_text
-        csv_row << parent.created_at
-        csv_row << parent.updated_at
-        csv_row << "Primary" if parent.is_a? Parent
-        csv_row << "Secondary" if parent.is_a? SecondaryParent
-        csv_row << parent.first_name
-        csv_row << parent.last_name
-        csv_row << parent.full_name
-        csv_row << parent.preferred_language
-        csv_row << parent.email
-        csv_row << parent.phone_number
-        csv_row << parent.address
-        children = parent.try(:children) || parent.try(:parent).children
-        children.limit(5).each do |child|
-          csv_row << child.first_name
-          csv_row << child.last_name
-          csv_row << child.full_name
-          csv_row << child.birth_date
-          csv_row << 1
-          csv_row << child.grade
-        end
-        if children.count < 5
-          ((5 - children.count) * 6).times do
-            csv_row << nil
-          end
-        end
-        csv_row << children.count
-        csv << csv_row
+        csv << parent.csv
       end
 
       secondary_parents.select(&:present?).each do |parent|
-        csv_row = []
-        # Create a convenience method in the Papplication model that returns a hash of question_text to answer_text
-        csv_row << parent.created_at
-        csv_row << parent.updated_at
-        csv_row << "Primary" if parent.is_a? Parent
-        csv_row << "Secondary" if parent.is_a? SecondaryParent
-        csv_row << parent.first_name
-        csv_row << parent.last_name
-        csv_row << parent.full_name
-        csv_row << parent.preferred_language
-        csv_row << parent.email
-        csv_row << parent.phone_number
-        csv_row << parent.address
-        children = parent.try(:children) || parent.try(:parent).children
-        children.limit(5).each do |child|
-          csv_row << child.first_name
-          csv_row << child.last_name
-          csv_row << child.full_name
-          csv_row << child.birth_date
-          csv_row << 1
-          csv_row << child.grade
-        end
-        if children.count < 5
-          ((5 - children.count)*6).times do
-            csv_row << nil
-          end
-        end
-        csv_row << children.count
-        csv << csv_row
+        csv << parent.csv
       end
     end
     send_data(rawcsv, type: 'text/csv charset=utf-8; header=present', filename: "parents-export-#{Time.now.strftime("%Y%m%e-%H%M%S")}.csv") and return

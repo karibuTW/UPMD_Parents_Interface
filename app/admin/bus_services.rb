@@ -5,7 +5,7 @@ ActiveAdmin.register BusService do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :year, :parent_id
+  permit_params :year, :parent_id
   #
   # or
   #
