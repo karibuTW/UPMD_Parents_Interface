@@ -60,5 +60,4 @@ gem 'rails-controller-testing'
 gem "rails-i18n"
 gem "rails-settings-cached", "~> 2.5"
 gem 'activeadmin'
-gem 'activeadmin_settings_cached'
 gem 'ransack-enum', '~> 0.3'
