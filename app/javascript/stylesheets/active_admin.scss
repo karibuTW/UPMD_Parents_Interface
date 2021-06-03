@@ -17,7 +17,9 @@
 .p-5 {
   padding: 2rem;
 }
-
+.has-one ~ .has_many_add {
+  display: none !important;
+}
 .submit {
   line-height: 43px;
   padding: 2rem;

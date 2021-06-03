@@ -62,18 +62,17 @@ ActiveAdmin.register Parent do
 
     panel "Secondary parent" do
       if parent.secondary_parent
-        table_for parent.secondary_parent do
-          column :id do |p|
+        attributes_table_for parent.secondary_parent do
+          row :id do |p|
             link_to p.id, admin_secondary_parent_path(p)
           end
-          column :email
-          column :first_name
-          column :last_name
-          column :full_name
-          column :phone_number
-          column :address
-          column :preferred_language
-
+          row :email
+          row :first_name
+          row :last_name
+          row :full_name
+          row :phone_number
+          row :address
+          row :preferred_language
         end
       else
         div do
@@ -97,10 +96,13 @@ ActiveAdmin.register Parent do
 
     panel "Bus registration" do
       table_for parent.bus_services do
-        column :id
+        column :id do |b|
+          link_to b.id, admin_bus_registration_path(b)
+        end
         column :year
       end
     end
+    active_admin_comments
   end
   form do |f|
     f.semantic_errors
@@ -116,7 +118,7 @@ ActiveAdmin.register Parent do
       f.input :preferred_language
 
 
-      f.has_many :secondary_parent, allow_destroy: true, heading: "Secondary Parent", allow_destroy: true do |sp|
+      f.has_many :secondary_parent, heading: "Secondary Parent", allow_destroy: true, class: "has-one"  do |sp|
         sp.inputs :email, :first_name, :last_name, :full_name, :address, :phone_number, :preferred_language
       end
 

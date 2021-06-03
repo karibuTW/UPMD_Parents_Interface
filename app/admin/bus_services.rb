@@ -1,16 +1,16 @@
-ActiveAdmin.register SecondaryParent do
+ActiveAdmin.register BusService, as: "Bus Registration" do
   menu false
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :first_name, :last_name, :full_name, :phone_number, :address, :preferred_language, :parent_id, :email
+  permit_params :year, :parent_id
   #
   # or
   #
   # permit_params do
-  #   permitted = [:first_name, :last_name, :full_name, :phone_number, :address, :preferred_language, :parent_id, :email]
+  #   permitted = [:year, :parent_id]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end

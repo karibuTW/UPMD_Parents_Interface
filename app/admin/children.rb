@@ -23,6 +23,55 @@ ActiveAdmin.register Child do
   filter :grade, as: :select, collection: Child.grades.keys.to_a
   filter :age
 
+  show do
+
+    attributes_table do
+      row :first_name
+      row :last_name
+      row :full_name
+      row :birth_date
+      row :age
+      row :grade
+
+    end
+
+    panel "Parent" do
+      attributes_table_for child.parent do
+        row :email
+        row :first_name
+        row :last_name
+        row :full_name
+        row :phone_number
+        row :address
+        row :preferred_language
+        row :mailing_list
+        row :new_bus_service?
+        row :renewed_bus_service?
+      end
+    end
+
+
+    panel "Secondary parent" do
+      if child.secondary_parent
+        attributes_table_for child.secondary_parent do
+          row :id
+          row :email
+          row :first_name
+          row :last_name
+          row :full_name
+          row :phone_number
+          row :address
+          row :preferred_language
+        end
+      else
+        div do
+          p "No secondary parent"
+        end
+      end
+    end
+    active_admin_comments
+  end
+
   action_item :download_as_csv, only: [:index] do
     a(href: admin_children_path(format: :csv, q: params.to_unsafe_h[:q])) do
       'Download as csv'

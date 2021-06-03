@@ -17,6 +17,7 @@ ActiveAdmin.register Viewer do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+  config.comments = false
   form do |f|
     f.inputs do
       f.input :email
