@@ -50,6 +50,7 @@ class Parent < ApplicationRecord
     vi: 2
   }
 
+
   has_one :secondary_parent, dependent: :destroy
 
   has_many :children, dependent: :destroy
@@ -59,6 +60,10 @@ class Parent < ApplicationRecord
     attributes.except(:preferred_language, :_destroy).values.all?(&:blank?)
   }, allow_destroy: true
   accepts_nested_attributes_for :bus_services, reject_if: :all_blank, allow_destroy: true
+
+  def self.ransackable_scopes(_auth_object = nil)
+    %i[new_bus_service_eq]
+  end
   
   def current_bus_registration
     bus_services.find_by year: Setting.current_school_year_start

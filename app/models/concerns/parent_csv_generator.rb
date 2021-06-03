@@ -28,7 +28,7 @@ module ParentCsvGenerator
         csv_row << child.last_name
         csv_row << child.full_name
         csv_row << child.birth_date
-        csv_row << ((Time.zone.now - child.birth_date.to_time) / 1.year.seconds).floor
+        csv_row << child.age
         csv_row << child.grade
       end
       if children.count < 5

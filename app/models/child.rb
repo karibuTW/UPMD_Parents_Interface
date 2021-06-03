@@ -28,6 +28,12 @@ class Child < ApplicationRecord
   validates :birth_date, presence: true
   validates :full_name, presence: true
 
+  scope :unaccompanied, -> { where("date_part('year', age(birth_date)) >= 12") }
+
+  ransacker :age, type: :numeric do
+    Arel.sql("date_part('year', age(birth_date))")
+  end
+  delegate :secondary_parent, to: :parent
   enum grade: {
     TPS: 0,
     PS: 1,
@@ -47,4 +53,11 @@ class Child < ApplicationRecord
     Term: 15
   }
 
+  def age
+    ((Time.zone.now - birth_date.to_time) / 1.year.seconds).floor
+  end
+
+  def unaccompanied?
+    age >= 12
+  end
 end

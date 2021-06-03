@@ -27,6 +27,8 @@ ActiveAdmin.register Parent do
   filter :full_name
   filter :mailing_list
   filter :children_grade_eq, as: :select, label: "Grade of children", collection: Child.grades.keys.to_a
+  filter :bus_services_year, as: :numeric, label: "Has bus service for year"
+
   index download_links: false do
     selectable_column
     id_column
@@ -95,9 +97,7 @@ ActiveAdmin.register Parent do
 
     panel "Bus registration" do
       table_for parent.bus_services do
-        column :id do |b|
-          link_to b.id, admin_bus_service_path(b)
-        end
+        column :id
         column :year
       end
     end
@@ -115,11 +115,11 @@ ActiveAdmin.register Parent do
       f.input :address
       f.input :preferred_language
 
-      f.inputs "Seconday parent" do
-        f.semantic_fields_for :secondary_parent do |sp|
-          sp.inputs :email, :first_name, :last_name, :full_name, :address, :phone_number, :preferred_language
-        end
+
+      f.has_many :secondary_parent, allow_destroy: true, heading: "Secondary Parent", allow_destroy: true do |sp|
+        sp.inputs :email, :first_name, :last_name, :full_name, :address, :phone_number, :preferred_language
       end
+
 
 
       f.has_many :children, allow_destroy: true, heading: "Children" do |p|
@@ -133,6 +133,9 @@ ActiveAdmin.register Parent do
     f.actions
   end
   controller do
+    def scoped_collection
+      super.includes(:children, :secondary_parent, :bus_services)
+    end
     def update
       if params[:parent][:password].blank? && params[:parent][:password_confirmation].blank?
         params[:parent].delete("password")
