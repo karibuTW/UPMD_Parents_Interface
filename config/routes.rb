@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post 'helloasso/webhook'
   get 'locale/choose_locale'
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
     devise_for :viewers, skip: [ :registrations ]

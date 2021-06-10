@@ -61,3 +61,5 @@ gem "rails-i18n"
 gem "rails-settings-cached", "~> 2.5"
 gem 'activeadmin'
 gem 'ransack-enum', '~> 0.3'
+gem 'httparty'
+gem 'sidekiq'

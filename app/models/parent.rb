@@ -55,6 +55,7 @@ class Parent < ApplicationRecord
 
   has_many :children, dependent: :destroy
   has_many :bus_services, dependent: :destroy
+  has_many :helloasso_orders, dependent: :nullify
   accepts_nested_attributes_for :children, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :secondary_parent, reject_if: proc { |attributes|
     attributes.except(:preferred_language, :_destroy).values.all?(&:blank?)

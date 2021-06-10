@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_01_063116) do
+ActiveRecord::Schema.define(version: 2021_06_07_135649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,56 @@ ActiveRecord::Schema.define(version: 2021_06_01_063116) do
     t.index ["parent_id"], name: "index_children_on_parent_id"
   end
 
+  create_table "helloasso_order_items", force: :cascade do |t|
+    t.bigint "helloasso_order_id", null: false
+    t.string "order_item_id"
+    t.datetime "date"
+    t.decimal "amount"
+    t.boolean "cancelled", default: false
+    t.integer "order_item_type", default: 0
+    t.integer "state", default: 0
+    t.string "ticket_url"
+    t.string "membership_card_url"
+    t.integer "price_category", default: 0
+    t.string "discount_code"
+    t.decimal "discount_amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["helloasso_order_id"], name: "index_helloasso_order_items_on_helloasso_order_id"
+    t.index ["order_item_id"], name: "index_helloasso_order_items_on_order_item_id", unique: true
+  end
+
+  create_table "helloasso_orders", force: :cascade do |t|
+    t.bigint "parent_id"
+    t.decimal "amount_total"
+    t.decimal "amount_vat"
+    t.decimal "amount_discount"
+    t.string "helloasso_order_id"
+    t.datetime "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["helloasso_order_id"], name: "index_helloasso_orders_on_helloasso_order_id", unique: true
+    t.index ["parent_id"], name: "index_helloasso_orders_on_parent_id"
+  end
+
+  create_table "helloasso_payments", force: :cascade do |t|
+    t.bigint "helloasso_order_id", null: false
+    t.decimal "amount_tip"
+    t.integer "cash_out_state", default: 0
+    t.string "payment_receipt_url"
+    t.string "fiscal_receipt_url"
+    t.string "helloasso_payment_id"
+    t.decimal "amount"
+    t.datetime "date"
+    t.integer "payment_means", default: 0
+    t.integer "state", default: 0
+    t.integer "payment_type", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["helloasso_order_id"], name: "index_helloasso_payments_on_helloasso_order_id"
+    t.index ["helloasso_payment_id"], name: "index_helloasso_payments_on_helloasso_payment_id", unique: true
+  end
+
   create_table "parents", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -149,5 +199,7 @@ ActiveRecord::Schema.define(version: 2021_06_01_063116) do
 
   add_foreign_key "bus_services", "parents"
   add_foreign_key "children", "parents"
+  add_foreign_key "helloasso_order_items", "helloasso_orders"
+  add_foreign_key "helloasso_payments", "helloasso_orders"
   add_foreign_key "secondary_parents", "parents"
 end

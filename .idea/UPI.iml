@@ -43,27 +43,29 @@
     <orderEntry type="library" scope="PROVIDED" name="addressable (v2.7.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="annotate (v3.1.1, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arbre (v1.4.0, RVM: ruby-2.7.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.13, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.16, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bindex (v0.8.1, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bootsnap (v1.7.5, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.2.4, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.2.15, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="byebug (v11.1.3, RVM: ruby-2.7.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="concurrent-ruby (v1.1.8, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="concurrent-ruby (v1.1.9, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="connection_pool (v2.2.5, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, RVM: ruby-2.7.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="devise (v4.7.1, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="devise (v4.8.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.4.4, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.10.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_bot (v6.2.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_bot_rails (v6.2.0, RVM: ruby-2.7.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="faker (v2.12.0, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faker (v2.18.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.15.1, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="formtastic (v4.0.0, RVM: ruby-2.7.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="formtastic_i18n (v0.6.0, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="formtastic_i18n (v0.7.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.4.2, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="has_scope (v0.8.0, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="httparty (v0.18.1, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.8.10, RVM: ruby-2.7.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="inherited_resources (v1.12.0, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="inherited_resources (v1.13.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.11.2, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v4.4.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="kaminari (v1.2.1, RVM: ruby-2.7.3) [gem]" level="application" />
@@ -73,15 +75,19 @@
     <orderEntry type="library" scope="PROVIDED" name="launchy (v2.5.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="letter_opener (v1.7.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="listen (v3.5.1, RVM: ruby-2.7.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="loofah (v2.9.1, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="loofah (v2.10.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.7.1, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="marcel (v1.0.1, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="method_source (v1.0.0, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mime-types (v3.3.1, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mime-types-data (v3.2021.0225, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.0.3, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mini_portile2 (v2.5.3, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.14.4, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.4.2, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="multi_xml (v0.6.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.5.7, RVM: ruby-2.7.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.11.6, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.11.7, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pg (v1.2.3, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="phony (v2.18.22, RVM: ruby-2.7.3) [gem]" level="application" />
@@ -105,7 +111,7 @@
     <orderEntry type="library" scope="PROVIDED" name="ransack-enum (v0.3.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rb-fsevent (v0.11.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rb-inotify (v0.10.1, RVM: ruby-2.7.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="redis (v4.1.4, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="redis (v4.2.5, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="responders (v3.0.1, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-core (v3.10.1, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-expectations (v3.10.1, RVM: ruby-2.7.3) [gem]" level="application" />
@@ -118,6 +124,7 @@
     <orderEntry type="library" scope="PROVIDED" name="sassc-rails (v2.1.2, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="semantic_range (v3.0.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="shoulda-matchers (v4.5.1, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sidekiq (v6.2.1, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="spring (v2.1.1, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.0.2, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.2.2, RVM: ruby-2.7.3) [gem]" level="application" />
@@ -127,7 +134,7 @@
     <orderEntry type="library" scope="PROVIDED" name="turbolinks (v5.2.1, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="turbolinks-source (v5.2.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v2.0.4, RVM: ruby-2.7.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="warden (v1.2.8, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="warden (v1.2.9, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="web-console (v4.1.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="webpacker (v5.4.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket-driver (v0.7.4, RVM: ruby-2.7.3) [gem]" level="application" />
@@ -146,7 +153,6 @@
         <option value="active_admin:install" />
         <option value="active_admin:page" />
         <option value="active_admin:resource" />
-        <option value="active_admin:settings" />
         <option value="active_admin:webpacker" />
         <option value="active_record:application_record" />
         <option value="active_record:devise" />
@@ -223,7 +229,6 @@
         <option value="active_admin:install" />
         <option value="active_admin:page" />
         <option value="active_admin:resource" />
-        <option value="active_admin:settings" />
         <option value="active_admin:webpacker" />
         <option value="active_record:application_record" />
         <option value="active_record:devise" />
