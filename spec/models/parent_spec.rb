@@ -3,17 +3,17 @@
 # Table name: parents
 #
 #  id                     :bigint           not null, primary key
-#  address                :string           not null
+#  address                :string
 #  confirmation_sent_at   :datetime
 #  confirmation_token     :string
 #  confirmed_at           :datetime
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string           not null
-#  full_name              :string           not null
+#  full_name              :string
 #  last_name              :string           not null
 #  mailing_list           :boolean          default(TRUE), not null
-#  phone_number           :string           not null
+#  phone_number           :string
 #  preferred_language     :integer          default("en"), not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime

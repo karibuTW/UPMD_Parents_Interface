@@ -34,9 +34,9 @@ class DeviseCreateParents < ActiveRecord::Migration[6.1]
 
       t.string :first_name, null: false
       t.string :last_name, null: false
-      t.string :full_name, null: false
-      t.string :phone_number, null: false
-      t.string :address, null: false
+      t.string :full_name
+      t.string :phone_number
+      t.string :address
       t.integer :preferred_language, null: false, default: 0
       t.boolean :mailing_list, null: false, default: true
 

@@ -1,5 +1,6 @@
-ActiveAdmin.register Parent do
+# frozen_string_literal: true
 
+ActiveAdmin.register Parent do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -26,8 +27,8 @@ ActiveAdmin.register Parent do
   filter :last_name
   filter :full_name
   filter :mailing_list
-  filter :children_grade_eq, as: :select, label: "Grade of children", collection: Child.grades.keys.to_a
-  filter :bus_services_year, as: :numeric, label: "Has bus service for year"
+  filter :children_grade_eq, as: :select, label: 'Grade of children', collection: Child.grades.keys.to_a
+  filter :bus_services_year, as: :numeric, label: 'Has bus service for year'
 
   index download_links: false do
     selectable_column
@@ -42,11 +43,11 @@ ActiveAdmin.register Parent do
     column :mailing_list
     column :new_bus_service?
     column :renewed_bus_service?
+    column :paid_member?
+    column :donated?
     actions
-
   end
   show do |parent|
-
     attributes_table do
       row :email
       row :first_name
@@ -58,9 +59,11 @@ ActiveAdmin.register Parent do
       row :mailing_list
       row :new_bus_service?
       row :renewed_bus_service?
+      row :paid_member?
+      row :donated?
     end
 
-    panel "Secondary parent" do
+    panel 'Secondary parent' do
       if parent.secondary_parent
         attributes_table_for parent.secondary_parent do
           row :id do |p|
@@ -76,12 +79,12 @@ ActiveAdmin.register Parent do
         end
       else
         div do
-          p "No secondary parent"
+          p 'No secondary parent'
         end
       end
     end
 
-    panel "Children" do
+    panel 'Children' do
       table_for parent.children do
         column :id do |c|
           link_to c.id, admin_child_path(c)
@@ -94,7 +97,7 @@ ActiveAdmin.register Parent do
       end
     end
 
-    panel "Bus registration" do
+    panel 'Bus registration' do
       table_for parent.bus_services do
         column :id do |b|
           link_to b.id, admin_bus_registration_path(b)
@@ -117,18 +120,15 @@ ActiveAdmin.register Parent do
       f.input :address
       f.input :preferred_language
 
-
-      f.has_many :secondary_parent, heading: "Secondary Parent", allow_destroy: true, class: "has-one"  do |sp|
+      f.has_many :secondary_parent, heading: 'Secondary Parent', allow_destroy: true, class: 'has-one' do |sp|
         sp.inputs :email, :first_name, :last_name, :full_name, :address, :phone_number, :preferred_language
       end
 
-
-
-      f.has_many :children, allow_destroy: true, heading: "Children" do |p|
+      f.has_many :children, allow_destroy: true, heading: 'Children' do |p|
         p.inputs :first_name, :last_name, :full_name, :birth_date, :grade
       end
 
-      f.has_many :bus_services, allow_destroy: true, heading: "Bus Services" do |p|
+      f.has_many :bus_services, allow_destroy: true, heading: 'Bus Services' do |p|
         p.inputs :year
       end
     end
@@ -138,15 +138,15 @@ ActiveAdmin.register Parent do
     def scoped_collection
       super.includes(:children, :secondary_parent, :bus_services)
     end
+
     def update
       if params[:parent][:password].blank? && params[:parent][:password_confirmation].blank?
-        params[:parent].delete("password")
-        params[:parent].delete("password_confirmation")
+        params[:parent].delete('password')
+        params[:parent].delete('password_confirmation')
       end
       super
     end
   end
-
 
   action_item :download_as_csv, only: [:index] do
     a(href: download_as_csv_admin_parents_path(q: params.to_unsafe_h[:q])) do
@@ -156,17 +156,19 @@ ActiveAdmin.register Parent do
 
   collection_action :download_as_csv, method: :get do
     # define your own headers
-    csv_headers = ["Registration Date", "Last Update", "Bus",
-                   "Parent", "First Name", "Last Name", "Full Name", "Language", "Email Address", "Phone Number",
-                   "Address", "1st Child - First Name","1st Child - Last Name","1st Child - Full Name",
-                   "1st Child - Date of Birth","1st Child - Age","1st Child - Grade Name","2nd Child - First Name",
-                   "2nd Child - Last Name","2nd Child - Full Name","2nd Child - Date of Birth",
-                   "2nd Child - Age","2nd Child - Grade Name","3rd Child - First Name","3rd Child - Last Name",
-                   "3rd Child - Full Name","3rd Child - Date of Birth","3rd Child - Age","3rd Child - Grade Name",
-                   "4th Child - First Name","4th Child - Last Name","4th Child - Full Name","4th Child - Date of Birth",
-                   "4th Child - Age","4th Child - Grade Name","5th Child - First Name","5th Child - Last Name",
-                   "5th Child - Full Name","5th Child - Date of Birth","5th Child - Age","5th Child - Grade Name", "Number of children" ] # customize yourself
-    rawcsv = CSV.generate(col_sep: ",") do |csv|
+    csv_headers = ['Registration Date', 'Last Update', 'HelloAsso ID', 'Paid?', 'Donations', 'Payment Method',
+                   'Code Used', 'Payment Received By', 'Confirmation', 'Bus',
+                   'Parent', 'First Name', 'Last Name', 'Full Name', 'Language', 'Email Address', 'Phone Number',
+                   'Address', '1st Child - First Name', '1st Child - Last Name', '1st Child - Full Name',
+                   '1st Child - Date of Birth', '1st Child - Age', '1st Child - Grade Name', '2nd Child - First Name',
+                   '2nd Child - Last Name', '2nd Child - Full Name', '2nd Child - Date of Birth',
+                   '2nd Child - Age', '2nd Child - Grade Name', '3rd Child - First Name', '3rd Child - Last Name',
+                   '3rd Child - Full Name', '3rd Child - Date of Birth', '3rd Child - Age', '3rd Child - Grade Name',
+                   '4th Child - First Name', '4th Child - Last Name', '4th Child - Full Name', '4th Child - Date of Birth',
+                   '4th Child - Age', '4th Child - Grade Name', '5th Child - First Name', '5th Child - Last Name',
+                   '5th Child - Full Name', '5th Child - Date of Birth', '5th Child - Age', '5th Child - Grade Name',
+                   'Number of children'] # customize yourself
+    rawcsv = CSV.generate(col_sep: ',') do |csv|
       # here you could add headers
       csv << csv_headers
       # scoped_collection is provided by activeadmin and takes into account the filtering and scoping of the current collection
@@ -181,6 +183,7 @@ ActiveAdmin.register Parent do
         csv << parent.csv
       end
     end
-    send_data(rawcsv, type: 'text/csv charset=utf-8; header=present', filename: "parents-export-#{Time.now.strftime("%Y%m%e-%H%M%S")}.csv") and return
+    send_data(rawcsv, type: 'text/csv charset=utf-8; header=present',
+                      filename: "parents-export-#{Time.now.strftime('%Y%m%e-%H%M%S')}.csv") and return
   end
 end

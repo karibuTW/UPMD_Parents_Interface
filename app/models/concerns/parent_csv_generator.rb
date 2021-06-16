@@ -1,20 +1,32 @@
+# frozen_string_literal: true
+
 module ParentCsvGenerator
   extend ActiveSupport::Concern
-  
+
   included do
     def csv
+      order = if instance_of?(Parent)
+                current_year_helloasso_orders.first
+              else
+                parent.current_year_helloasso_orders.first
+              end
       csv_row = []
       csv_row << created_at
       csv_row << updated_at
-      if new_bus_service?
-        csv_row << "New"
-      elsif renewed_bus_service?
-        csv_row << "Renew"
-      else
-        csv_row << nil
-      end
-      csv_row << "Primary" if instance_of?(Parent)
-      csv_row << "Secondary" if instance_of?(SecondaryParent)
+      csv_row << order.helloasso_order_id
+      csv_row << (paid_member? ? 'Yes' : 'No')
+      csv_row << (donated? ? 'Yes' : 'No')
+      csv_row << (order.payment_method == 'Card' ? 'Credit Card' : 'Non Credit Card')
+      csv_row << order.discount_code.code if order.discount_code
+      csv_row << (order.discount_code.present? ? order.discount_code.owner : 'HelloAsso')
+      csv_row << order.confirmation
+      csv_row << if new_bus_service?
+                   'New'
+                 elsif renewed_bus_service?
+                   'Renew'
+                 end
+      csv_row << 'Primary' if instance_of?(Parent)
+      csv_row << 'Secondary' if instance_of?(SecondaryParent)
       csv_row << first_name
       csv_row << last_name
       csv_row << full_name

@@ -50,4 +50,6 @@ class SecondaryParent < ApplicationRecord
   delegate :has_previous_bus_registration?, to: :parent
   delegate :renewed_bus_service?, to: :parent
   delegate :new_bus_service?, to: :parent
+  delegate :paid_member?, to: :parent
+  delegate :donated?, to: :parent
 end

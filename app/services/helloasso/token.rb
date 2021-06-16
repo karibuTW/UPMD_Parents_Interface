@@ -43,6 +43,9 @@ module Helloasso
     end
 
     def self.is_refresh_needed?
+      if Setting.helloasso_access_token.nil?
+        return true
+      end
       Time.now > Setting.helloasso_access_token_expires
     end
   end

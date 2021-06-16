@@ -40,27 +40,31 @@ module Helloasso
       if parent.nil?
         password = SecureRandom.hex(8)
         parent = Parent.new email: payer.dig('payer', 'email'),
-                               first_name: payer.dig('payer', 'firstName'), last_name: payer.dig('payer', 'lastName'),
-                               password: password, password_confirmation: password, phone_number: '+911234567890',
-                               full_name: 'Full name', address: 'Address' #, confirmed_at: Time.now.utc
+                            first_name: payer.dig('payer', 'firstName'), last_name: payer.dig('payer', 'lastName'),
+                            password: password, password_confirmation: password# , confirmed_at: Time.now.utc
         parent.skip_confirmation_notification!
         parent.save
-
-        ParentMailer.with(user: parent, token: parent.confirmation_token).send_new_account_mail.deliver_later
+        p parent.errors
+        # ParentMailer.with(user: parent, token: parent.confirmation_token).send_new_account_mail.deliver_later
       end
 
       order = HelloassoOrder.create(parent: parent, amount_total: data.dig('amount', 'total'),
-                                    amount_vat: data.dig('amount', 'vat'),
+                                    amount_vat: data.dig('amount', 'vat'), form_slug: Setting.helloasso_current_form_id,
                                     amount_discount: data.dig('amount', 'discount'), helloasso_order_id: data['id'], date: data['date'])
+
       data['items'].to_a.each do |item|
         order_item = HelloassoOrderItem.create(helloasso_order: order, amount: item['amount'], order_item_type: item['type'],
                                                state: item['state'], discount_code: item.dig('discount', 'code'),
                                                discount_amount: item.dig('discount', 'amount'),
                                                price_category: item['priceCategory'], membership_card_url: item['membershipCardUrl'],
                                                cancelled: item['isCanceled'], order_item_id: item['id'], date: item['date'])
+        if order_item.discount_code.present?
+          order.update discount_code: DiscountCode.find_by_code(order_item.discount_code), confirmation: "NO"
+        end
       end
 
       data['payments'].to_a.each do |payment|
+
         payment = HelloassoPayment.create(helloasso_order: order, amount_tip: payment['amountTip'],
                                           cash_out_state: payment['cashOutState'],
                                           payment_receipt_url: payment['paymentReceiptUrl'], fiscal_receipt_url: payment['fiscalReceiptUrl'],
@@ -68,6 +72,7 @@ module Helloasso
                                           date: payment['date'], payment_means: payment['paymentMeans'], state: payment['state'],
                                           payment_type: payment['type'])
       end
+
     end
 
     def self.process_orders

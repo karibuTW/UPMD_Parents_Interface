@@ -27,7 +27,7 @@ module Helloasso
             response
           else
             p response
-            raise ArgumentError.new 'An error occurred'
+            raise ArgumentError.new 'Unauthenticated'
           end
         else
           p response

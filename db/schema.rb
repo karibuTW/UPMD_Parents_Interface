@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_135649) do
+ActiveRecord::Schema.define(version: 2021_06_16_064830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,15 @@ ActiveRecord::Schema.define(version: 2021_06_07_135649) do
     t.index ["parent_id"], name: "index_children_on_parent_id"
   end
 
+  create_table "discount_codes", force: :cascade do |t|
+    t.string "code"
+    t.string "owner"
+    t.integer "status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["code"], name: "index_discount_codes_on_code", unique: true
+  end
+
   create_table "helloasso_order_items", force: :cascade do |t|
     t.bigint "helloasso_order_id", null: false
     t.string "order_item_id"
@@ -110,6 +119,10 @@ ActiveRecord::Schema.define(version: 2021_06_07_135649) do
     t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "form_slug", null: false
+    t.integer "confirmation", default: 0
+    t.bigint "discount_code_id"
+    t.index ["discount_code_id"], name: "index_helloasso_orders_on_discount_code_id"
     t.index ["helloasso_order_id"], name: "index_helloasso_orders_on_helloasso_order_id", unique: true
     t.index ["parent_id"], name: "index_helloasso_orders_on_parent_id"
   end
@@ -144,9 +157,9 @@ ActiveRecord::Schema.define(version: 2021_06_07_135649) do
     t.string "unconfirmed_email"
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.string "full_name", null: false
-    t.string "phone_number", null: false
-    t.string "address", null: false
+    t.string "full_name"
+    t.string "phone_number"
+    t.string "address"
     t.integer "preferred_language", default: 0, null: false
     t.boolean "mailing_list", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
