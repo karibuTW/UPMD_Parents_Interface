@@ -17,7 +17,7 @@ module ParentCsvGenerator
       csv_row << (paid_member? ? 'Yes' : 'No')
       csv_row << (donated? ? 'Yes' : 'No')
       csv_row << (order.payment_method == 'Card' ? 'Credit Card' : 'Non Credit Card')
-      csv_row << order.discount_code.code if order.discount_code
+      csv_row << (order.discount_code.present? ? order.discount_code.code : nil)
       csv_row << (order.discount_code.present? ? order.discount_code.owner : 'HelloAsso')
       csv_row << order.confirmation
       csv_row << if new_bus_service?
