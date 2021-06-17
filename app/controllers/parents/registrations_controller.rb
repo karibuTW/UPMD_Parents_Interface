@@ -12,7 +12,7 @@ class Parents::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
-    resource.bus_services.build(year: Setting.bus_registration_year) if params[:bus_registration]
+    resource.bus_services.build(year: Setting.current_school_year_start) if params[:bus_registration]
     resource.save
     yield resource if block_given?
     if resource.persisted?
@@ -57,7 +57,12 @@ class Parents::RegistrationsController < Devise::RegistrationsController
   # end
 
   # protected
+  protected
 
+  def after_update_path_for(resource)
+    flash[:notice] = 'Successfully saved'
+    parents_root_path(locale: resource.preferred_language)
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])

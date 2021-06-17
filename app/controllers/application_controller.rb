@@ -19,10 +19,10 @@ class ApplicationController < ActionController::Base
   end
 
   def switch_locale
-    if params[:locale].present?
-      cookies.permanent[:locale] = params[:locale]
-    elsif parent_signed_in?
+    if parent_signed_in?
       cookies.permanent[:locale] = current_parent.try(:preferred_language)
+    elsif params[:locale].present?
+      cookies.permanent[:locale] = params[:locale]
     end
 
     locale = cookies[:locale]&.to_sym # read cookies

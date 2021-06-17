@@ -1,2 +1,73 @@
-<h1>Parents profile (To be implemented)</h1>
-<%= link_to "Logout", destroy_parent_session_path, method: :delete %>
+<nav class="bg-gray-800">
+  <div class="mx-auto px-2 sm:px-6 lg:px-8 py-5 flex justify-end">
+    <%= link_to "Edit Profile", edit_parent_registration_path, class: "form-button mx-5" %>
+    <%= link_to "Logout", destroy_parent_session_path, method: :delete, class: "form-button" %>
+  </div>
+</nav>
+
+<main class="p-5">
+  <div class="grid grid-cols-2">
+    <div class="text-center p-3">
+      <h2 class="text-2xl">Your information</h2>
+      <table class="m-2 w-full">
+        <% [:email, :first_name, :last_name, :full_name, :phone_number, :address].each do |s| %>
+          <tr>
+            <td class="border-2 p-2"><%= t("parent.attributes.#{s.to_s}") %></td>
+            <td class="border-2 p-2"><%= current_parent.send(s) %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td class="border-2 p-2"><%= t("parent.attributes.preferred_language") %></td>
+          <td class="border-2 p-2"><%= ({ en: "English", fr: "French", vi: "Vietnamese" })[current_parent.preferred_language.to_sym] %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="text-center p-3">
+      <h2 class="text-2xl">Secondary parent</h2>
+      <% if current_parent.secondary_parent.present? %>
+        <table class="m-2 w-full">
+          <% [:email, :first_name, :last_name, :full_name, :phone_number, :address].each do |s| %>
+            <tr>
+              <td class="border-2 p-2"><%= t("parent.attributes.#{s.to_s}") %></td>
+              <td class="border-2 p-2"><%= current_parent.secondary_parent.send(s) %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td class="border-2 p-2"><%= t("parent.attributes.preferred_language") %></td>
+            <td class="border-2 p-2"><%= ({ en: "English", fr: "French", vi: "Vietnamese" })[current_parent.secondary_parent.preferred_language.to_sym] %></td>
+          </tr>
+        </table>
+      <% else %>
+        <span>Not added</span>
+      <% end %>
+
+    </div>
+    <div class="text-center p-3 col-span-2">
+      <h2 class="text-2xl">Your kids</h2>
+      <% if current_parent.children.empty? %>
+        Not added
+      <% else %>
+        <table class="m-2 w-full">
+          <tr>
+            <% [:first_name, :last_name, :full_name, :grade, :birth_date, :age].each do |s| %>
+              <th class="border-2 p-2"><%= s.to_s.humanize %></th>
+            <% end %>
+          </tr>
+          <% current_parent.children.each do |child| %>
+            <tr>
+            <% [:first_name, :last_name, :full_name, :grade, :birth_date, :age].each do |s| %>
+                <td class="border-2 p-2"><%= child.send(s) %></td>
+            <% end %>
+            </tr>
+          <% end %>
+
+
+        </table>
+      <% end %>
+
+    </div>
+  </div>
+
+
+</main>
+

@@ -105,5 +105,14 @@
       <% end %>
     </div>
   </div>
+  <% show_destroy ||= false %>
+  <% if show_destroy %>
+    <div class="field">
+      <%= f.label :_destroy, "Delete this secondary parent", class: "mx-3 uppercase font-bold" %>
+      <%= f.check_box :_destroy %>
 
-<%= f.hidden_field :_destroy %>
+    </div>
+  <% else %>
+    <%= f.hidden_field :_destroy %>
+<% end %>
+</div>
