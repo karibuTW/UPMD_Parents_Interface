@@ -165,7 +165,7 @@
       <div class="flex flex-wrap mb-6">
         <div class="field">
           <%= f.label :bus_registration, "Avail bus service for year #{Setting.current_school_year_start}-#{Setting.current_school_year_end}", class: "mx-3 uppercase font-bold" %>
-          <%= check_box_tag :bus_registration %>
+          <%= check_box_tag :bus_registration, current_parent.has_current_bus_registration?,  current_parent.has_current_bus_registration? %>
 
         </div>
       </div>
