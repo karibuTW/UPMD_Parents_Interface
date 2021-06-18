@@ -1,2 +1,51 @@
-<h1>Bus driver profile (To be implemented)</h1>
-<%= link_to "Logout", destroy_bus_driver_session_path, method: :delete %>
+<nav class="bg-gray-800">
+  <div class="mx-auto px-2 sm:px-6 lg:px-8 py-5 flex justify-end">
+    <%#= link_to "Edit Profile", edit_parent_registration_path, class: "form-button mx-5" %>
+    <%= link_to "Logout", destroy_bus_driver_session_path, method: :delete, class: "form-button" %>
+  </div>
+</nav>
+<%= search_form_for @q, url: bus_drivers_root_path do |f| %>
+  <div class="flex flex-col md:flex-row">
+    <div class="mx-2 p-2">
+      <%= f.label :first_name_cont %>
+      <%= f.search_field :first_name_cont, class: "form-input" %>
+    </div>
+    <div class="mx-2 p-2">
+      <%= f.label :last_name_cont %>
+      <%= f.search_field :last_name_cont, class: "form-input" %>
+    </div>
+    <div class="mx-2 p-2">
+      <%= f.label :grade_eq %>
+      <%= f.select :grade_eq, select_for_grades, { include_blank: true }, class: "form-input" %>
+    </div>
+    <div class="mx-2 p-2">
+      <%= f.label :age_eq %>
+      <%= f.number_field :age_eq, class: "form-input" %>
+    </div>
+  </div>
+  <div class="mx-2 p-2">
+    <%= f.submit class: "form-button"  %>
+
+  </div>
+<% end %>
+<div class="p-5">
+  <table class="w-full text-left rounded-lg text-sm md:text-base">
+    <thead>
+    <tr>
+      <% [:first_name, :last_name, :birth_date, :age, :grade].each do |s| %>
+        <th class="p-1 md:px-4 md:py-3"><%= sort_link(@q, s) %></th>
+      <% end %>
+      <th class="p-1 md:px-4 md:py-3">Comments</th>
+    </tr>
+    </thead>
+
+    <% @children.each do |child| %>
+        <tr>
+          <% [:first_name, :last_name, :birth_date, :age, :grade, :public_comment].each do |s| %>
+            <td class="p-1 md:px-4 md:py-3"><%= child.send(s) %></td>
+          <% end %>
+          <td class="p-1 md:px-4 md:py-3"><%= link_to "View", bus_drivers_child_path(child), class: "form-button" %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>

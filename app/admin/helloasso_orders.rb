@@ -15,6 +15,8 @@ ActiveAdmin.register HelloassoOrder do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+  config.comments = false
+
   action_item :fetch_data do
     link_to 'Fetch data from HelloAsso', fetch_data_admin_helloasso_orders_path
   end

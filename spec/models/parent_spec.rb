@@ -15,6 +15,7 @@
 #  mailing_list           :boolean          default(TRUE), not null
 #  phone_number           :string
 #  preferred_language     :integer          default("en"), not null
+#  public_comment         :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string

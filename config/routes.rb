@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   post 'helloasso/webhook'
   get 'locale/choose_locale'
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
 
     namespace :bus_drivers do
       root to: 'profile#profile'
+      resources :children, only: [:show]
     end
 
     namespace :viewers do

@@ -14,5 +14,6 @@ ActiveAdmin.register DiscountCode do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+  config.comments = false
+
 end

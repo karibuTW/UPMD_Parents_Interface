@@ -6,7 +6,7 @@ ActiveAdmin.register Child do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :first_name, :last_name, :full_name, :birth_date, :grade, :parent_id, :age
+  permit_params :first_name, :last_name, :full_name, :birth_date, :grade, :parent_id, :age, :public_comment
   #
   # or
   #
@@ -32,7 +32,7 @@ ActiveAdmin.register Child do
       row :birth_date
       row :age
       row :grade
-
+      row :public_comment
     end
 
     panel "Parent" do
@@ -47,6 +47,7 @@ ActiveAdmin.register Child do
         row :mailing_list
         row :new_bus_service?
         row :renewed_bus_service?
+        row :public_comment
       end
     end
 
@@ -70,6 +71,14 @@ ActiveAdmin.register Child do
       end
     end
     active_admin_comments
+  end
+
+  form do |f|
+    f.semantic_errors
+    f.inputs :parent, :first_name, :last_name, :full_name, :grade
+    f.input :birth_date, as: :date_picker
+    f.input :public_comment
+    f.actions
   end
 
   action_item :download_as_csv, only: [:index] do

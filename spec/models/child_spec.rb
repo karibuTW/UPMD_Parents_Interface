@@ -2,15 +2,16 @@
 #
 # Table name: children
 #
-#  id         :bigint           not null, primary key
-#  birth_date :date             not null
-#  first_name :string           not null
-#  full_name  :string           not null
-#  grade      :integer          default("TPS")
-#  last_name  :string           not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  parent_id  :bigint           not null
+#  id             :bigint           not null, primary key
+#  birth_date     :date             not null
+#  first_name     :string           not null
+#  full_name      :string           not null
+#  grade          :integer          default("TPS")
+#  last_name      :string           not null
+#  public_comment :text
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  parent_id      :bigint           not null
 #
 # Indexes
 #

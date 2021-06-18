@@ -8,7 +8,7 @@ ActiveAdmin.register Parent do
   #
   permit_params :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at,
                 :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email, :password, :password_confirmation,
-                :first_name, :last_name, :full_name, :phone_number, :address, :preferred_language, :mailing_list,
+                :first_name, :last_name, :full_name, :phone_number, :address, :preferred_language, :mailing_list, :public_comment,
                 children_attributes: %i[id _destroy first_name last_name full_name grade birth_date],
                 secondary_parent_attributes: %i[id _destroy email first_name last_name full_name
                                                 address preferred_language phone_number primary_parent_id],
@@ -61,6 +61,7 @@ ActiveAdmin.register Parent do
       row :renewed_bus_service?
       row :paid_member?
       row :donated?
+      row :public_comment
     end
 
     panel 'Secondary parent' do
@@ -119,13 +120,15 @@ ActiveAdmin.register Parent do
       f.input :phone_number
       f.input :address
       f.input :preferred_language
+      f.input :public_comment, as: :text
 
       f.has_many :secondary_parent, heading: 'Secondary Parent', allow_destroy: true, class: 'has-one' do |sp|
         sp.inputs :email, :first_name, :last_name, :full_name, :address, :phone_number, :preferred_language
       end
 
       f.has_many :children, allow_destroy: true, heading: 'Children' do |p|
-        p.inputs :first_name, :last_name, :full_name, :birth_date, :grade
+        p.inputs :first_name, :last_name, :full_name, :grade
+        p.input :birth_date, as: :date_picker
       end
 
       f.has_many :bus_services, allow_destroy: true, heading: 'Bus Services' do |p|
