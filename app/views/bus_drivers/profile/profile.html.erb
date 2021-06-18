@@ -1,6 +1,7 @@
 <nav class="bg-gray-800">
   <div class="mx-auto px-2 sm:px-6 lg:px-8 py-5 flex justify-end">
     <%#= link_to "Edit Profile", edit_parent_registration_path, class: "form-button mx-5" %>
+    <%= link_to "Export as CSV", bus_drivers_root_path(format: :csv, q: params.to_unsafe_h[:q]), class: "form-button mx-5" %>
     <%= link_to "Logout", destroy_bus_driver_session_path, method: :delete, class: "form-button" %>
   </div>
 </nav>
@@ -40,12 +41,16 @@
     </thead>
 
     <% @children.each do |child| %>
+      <% if child.parent.has_current_bus_registration? %>
         <tr>
           <% [:first_name, :last_name, :birth_date, :age, :grade, :public_comment].each do |s| %>
             <td class="p-1 md:px-4 md:py-3"><%= child.send(s) %></td>
           <% end %>
           <td class="p-1 md:px-4 md:py-3"><%= link_to "View", bus_drivers_child_path(child), class: "form-button" %></td>
         </tr>
+      <% end %>
+
     <% end %>
   </table>
+  <%= paginate(@children) %>
 </div>

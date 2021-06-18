@@ -61,4 +61,37 @@ class Child < ApplicationRecord
   def unaccompanied?
     age >= 12
   end
+
+  def to_csv
+    csv_row = []
+    csv_row << created_at
+    csv_row << updated_at
+    csv_row << (parent.has_current_bus_registration? ? 'Y' : 'N')
+    csv_row << (parent.renewed_bus_service? ? 'Renew' : 'New')
+    csv_row << id
+    csv_row << first_name
+    csv_row << last_name
+    csv_row << full_name
+    csv_row << birth_date
+    csv_row << age
+    csv_row << unaccompanied? ? 'Y':'N'
+    csv_row << grade
+
+    csv_row << parent.first_name
+    csv_row << parent.last_name
+    csv_row << parent.full_name
+    csv_row << parent.preferred_language
+    csv_row << parent.email
+    csv_row << parent.phone_number
+    csv_row << parent.address
+
+    csv_row << secondary_parent&.first_name
+    csv_row << secondary_parent&.last_name
+    csv_row << secondary_parent&.full_name
+    csv_row << secondary_parent&.preferred_language
+    csv_row << secondary_parent&.email
+    csv_row << secondary_parent&.phone_number
+    csv_row << secondary_parent&.address
+
+  end
 end
