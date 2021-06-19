@@ -8,14 +8,11 @@ class StaticPagesController < ApplicationController
   end
 
   protected
-  def check_signed_in
-    if parent_signed_in?
-      redirect_to parents_root_path and return
-    end
 
-    if bus_driver_signed_in?
-      redirect_to bus_drivers_root_path and return
-    end
+  def check_signed_in
+    redirect_to parents_root_path and return if parent_signed_in?
+
+    redirect_to bus_drivers_root_path if bus_driver_signed_in?
 
   end
 
