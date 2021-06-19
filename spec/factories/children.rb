@@ -27,7 +27,7 @@ FactoryBot.define do
     last_name { Faker::Name.last_name }
     full_name { Faker::Name.name }
     birth_date { Faker::Date.birthday }
-    grade { Faker::Number.between(0, 15) }
+    grade { Faker::Number.between(from: 0, to: 15) }
     association :parent
   end
 end

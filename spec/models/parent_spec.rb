@@ -35,9 +35,7 @@ RSpec.describe Parent, type: :model do
   describe "validation of required fields" do
     it { should validate_presence_of(:first_name) }
     it { should validate_presence_of(:last_name) }
-    it { should validate_presence_of(:full_name) }
-    it { should validate_presence_of(:address) }
-    it { should validate_presence_of(:phone_number) }
+
   end
 
   describe "validates phone with country code" do
