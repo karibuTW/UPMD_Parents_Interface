@@ -8,7 +8,7 @@ class HelloassoController < ApplicationController
     rescue
       PullHelloassoDataJob.perform_later "aniketmail669@gmail.com"
     end
-
+    # 552
     head :ok
   end
 end

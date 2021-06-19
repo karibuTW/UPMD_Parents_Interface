@@ -1,7 +1,7 @@
 <div class="flex flex-wrap">
   <div class="w-full md:w-1/2 bg-purple-500">
     <div class="flex justify-center items-center h-16 md:h-screen">
-      <h2 class="text-2xl md:text-6xl uppercase text-white">Change Password</h2>
+      <h2 class="text-2xl md:text-6xl uppercase text-white"><%= t('.change_your_password') %></h2>
     </div>
   </div>
   <div class="w-full md:w-1/2 p-5">
@@ -13,9 +13,9 @@
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <div class="field">
             <% invalid = resource.errors.include?(:password) %>
-            <%= f.label :password, class: "form-label" %>
+            <%= f.label :password, t('.new_password'), class: "form-label" %>
             <% if @minimum_password_length %>
-              <em class="form-label">(<%= @minimum_password_length %> characters minimum)</em>
+              <em class="form-label">(<%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %>)</em>
             <% end %>
             <%= f.password_field :password, autocomplete: "new-password",
                                  class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "******",
@@ -31,7 +31,7 @@
         <div class="w-full md:w-1/2 px-3">
           <div class="field">
             <% invalid = resource.errors.include?(:password_confirmation) %>
-            <%= f.label :password_confirmation, class: "form-label" %><br />
+            <%= f.label :password_confirmation, t('.confirm_new_password'), class: "form-label" %><br />
             <%= f.password_field :password_confirmation, autocomplete: "new-password",
                                  class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "******",
                                  required: true %>
@@ -46,7 +46,7 @@
 
 
       <div class="actions w-full my-5 mx-3">
-        <%= f.submit "Change my password", class: "form-button" %>
+        <%= f.submit t('.change_my_password'), class: "form-button" %>
       </div>
       <div class="p-3 text-purple-500">
         <%= render "parents/shared/links" %>

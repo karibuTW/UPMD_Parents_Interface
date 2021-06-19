@@ -78,9 +78,9 @@
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <div class="field">
             <% invalid = resource.errors.include?(:password) %>
-            <%= f.label :password, "Password (Leave blank if you do not want to change password)", class: "form-label" %>
+            <%= f.label :password, "Password (#{t('.leave_blank_if_you_don_t_want_to_change_it')})", class: "form-label" %>
             <% if @minimum_password_length %>
-              <em class="form-label">(<%= @minimum_password_length %> characters minimum)</em>
+              <em class="form-label">(<%=  t('devise.shared.minimum_password_length', count: @minimum_password_length) %>)</em>
             <% end %>
             <%= f.password_field :password, autocomplete: "new-password",
                                  class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "******" %>
@@ -201,7 +201,7 @@
       <div class="p-3">
         <div class="field">
           <% invalid = resource.errors.include?(:current_password) %>
-          <%= f.label :current_password, class: "form-label" %> <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.label :current_password, class: "form-label" %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
           <%= f.password_field :current_password, autocomplete: "current-password",class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "******", required: true %>
           <% if invalid %>
             <% resource.errors.full_messages_for(:current_password).each do |error_message| %>
@@ -213,7 +213,7 @@
 
 
       <div class="actions w-full my-5 mx-3">
-        <%= f.submit "Update", class: "form-button" %>
+        <%= f.submit t('.update'), class: "form-button" %>
       </div>
       <div class="p-3 text-purple-500">
         <%= render "parents/shared/links" %>
