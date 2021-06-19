@@ -17,9 +17,12 @@ ActiveAdmin.register HelloassoOrder do
   # end
   config.comments = false
 
+
   action_item :fetch_data do
-    link_to 'Fetch data from HelloAsso', fetch_data_admin_helloasso_orders_path
+    link_to 'Fetch data from HelloAsso', fetch_data_admin_helloasso_orders_path if authorized? :fetch, HelloassoOrder
   end
+
+
 
   action_item :export_csv do
     link_to 'Export CSV', admin_helloasso_orders_path(format: :csv)
