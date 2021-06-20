@@ -30,8 +30,6 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-  test: Hi
   grades:
     TPS: Kindergarten (TPS)
     PS:  Kindergarten (PS)
@@ -49,3 +47,19 @@ en:
     2nd:  Tenth grade (2nde)
     1ere:  Eleventh grade (1ere)
     Term:  Twelfth grade (Term)
+    newsletter:
+      signed_up: Signed up for newsletter
+      not_signed_up: Not signed up for newsletter
+    bus_service:
+      availing: 'Availing bus service for %{year_start} - %{year_end}'
+      not_availing: 'Not availing bus service for %{year_start} - %{year_end}'
+    payment:
+      paid: 'Paid fees for %{year_start} - %{year_end}'
+      not paid: 'Not paid fees for %{year_start} - %{year_end}'
+    donation:
+      donated: 'Donated for %{year_start} - %{year_end}'
+      not_donated: 'Not donated for %{year_start} - %{year_end}'
+    profile_title: Your information
+    information_not_added: Not added
+    edit_profile: Edit profile
+    logout: Log out

@@ -54,6 +54,7 @@
     <orderEntry type="library" scope="PROVIDED" name="connection_pool (v2.2.5, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="devise (v4.8.0, RVM: ruby-2.7.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="devise-i18n (v1.9.4, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.4.4, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.10.0, RVM: ruby-2.7.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_bot (v6.2.0, RVM: ruby-2.7.3) [gem]" level="application" />

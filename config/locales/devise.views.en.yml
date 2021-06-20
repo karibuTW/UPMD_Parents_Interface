@@ -25,10 +25,28 @@ en:
         unconfirmed_email: Unconfirmed email
         unlock_token: Unlock token
         updated_at: Updated at
+        address: Address
+        phone_number: Phone number
+        preferred_language: Preferred language
+        first_name: First name
+        last_name: Last name
+        full_name: Full name
+      child:
+        first_name: First name
+        last_name: Last name
+        full_name: Full name
+        birth_date: Birth date
+        grade: Grade
     models:
-      user:
-        one: User
-        other: Users
+      parent:
+        one: Parent
+        other: Parents
+      secondary_parent:
+        one: Secondary parent
+        others: Secondary parents
+      child:
+        one: Child
+        others: Children
   parents:
     confirmations:
       confirmed: Your email address has been successfully confirmed.
