@@ -1,6 +1,7 @@
 class HelloassoController < ApplicationController
   def webhook
     p params
+    AdminMailer.with(data: params).debug_mail.deliver_later
     begin
       if params[:eventType] == 'Payment'
         Helloasso::Order.process_order params[:data]
@@ -8,7 +9,7 @@ class HelloassoController < ApplicationController
     rescue
       PullHelloassoDataJob.perform_later "aniketmail669@gmail.com"
     end
-    # 552
+    # 554
     head :ok
   end
 end
