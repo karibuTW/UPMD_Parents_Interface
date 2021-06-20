@@ -43,10 +43,10 @@ en:
         other: Parents
       secondary_parent:
         one: Secondary parent
-        others: Secondary parents
+        other: Secondary parents
       child:
         one: Child
-        others: Children
+        other: Children
   parents:
     confirmations:
       confirmed: Your email address has been successfully confirmed.
