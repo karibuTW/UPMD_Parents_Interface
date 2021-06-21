@@ -21,7 +21,7 @@ require 'rails_helper'
 
 RSpec.describe BusService, type: :model do
   describe "validations" do
-    it 'should not allow parent for only one registration' do
+    it 'should not allow parent for more than one registration' do
       @parent = create(:parent)
       @bus1 = create(:bus_service, parent: @parent)
       @bus2 = build(:bus_service, parent: @parent)

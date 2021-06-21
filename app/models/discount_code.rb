@@ -14,6 +14,8 @@
 #  index_discount_codes_on_code  (code) UNIQUE
 #
 class DiscountCode < ApplicationRecord
+  validates :code, presence: true
+  validates :owner, presence: true
   has_many :helloasso_orders, inverse_of: :discount_code
   enum status: {
     activated: 0,

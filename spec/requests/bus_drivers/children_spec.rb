@@ -9,7 +9,8 @@ RSpec.describe 'BusDrivers::Children', type: :request do
 
     it 'returns http success' do
       @user = create(:bus_driver)
-      @child = create(:child)
+      @bus_service = create(:bus_service)
+      @child = create(:child, parent: @bus_service.parent)
       @user.confirm
       sign_in @user
       get bus_drivers_child_path(id: @child.id)
