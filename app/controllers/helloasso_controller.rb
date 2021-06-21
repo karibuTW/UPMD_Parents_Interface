@@ -3,7 +3,7 @@ class HelloassoController < ApplicationController
 
   def webhook
     p params
-    AdminMailer.with(data: params).debug_mail.deliver_later
+    AdminMailer.with(data: params.to_unsafe_h).debug_mail.deliver_later
     begin
       if params[:eventType] == 'Payment'
         Helloasso::Order.process_order params[:data]
