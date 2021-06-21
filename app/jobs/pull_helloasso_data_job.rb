@@ -8,6 +8,6 @@ class PullHelloassoDataJob < ApplicationJob
   end
 
   def send_email
-    AdminMailer.with(email: @email).send_data_pulled_mail.deliver_later
+    AdminMailer.with(email: @email).send_data_pulled_mail.deliver_later if @email.present?
   end
 end
