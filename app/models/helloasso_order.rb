@@ -23,8 +23,8 @@
 #
 class HelloassoOrder < ApplicationRecord
   belongs_to :parent
-  has_many :helloasso_order_items
-  has_many :helloasso_payments
+  has_many :helloasso_order_items, dependent: :destroy
+  has_many :helloasso_payments, dependent: :destroy
   belongs_to :discount_code, inverse_of: :helloasso_orders, optional: true
   validates :helloasso_order_id, uniqueness: true
 
