@@ -1,4 +1,6 @@
 class HelloassoController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def webhook
     p params
     AdminMailer.with(data: params).debug_mail.deliver_later
