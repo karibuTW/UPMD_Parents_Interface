@@ -5,7 +5,7 @@ class HelloassoController < ApplicationController
     p params
     AdminMailer.with(data: params.to_unsafe_h).debug_mail.deliver_later
     begin
-      if params[:eventType] == 'Payment'
+      if params[:eventType] == 'Order'
         Helloasso::Order.process_order params[:data]
       end
     rescue
