@@ -14,6 +14,10 @@ class Ability
         can :read, :all
         cannot :fetch, HelloassoOrder
         cannot :read, ActiveAdmin::Comment
+        cannot :read, AdminUser
+        cannot :read, DiscountCode
+        cannot :read, HelloassoOrder
+        cannot :read, Setting
         can :manage, AdminUser, id: user.id
       end
     else
