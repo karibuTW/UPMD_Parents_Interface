@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_19_044518) do
+ActiveRecord::Schema.define(version: 2021_06_22_112600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 2021_06_19_044518) do
     t.string "form_slug", null: false
     t.integer "confirmation", default: 0
     t.bigint "discount_code_id"
+    t.integer "year", default: 2021, null: false
     t.index ["discount_code_id"], name: "index_helloasso_orders_on_discount_code_id"
     t.index ["helloasso_order_id"], name: "index_helloasso_orders_on_helloasso_order_id", unique: true
     t.index ["parent_id"], name: "index_helloasso_orders_on_parent_id"

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Child do
+  menu priority: 30
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #

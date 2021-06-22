@@ -51,10 +51,10 @@ vi:
         other: Cha Mẹ
       secondary_parent:
         one: Cha mẹ thứ hai
-        others: Cha mẹ thứ hai
+        other: Cha mẹ thứ hai
       child:
         one: Con
-        others: Con
+        other: Con
   parents:
     confirmations:
       confirmed: Xác nhận tài khoản thành công! Bạn hiện đang đăng nhập.

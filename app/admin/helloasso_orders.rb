@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register HelloassoOrder do
+  menu priority: 50
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :parent_id, :amount_total, :amount_vat, :amount_discount, :discount_code_id, :helloasso_order_id, :date
+  permit_params :parent_id, :amount_total, :amount_vat, :amount_discount, :discount_code_id, :helloasso_order_id, :date, :year
   #
   # or
   #
@@ -39,6 +40,7 @@ ActiveAdmin.register HelloassoOrder do
   filter :amount_discount
   filter :form_slug
   filter :discount_code
+  filter :year
 
   index download_links: [:csv] do
     selectable_column
@@ -50,6 +52,7 @@ ActiveAdmin.register HelloassoOrder do
     column :helloasso_order_id
     column :date
     column :discount_code
+    column :year
     actions
   end
 

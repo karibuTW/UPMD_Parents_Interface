@@ -50,10 +50,10 @@ fr:
         other: Parents
       secondary_parent:
         one: Parent Secondaire
-        others: Parents Secondaires
+        other: Parents Secondaires
       child:
         one: Enfant
-        others: Enfants
+        other: Enfants
   parents:
     confirmations:
       confirmed: Votre compte a bien été confirmé.

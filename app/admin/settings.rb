@@ -2,27 +2,33 @@
 
 # app/admin/setting.rb
 ActiveAdmin.register_page 'Setting' do
+  menu priority: 80
   content do
-    form_for Setting.new, url: admin_setting_create_settings_path do |f|
-      div class: 'p-5' do
-        f.label :current_school_year_start
-        f.number_field :current_school_year_start, value: Setting.current_school_year_start
-      end
+    if authorized? :manage, Setting
+      form_for Setting.new, url: admin_setting_create_settings_path do |f|
+        div class: 'p-5' do
+          f.label :current_school_year_start
+          f.number_field :current_school_year_start, value: Setting.current_school_year_start
+        end
 
-      div class: 'p-5' do
-        f.label :helloasso_organization_slug
-        f.text_field :helloasso_organization_slug, value: Setting.helloasso_organization_slug
-      end
+        div class: 'p-5' do
+          f.label :helloasso_organization_slug
+          f.text_field :helloasso_organization_slug, value: Setting.helloasso_organization_slug
+        end
 
-      div class: 'p-5' do
-        f.label :helloasso_current_form_id
-        f.text_field :helloasso_current_form_id, value: Setting.helloasso_current_form_id
-      end
+        div class: 'p-5' do
+          f.label :helloasso_current_form_id
+          f.text_field :helloasso_current_form_id, value: Setting.helloasso_current_form_id
+        end
 
-      div do
-        f.submit 'Save', class: 'submit' if authorized? :create, Setting
+        div do
+          f.submit 'Save', class: 'submit' if authorized? :create, Setting
+        end
       end
+    else
+      p "Not authorized"
     end
+
   end
   page_action :create_settings, method: :post do
     @errors = ActiveModel::Errors.new(Setting)

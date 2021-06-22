@@ -9,6 +9,7 @@
 #  confirmation       :integer          default("automatic")
 #  date               :datetime
 #  form_slug          :string           not null
+#  year               :integer          default(2021), not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  discount_code_id   :bigint
