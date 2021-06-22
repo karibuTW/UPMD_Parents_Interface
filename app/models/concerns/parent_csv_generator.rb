@@ -13,13 +13,29 @@ module ParentCsvGenerator
       csv_row = []
       csv_row << created_at
       csv_row << updated_at
-      csv_row << order.helloasso_order_id
+      csv_row << (order.present? ? order.helloasso_order_id : nil)
       csv_row << (paid_member? ? 'Yes' : 'No')
       csv_row << (donated? ? 'Yes' : 'No')
-      csv_row << (order.payment_method == 'Card' ? 'Credit Card' : 'Non Credit Card')
-      csv_row << (order.discount_code.present? ? order.discount_code.code : nil)
-      csv_row << (order.discount_code.present? ? order.discount_code.owner : 'HelloAsso')
-      csv_row << order.confirmation
+      csv_row <<  if order.present?
+                    (order.payment_method == 'Card' ? 'Credit Card' : 'Non Credit Card')
+                  else
+                    nil
+                  end
+      csv_row << if order.present?
+                   (order.discount_code.present? ? order.discount_code.code : nil)
+                 else
+                   nil
+                 end
+      csv_row << if order.present?
+                   (order.discount_code.present? ? order.discount_code.owner : 'HelloAsso')
+                 else
+                   nil
+                 end
+      csv_row << if order.present?
+                   order.confirmation
+                 else
+                   nil
+                 end
       csv_row << if new_bus_service?
                    'New'
                  elsif renewed_bus_service?

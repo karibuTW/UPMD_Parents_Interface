@@ -25,8 +25,35 @@ fr:
         unconfirmed_email: Email non confirmé
         unlock_token: Clé de déverrouillage
         updated_at: Date de mise à jour
+        address: Adresse Postale
+        phone_number: Numéro de téléphone
+        preferred_language: Langue de communication
+        first_name: Prénom
+        last_name: Nom
+        full_name: Nom complet
+      secondary_parent:
+        address: Adresse Postale
+        phone_number: Numéro de téléphone
+        preferred_language: Langue de communication
+        first_name: Prénom
+        last_name: Nom
+        full_name: Nom complet
+      child:
+        first_name: Prénom
+        last_name: Nom
+        full_name: Nom complet
+        birth_date: Date de naissance
+        grade: Classe
     models:
-      user: Utilisateur
+      parent:
+        one: Parent
+        other: Parents
+      secondary_parent:
+        one: Parent Secondaire
+        others: Parents Secondaires
+      child:
+        one: Enfant
+        others: Enfants
   parents:
     confirmations:
       confirmed: Votre compte a bien été confirmé.

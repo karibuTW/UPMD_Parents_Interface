@@ -66,7 +66,7 @@ class Parent < ApplicationRecord
   def self.ransackable_scopes(_auth_object = nil)
     %i[new_bus_service_eq]
   end
-  
+
   def current_bus_registration
     bus_services.find_by year: Setting.current_school_year_start
   end
@@ -82,11 +82,11 @@ class Parent < ApplicationRecord
   def has_previous_bus_registration?
     !previous_bus_registration.nil?
   end
-  
+
   def renewed_bus_service?
     has_current_bus_registration? && has_previous_bus_registration?
   end
-  
+
   def new_bus_service?
     has_current_bus_registration? && !has_previous_bus_registration?
   end
@@ -105,5 +105,9 @@ class Parent < ApplicationRecord
 
   def display_name
     full_name.present? ? full_name : email
+  end
+
+  def locale
+    preferred_language
   end
 end

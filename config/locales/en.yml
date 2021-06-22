@@ -47,19 +47,38 @@ en:
     2nd:  Tenth grade (2nde)
     1ere:  Eleventh grade (1ere)
     Term:  Twelfth grade (Term)
-    newsletter:
-      signed_up: Signed up for newsletter
-      not_signed_up: Not signed up for newsletter
-    bus_service:
-      availing: 'Availing bus service for %{year_start} - %{year_end}'
-      not_availing: 'Not availing bus service for %{year_start} - %{year_end}'
-    payment:
-      paid: 'Paid fees for %{year_start} - %{year_end}'
-      not paid: 'Not paid fees for %{year_start} - %{year_end}'
-    donation:
-      donated: 'Donated for %{year_start} - %{year_end}'
-      not_donated: 'Not donated for %{year_start} - %{year_end}'
-    profile_title: Your information
-    information_not_added: Not added
-    edit_profile: Edit profile
-    logout: Log out
+  newsletter:
+    signed_up: Signed up for newsletter
+    not_signed_up: Not signed up for newsletter
+  bus_service:
+    availing: 'Availing bus service for %{year_start} - %{year_end}'
+    not_availing: 'Not availing bus service for %{year_start} - %{year_end}'
+  payment:
+    paid: 'Paid fees for %{year_start} - %{year_end}'
+    not paid: 'Not paid fees for %{year_start} - %{year_end}'
+  donation:
+    donated: 'Donated for %{year_start} - %{year_end}'
+    not_donated: 'Not donated for %{year_start} - %{year_end}'
+  profile_title: Your information
+  information_not_added: Not added
+  edit_profile: Edit profile
+  logout: Log out
+  mails:
+    welcome: "Welcome %{email}"
+    confirm_here: "You can confirm your account email through the link below:"
+    confirm_my_account: Confirm my account
+
+    hello: "Hello %{email}"
+    email_changing: "We're contacting you to notify you that your email is being changed to %{email}"
+    email_changed: "We're contacting you to notify you that your email has been changed to %{email}"
+
+    password_change: We're contacting you to notify you that your password has been changed.
+
+    someone_requested_password_change: Someone has requested a link to change your password. You can do this through the link below.
+    change_my_password: Change my password
+    ignore: If you didn't request this, please ignore this email.
+    password_wont_change: Your password won't change until you access the link above and create a new one.
+
+    account_locked: Your account has been locked due to an excessive number of unsuccessful sign in attempts.
+    click_to_unlock: "Click the link below to unlock your account:"
+    unlock_my_account: Unlock my account

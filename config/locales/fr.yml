@@ -1,5 +1,4 @@
 fr:
-  test: jsnsn
   grades:
     TPS: Toute Petite Section (TPS)
     PS:  Petite Section (PS)
@@ -17,3 +16,38 @@ fr:
     2nd:  Seconde
     1ere:  Première
     Term:  Terminale
+  newsletter:
+    signed_up: Abonné à la newletter
+    not_signed_up: Non abonné à la newsletter
+  bus_service:
+    availing: 'Utilisation du service de bus %{year_start} - %{year_end}'
+    not_availing: 'Non utilisation du service de bus %{year_start} - %{year_end}'
+  payment:
+    paid: 'Frais payés pour %{year_start} - %{year_end}'
+    not paid: 'Frais non payés pour %{year_start} - %{year_end}'
+  donation:
+    donated: 'Don pour %{year_start} - %{year_end}'
+    not_donated: 'Pas de don pour %{year_start} - %{year_end}'
+  profile_title: Vos données personnelles
+  information_not_added: Non ajouté
+  edit_profile: Modifier le profil
+  logout: Déconnexion
+  mails:
+    welcome: "Bienvenue %{email}"
+    confirm_here: "Vous pouvez confirmer l'email de votre compte en cliquant sur le lien ci-dessous :"
+    confirm_my_account: Confirmer mon compte
+
+    hello: "Bonjour %{email}"
+    email_changing: "Nous vous contactons pour vous informer que votre adresse e-mail va être modifiée par %{email}"
+    email_changed: "Nous vous contactons pour vous informer que votre adresse e-mail a été modifiée par %{email}"
+
+    password_change: Nous vous contactons pour vous informer que votre mot de passe a été modifié.
+
+    someone_requested_password_change: Quelqu'un a demandé un lien pour changer votre mot de passe. Vous pouvez le faire en cliquant sur le lien ci-dessous.
+    change_my_password: Changer mon mot de passe
+    ignore: Si vous ne l'avez pas demandé, veuillez ignorer cet e-mail.
+    password_wont_change: Votre mot de passe ne changera pas tant que vous n'aurez pas cliqué sur le lien ci-dessus et créé un nouveau mot de passe.
+
+    account_locked: Votre compte a été vérouillé en raison d'un nombre excessif de tentatives de connexion infructueuses.
+    click_to_unlock: "Cliquez sur le lien ci-dessous pour dévérouiller votre compte :"
+    unlock_my_account: Déverrouiller mon compte

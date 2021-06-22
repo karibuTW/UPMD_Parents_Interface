@@ -1,0 +1,49 @@
+vi:
+  grades:
+    TPS: Lớp mầm (TPS)
+    PS: Lớp mầm (PS)
+    MS: Lớp chồi (MS)
+    GS: Lớp lá (GS)
+    CP: Lớp 1 (CP)
+    CE1: Lớp 2 (CE1)
+    CE2: Lớp 3 (CE2)
+    CM1: Lớp 4 (CM1)
+    CM2: Lớp 5 (CM2)
+    6e: Lớp 6 (6eme)
+    5e: Lớp 7 (5eme)
+    4e: Lớp 8  (4eme)
+    3e: Lớp 9 (3eme)
+    2nd: Lớp 10 (2nde)
+    1ere: Lớp 11 (1ere)
+    Term: Lớp 12 (Term)
+  newsletter:
+    signed_up: Đăng ký nhận Bản tin
+    not_signed_up: Không đăng ký nhận Bản tin
+  bus_service:
+    availing: 'Sử dụng dịch vụ xe buýt %{year_start} - %{year_end}'
+    not_availing: 'Không sử dụng dịch vụ xe buýt %{year_start} - %{year_end}'
+  payment:
+    paid: 'Phí nộp cho cả năm %{year_start} - %{year_end}'
+    not paid: 'Phí không nộp cho cả năm %{year_start} - %{year_end}'
+  donation:
+    donated: 'Có quyên góp %{year_start} - %{year_end}'
+    not_donated: 'Không quyên góp  %{year_start} - %{year_end}'
+  profile_title: Thông tin của bạn
+  information_not_added: Không thêm
+  edit_profile: Chỉnh sửa thông tin của bạn
+  logout: Đăng xuất
+  mails:
+    welcome: "Chào mừng %{email}"
+    confirm_here: "Bạn có thể xác nhận email tài khoản của mình thông qua liên kết dưới đây::"
+    confirm_my_account: Xác nhận tài khoản của tôi
+
+    hello: "Xin chào %{email}"
+    email_changing: "Chúng tôi liên hệ với bạn để thông báo cho bạn rằng địa chỉ email của bạn đang được đổi thành %{email}"
+    email_changed: "Chúng tôi liên hệ với bạn để thông báo cho bạn rằng địa chỉ email của bạn đã được đổi thành %{email}"
+
+    password_change: Chúng tôi liên hệ với bạn để thông báo rằng mật khẩu của bạn đã được thay đổi.
+
+    someone_requested_password_change: Ai đó đã yêu cầu một liên kết để thay đổi mật khẩu của bạn. Bạn có thể làm điều này thông qua liên kết dưới đây.
+    change_my_password: Thay đổi mật khẩu của tôi
+    ignore: Nếu bạn không gửi yêu cầu điều này, xin vui lòng bỏ qua email này.
+    password_wont_change: Mật khẩu của bạn sẽ không thay đổi cho đến khi bạn truy cập liên kết ở trên và tạo mật khẩu mới.

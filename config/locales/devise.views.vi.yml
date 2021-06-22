@@ -25,8 +25,36 @@ vi:
         unconfirmed_email: Email chưa xác nhận
         unlock_token: Mã mở khoá
         updated_at: Được cập nhật lúc
+        address: Địa chỉ nơi ở tại Việt Nam
+        phone_number: Số điện thoại di động
+        preferred_language: Ngôn ngữ giao tiếp ưu tiên
+        first_name: Tên của phụ huynh
+        last_name: Họ của phụ huynh
+        full_name: Họ và tên
+      secondary_parent:
+        address: Địa chỉ nơi ở tại Việt Nam
+        phone_number: Số điện thoại di động
+        preferred_language: Ngôn ngữ giao tiếp ưu tiên
+        first_name: Tên của phụ huynh
+        last_name: Họ của phụ huynh
+        full_name: Họ và tên
+      child:
+        first_name: Tên của phụ huynh
+        last_name: Họ của phụ huynh
+        full_name: Họ và tên
+        birth_date: Ngày tháng năm sinh của con
+        grade: Lớp học của con trong năm học
+
     models:
-      user: Người dùng
+      parent:
+        one: Cha/ Mẹ
+        other: Cha Mẹ
+      secondary_parent:
+        one: Cha mẹ thứ hai
+        others: Cha mẹ thứ hai
+      child:
+        one: Con
+        others: Con
   parents:
     confirmations:
       confirmed: Xác nhận tài khoản thành công! Bạn hiện đang đăng nhập.

@@ -45,7 +45,7 @@
 
   <div class="py-1">
     <% invalid = f.object.errors.include?(:grade) %>
-    <%= f.label :grade, class: "form-label" %>
+    <%= f.label :grade, "#{t('activerecord.attributes.child.grade')} (#{Setting.current_school_year_start} - #{Setting.current_school_year_end})", class: "form-label" %>
     <%= f.select :grade, select_for_grades, {}, class: "form-input #{invalid ? 'invalid' : 'valid'}" %>
     <% if invalid %>
       <% f.object.errors.full_messages_for(:grade).each do |error_message| %>
