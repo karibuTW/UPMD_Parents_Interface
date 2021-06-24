@@ -127,7 +127,7 @@
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <div class="field">
             <% invalid = resource.errors.include?(:phone_number) %>
-            <%= f.label :phone_number, "Phone number with country code", class: "form-label" %>
+            <%= f.label :phone_number, t("phone_no_with_country_code"), class: "form-label" %>
             <%= f.phone_field :phone_number, autocomplete: "phone_number",
                               class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "+84627899541",
                               required: true %>
@@ -156,7 +156,7 @@
       </div>
       <div class="flex flex-wrap mb-6">
         <div class="field">
-          <%= f.label :mailing_list, "Join our mailing list", class: "mx-3 uppercase font-bold" %>
+          <%= f.label :mailing_list, t("join_mailing_list"), class: "mx-3 uppercase font-bold" %>
           <%= f.check_box :mailing_list %>
 
         </div>
@@ -171,7 +171,7 @@
       </div>
 
       <div class="p-3">
-        <h2 class="text-xl mb-5">Secondary Parent (optional)</h2>
+        <h2 class="text-xl mb-5"><%= t("optional_secondary_parent") %></h2>
       </div>
       <%= f.fields_for :secondary_parent, second_parent(resource) do |p_field| %>
         <%= render "parents/registrations/secondary", f: p_field, show_destroy: true %>
@@ -183,7 +183,7 @@
       </template>
 
       <div class="p-3">
-        <h2 class="text-xl mb-5">Information about your children</h2>
+        <h2 class="text-xl mb-5"><%= t("information_about_children") %></h2>
         <%= f.fields_for :children do |child_field| %>
           <%= render "parents/registrations/child_form", f: child_field %>
         <% end %>
@@ -192,7 +192,7 @@
         <div data-nested-form-target="target"></div>
 
         <button type="button" data-action="nested-form#add" class="form-button">
-          Add child
+          <%= t("add_child") %>
         </button>
       </div>
 

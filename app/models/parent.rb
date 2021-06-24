@@ -110,4 +110,8 @@ class Parent < ApplicationRecord
   def locale
     preferred_language
   end
+
+  def current_year_helloasso_order
+    helloasso_orders.where(year: Setting.current_school_year_start)
+  end
 end

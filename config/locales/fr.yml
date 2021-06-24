@@ -51,3 +51,36 @@ fr:
     account_locked: Votre compte a été vérouillé en raison d'un nombre excessif de tentatives de connexion infructueuses.
     click_to_unlock: "Cliquez sur le lien ci-dessous pour dévérouiller votre compte :"
     unlock_my_account: Déverrouiller mon compte
+
+    you_have_recently_subscribed: Vous vous êtes récemment inscrit à l'UPMD et nous avons confirmé la réception de votre paiement via HelloAsso.
+    you_do_not_have_account: Comme vous n'avez pas encore de compte sur notre portail UPMD, nous avons créé un compte pour vous.
+    login_credentials: "Vos identifiants de connexion sont les suivants: "
+    please_confirm: "Veuillez confirmer votre compte en visitant l'url suivante: "
+    once_confirmed: Une fois confirmé, vous pourrez mettre à jour vos informations personnelles et déclencher l'inscription au bus si nécessaire.
+    thanks: Nous vous remercions.
+
+    dear_member: Cher(e) adhérent(e)
+    upmd_thanks_you: L'UPMD vous remercie pour votre don !
+    your_membership_fee: De même que pour votre cotisation, soyez assuré(e) que celui-ci sera utilisé au bénéfice exclusif des élèves du LFI Duras.
+    thank_you_again: Merci encore !
+    volunteers: Les parents bénévoles de l'UPMD.
+
+    dear_parent: Cher parent
+    upmd_thanks_for_payment: L'UPMD vous remercie du paiement de votre adhésion  via HelloAsso !
+    invite_you: "Nous vous invitons à présent à compléter/mettre à jour vos information sur  notre application :"
+    sincerely: Bien cordialement
+    upmd_team: L'équipe UPMD
+
+    subjects:
+      payment_confirmation: Merci de votre adhésion
+      donation: L'UPMD vous remercie pour votre don
+
+  join_mailing_list: Rejoignez notre liste de diffusion
+  avail_bus_service: Utilisation du service de bus pour l'année %{year_start} - %{year_end}
+  optional_secondary_parent: Parent secondaire (facultatif)
+  delete_secondary_parent: Supprimer ce parent secondaire
+  phone_no_with_country_code: Numéro de téléphone avec l'indicatif du pays
+  information_about_children: Informations sur vos enfants
+  remove_child: Supprimer un enfant
+  add_child: Ajouter un enfant
+  pay_with_helloasso: Payer avec HelloAsso

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1><%= t("mails.hello", email: @user.first_name) %>,</h1>
+<p>
+  <%= t("mails.upmd_thanks_for_payment") %>
+</p>
+<p><%= t("mails.invite_you") %></p>
+<p><a href="<%= root_url %>"><%= root_url %></a> </p>
+<p><%= t("mails.sincerely") %></p>
+<p><%= t("mails.upmd_team") %></p>
+</body>
+</html>

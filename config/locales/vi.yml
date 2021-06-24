@@ -47,3 +47,37 @@ vi:
     change_my_password: Thay đổi mật khẩu của tôi
     ignore: Nếu bạn không gửi yêu cầu điều này, xin vui lòng bỏ qua email này.
     password_wont_change: Mật khẩu của bạn sẽ không thay đổi cho đến khi bạn truy cập liên kết ở trên và tạo mật khẩu mới.
+
+    you_have_recently_subscribed: Gần đây bạn đã đăng ký tham gia Hội Phụ huynh UPMD và chúng tôi đã xác nhận việc nhận thanh toán của bạn thông qua HelloAsso.
+    you_do_not_have_account: Vì bạn chưa có tài khoản trên Cổng thông tin UPMD, chúng tôi đã tạo một tài khoản cho bạn.
+    login_credentials: "Thông tin đăng nhập của bạn như sau:"
+    please_confirm: "Vui lòng xác nhận tài khoản của bạn bằng cách truy cập url sau:"
+    once_confirmed: Sau khi được xác nhận, bạn sẽ có thể cập nhật thông tin cá nhân của mình và kích hoạt đăng ký xe buýt nếu cần.
+    thanks: Cảm ơn bạn.
+
+    dear_member:  Thân gửi quý thành viên của UPMD
+    upmd_thanks_you: UPMD cảm ơn vì sự quyên góp của bạn !
+    your_membership_fee: Bạn hãy yên tâm rằng cũng như phí thành viên,  khoản đóng góp của bạn sẽ chỉ được sử dụng cho lợi ích của học sinh LFI Duras.
+    thank_you_again: Cám ơn bạn một lần nữa!
+    volunteers: Tình nguyện viên phụ huynh UPMD
+
+    dear_parent: Thân gửi cha mẹ
+    upmd_thanks_for_payment: UPMD xin cảm ơn bạn đã thanh toán phí thành viên của mình qua HelloAsso!
+    invite_you: "Bây giờ chúng tôi mời bạn hoàn thành / cập nhật thông tin của bạn trên ứng dụng của chúng tôi:"
+    sincerely: Trân trọng
+    upmd_team: Nhóm UPMD
+
+    subjects:
+      payment_confirmation: Cảm ơn bạn đã thành viên của bạn
+      donation: UPMD cảm ơn vì sự quyên góp của bạn
+
+
+  join_mailing_list: Tham gia danh sách gửi thư của chúng tôi
+  avail_bus_service: Sử dụng dịch vụ xe buýt năm %{year_start} - %{year_end}
+  optional_secondary_parent: Phụ huynh thứ hai (tùy chọn)
+  delete_secondary_parent: Xóa phụ huynh thứ hai này
+  phone_no_with_country_code: Số điện thoại có mã quốc gia
+  information_about_children: Thông tin về con cái của bạn
+  remove_child: Xóa con
+  add_child: Thêm con
+  pay_with_helloasso: Thanh toán bằng HelloAsso

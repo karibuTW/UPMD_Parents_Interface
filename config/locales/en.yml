@@ -82,3 +82,36 @@ en:
     account_locked: Your account has been locked due to an excessive number of unsuccessful sign in attempts.
     click_to_unlock: "Click the link below to unlock your account:"
     unlock_my_account: Unlock my account
+
+    you_have_recently_subscribed: You have recently subscribed to UPMD and we have confirmed the reception of your payment through HelloAsso.
+    you_do_not_have_account: As you do not have an account yet on our UPMD Portal, we have created an account for you.
+    login_credentials: "Your login credentials are as follow:"
+    please_confirm: "Please confirm your account by visiting the following url: "
+    once_confirmed: Once confirmed, you will be able to update your personal information and trigger the bus registration if needed.
+    thanks: Thank you.
+
+    dear_member: Dear member
+    upmd_thanks_you: UPMD thanks you for your donation!
+    your_membership_fee: As for your membership fee, please be assured that your donation will be used exclusively for the benefit of LFI Duras students.
+    thank_you_again: Thank you again!
+    volunteers: UPMD parent volunteers.
+
+    dear_parent: Dear parent
+    upmd_thanks_for_payment: The UPMD would like to thank you for having paid your membership fee via HelloAsso!
+    invite_you: "We now invite you to complete/update your information on our application:"
+    sincerely: Sincerely
+    upmd_team: The UPMD team
+
+    subjects:
+      payment_confirmation: Thank you for your membership
+      donation: UPMD thanks you for your donation
+
+  join_mailing_list: Join our mailing list
+  avail_bus_service: Avail bus service for year %{year_start} - %{year_end}
+  optional_secondary_parent: Secondary parent (optional)
+  delete_secondary_parent: Delete this secondary parent
+  phone_no_with_country_code: Phone number with country code
+  information_about_children: Information about your children
+  remove_child: Remove child
+  add_child: Add child
+  pay_with_helloasso: Pay with Helloasso

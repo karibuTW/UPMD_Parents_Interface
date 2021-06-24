@@ -1,16 +1,17 @@
 <div class="flex flex-col text-center items-center justify-center min-h-screen">
+    <% path = params[:redirect_to] || root_path %>
     <div>
       <h2 class=" text-3xl uppercase">Choose language</h2>
     </div>
     <div>
       <div class="m-5">
-        <%= link_to "English", root_path(locale: 'en'), class: "form-button" %>
+        <%= link_to "English", "/en#{path}", class: "form-button" %>
       </div>
       <div class="m-5">
-        <%= link_to "French", root_path(locale: 'fr'), class: "form-button" %>
+        <%= link_to "French", "/fr#{path}", class: "form-button" %>
       </div>
       <div class="m-5">
-        <%= link_to "Vietnamese", root_path(locale: 'vi'), class: "form-button" %>
+        <%= link_to "Vietnamese", "/vi#{path}", class: "form-button" %>
       </div>
     </div>
 

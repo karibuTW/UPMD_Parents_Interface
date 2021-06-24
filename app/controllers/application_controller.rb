@@ -2,9 +2,8 @@
 
 class ApplicationController < ActionController::Base
   before_action :switch_locale
+
   protected
-
-
 
   def default_url_options
     { locale: I18n.locale }
@@ -18,18 +17,29 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_locale_from_parent
+    return unless parent_signed_in?
+
+    cookies.permanent[:locale] = current_parent.try(:preferred_language)
+  end
+
+  def set_locale_from_param
+    return unless params[:locale].present?
+
+    cookies.permanent[:locale] = params[:locale]
+  end
+
   def switch_locale
-    if parent_signed_in?
-      cookies.permanent[:locale] = current_parent.try(:preferred_language)
-    elsif params[:locale].present?
-      cookies.permanent[:locale] = params[:locale]
-    end
+    set_locale_from_parent
+    set_locale_from_param
+
+    redirect_to locale_choose_locale_path(redirect_to: request.fullpath) unless cookies[:locale].present?
 
     locale = cookies[:locale]&.to_sym # read cookies
 
-    if I18n.available_locales.include?(locale)
-      I18n.locale = locale # use cookies locale
-    end
+    return unless I18n.available_locales.include?(locale)
+
+    I18n.locale = locale # use cookies locale
   end
 
   def access_denied(exception)

@@ -4,9 +4,65 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-<h1>Hi <%= @user.first_name %>,</h1>
+<h1><%= t("mails.hello", email: @user.first_name) %>,</h1>
 <p>
-  <%= confirmation_url(@user, confirmation_token: @token) %>
+  Bonjour, Xin chào, Hello,
+</p>
+<p>
+  <% if @donated %>
+  Vous vous êtes récemment inscrit à l'UPMD et nous avons confirmé la réception de votre paiement via HelloAsso. Nous vous remercions également pour votre don.
+  De même que pour votre cotisation, soyez assuré(e) que celui-ci sera utilisé au bénéfice exclusif des élèves du LFI Duras.
+    <br>
+  Gần đây bạn đã đăng ký tham gia Hội Phụ huynh UPMD và chúng tôi đã xác nhận việc nhận thanh toán của bạn thông qua HelloAsso. UPMD cũng cảm ơn bạn đã đóng góp.
+  Bạn hãy yên tâm rằng cũng như phí thành viên,  khoản đóng góp của bạn sẽ chỉ được sử dụng cho lợi ích của học sinh LFI Duras.
+    <br>
+  You have recently subscribed to UPMD and we have confirmed the reception of your payment through HelloAsso. We would like also to thank you for your donation!
+  As for your membership fee, please be assured that your donation will be used exclusively for the benefit of LFI Duras students.
+  <% else %>
+    Vous vous êtes récemment inscrit à l'UPMD et nous avons confirmé la réception de votre paiement via HelloAsso. <br>
+    Gần đây bạn đã đăng ký tham gia Hội Phụ huynh UPMD và chúng tôi đã xác nhận việc nhận thanh toán của bạn thông qua HelloAsso.
+    <br>
+    You have recently subscribed to UPMD and we have confirmed the reception of your payment through HelloAsso. <br>
+  <% end %>
+</p>
+<p>
+  Comme vous n'avez pas encore de compte sur notre portail UPMD, nous avons créé un compte pour vous. <br>
+  Vì bạn chưa có tài khoản trên Cổng thông tin UPMD, chúng tôi đã tạo một tài khoản cho bạn. <br>
+  As you do not have an account yet on our UPMD Portal, we have created an account for you. <br>
+
+</p>
+<p>
+  Vos identifiants de connexion sont les suivants : <br>
+  Thông tin đăng nhập của bạn như sau: <br>
+  Your login credentials are as follow:
+</p>
+<p>
+  email : <%= @user.email %>
+</p>
+<p>
+  Password : <%= @password %>
+</p>
+<p>
+  Veuillez confirmer votre compte en visitant l'url suivante : <br>
+  Vui lòng xác nhận tài khoản của bạn bằng cách truy cập url sau: <br>
+  Please confirm your account by visiting the following url: <br>
+</p>
+<p>
+  <a href="<%= confirmation_url(@user, confirmation_token: @token) %>"><%= confirmation_url(@user, confirmation_token: @token) %></a>
+</p>
+<p>
+  Une fois confirmé, vous pourrez mettre à jour vos informations personnelles et déclencher l'inscription au bus si nécessaire.
+  <br>
+  Sau khi được xác nhận, bạn sẽ có thể cập nhật thông tin cá nhân của mình và kích hoạt đăng ký xe buýt nếu cần. <br>
+  Once confirmed, you will be able to update your personal information and trigger the bus registration if needed. <br>
+</p>
+<p>
+  Merci encore ! <br> Cám ơn bạn một lần nữa! <br> Thank you again
+</p>
+<p>
+  Les parents bénévoles de l'UPMD <br>
+  Tình nguyện viên phụ huynh UPMD <br>
+  UPMD parent volunteers
 </p>
 </body>
 </html>

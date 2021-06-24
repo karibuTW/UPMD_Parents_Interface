@@ -46,6 +46,7 @@ ActiveAdmin.register Parent do
     column :renewed_bus_service?
     column :paid_member?
     column :donated?
+    column :current_year_helloasso_order
     actions
   end
   show do |parent|
@@ -62,6 +63,7 @@ ActiveAdmin.register Parent do
       row :renewed_bus_service?
       row :paid_member?
       row :donated?
+      row :current_year_helloasso_order
       row :public_comment
     end
 

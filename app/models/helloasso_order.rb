@@ -44,4 +44,8 @@ class HelloassoOrder < ApplicationRecord
   def attestation_url
     helloasso_payments.first.payment_receipt_url if helloasso_payments.first.present?
   end
+
+  def display_name
+    "##{helloasso_order_id}"
+  end
 end
