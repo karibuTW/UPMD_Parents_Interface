@@ -48,4 +48,12 @@ class HelloassoOrder < ApplicationRecord
   def display_name
     "##{helloasso_order_id}"
   end
+
+  def amount_total_formatted
+    amount_total / 100
+  end
+
+  def amount_discount_formatted
+    amount_discount / 100
+  end
 end

@@ -37,6 +37,7 @@ en:
         full_name: Full name
         birth_date: Birth date
         grade: Grade
+        previous_grade: Grade
     models:
       parent:
         one: Parent

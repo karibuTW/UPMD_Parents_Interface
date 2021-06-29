@@ -97,7 +97,8 @@ ActiveAdmin.register Parent do
         column :last_name
         column :full_name
         column :birth_date
-        column :grade
+        column "Grade (#{Setting.current_school_year_start - 1} - #{Setting.current_school_year_start})", &:previous_grade
+        column "Grade (#{Setting.current_school_year_start} - #{Setting.current_school_year_end})", &:grade
       end
     end
 

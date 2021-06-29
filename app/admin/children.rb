@@ -7,7 +7,7 @@ ActiveAdmin.register Child do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :first_name, :last_name, :full_name, :birth_date, :grade, :parent_id, :age, :public_comment
+  permit_params :first_name, :last_name, :full_name, :birth_date, :previous_grade, :grade, :parent_id, :age, :public_comment
   #
   # or
   #
@@ -32,7 +32,12 @@ ActiveAdmin.register Child do
       row :full_name
       row :birth_date
       row :age
-      row :grade
+      row "Grade (#{Setting.current_school_year_start - 1} - #{Setting.current_school_year_start})" do
+        child.previous_grade
+      end
+      row "Grade (#{Setting.current_school_year_start} - #{Setting.current_school_year_end})" do
+        child.grade
+      end
       row :public_comment
     end
 

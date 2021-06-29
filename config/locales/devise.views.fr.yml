@@ -44,6 +44,7 @@ fr:
         full_name: Nom complet
         birth_date: Date de naissance
         grade: Classe
+        previous_grade: Classe
     models:
       parent:
         one: Parent

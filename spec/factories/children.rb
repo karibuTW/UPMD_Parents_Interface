@@ -8,6 +8,7 @@
 #  full_name      :string           not null
 #  grade          :integer          default("TPS")
 #  last_name      :string           not null
+#  previous_grade :integer          default("None")
 #  public_comment :text
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null

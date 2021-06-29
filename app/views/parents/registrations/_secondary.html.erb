@@ -19,7 +19,7 @@
     <div class="field">
       <% invalid = f.object.errors.include?(:first_name) %>
       <%= f.label :first_name, class: "form-label" %><br />
-      <%= f.text_field :first_name, autocomplete: "first_name",
+      <%= f.text_field :first_name, autocomplete: "first-name",
                        class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "John" %>
       <% if invalid %>
         <% f.object.errors.full_messages_for(:first_name).each do |error_message| %>
@@ -33,7 +33,7 @@
     <div class="field">
       <% invalid = f.object.errors.include?(:last_name) %>
       <%= f.label :last_name, class: "form-label" %><br />
-      <%= f.text_field :last_name, autocomplete: "last_name",
+      <%= f.text_field :last_name, autocomplete: "last-name",
                        class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "Doe" %>
       <% if invalid %>
         <% f.object.errors.full_messages_for(:last_name).each do |error_message| %>
@@ -82,7 +82,7 @@
     <div class="field">
       <% invalid = f.object.errors.include?(:phone_number) %>
       <%= f.label :phone_number, "Phone number with country code", class: "form-label" %>
-      <%= f.phone_field :phone_number, autocomplete: "phone_number",
+      <%= f.phone_field :phone_number, autocomplete: "phone-number",
                         class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "+84627899541" %>
       <% if invalid %>
         <% f.object.errors.full_messages_for(:phone_number).each do |error_message| %>

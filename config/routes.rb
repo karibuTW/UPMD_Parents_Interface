@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
 
 
-    devise_for :parents, controllers: { registrations: 'parents/registrations' }
+    devise_for :parents, controllers: { registrations: 'parents/registrations', confirmations: 'parents/confirmations' }
     root to: 'static_pages#home'
   end
 

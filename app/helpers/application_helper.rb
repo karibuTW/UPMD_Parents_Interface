@@ -7,6 +7,12 @@ module ApplicationHelper
     end
   end
 
+  def select_for_previous_grades
+    Child.previous_grades.keys.to_a.map do |grade|
+      [I18n.t("grades.#{grade}"), grade]
+    end
+  end
+
   def second_parent(parent)
     # parent.secondary_parent ||= SecondaryParent.new
     parent.secondary_parent.nil? ? parent.build_secondary_parent : parent.secondary_parent

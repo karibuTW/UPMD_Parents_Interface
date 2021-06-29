@@ -46,8 +46,8 @@ ActiveAdmin.register HelloassoOrder do
     selectable_column
     id_column
     column :parent
-    column :amount_total
-    column :amount_discount
+    column "Amount total", &:amount_total_formatted
+    column "Amount discount", &:amount_discount_formatted
     column :amount_vat
     column :helloasso_order_id
     column :date

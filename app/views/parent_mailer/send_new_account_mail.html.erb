@@ -48,7 +48,7 @@
   Please confirm your account by visiting the following url: <br>
 </p>
 <p>
-  <a href="<%= confirmation_url(@user, confirmation_token: @token) %>"><%= confirmation_url(@user, confirmation_token: @token) %></a>
+  <a href="<%= confirmation_url(@user, confirmation_token: @token, helloasso: true) %>"><%= confirmation_url(@user, confirmation_token: @token) %></a>
 </p>
 <p>
   Une fois confirmé, vous pourrez mettre à jour vos informations personnelles et déclencher l'inscription au bus si nécessaire.

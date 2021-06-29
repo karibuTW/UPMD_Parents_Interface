@@ -44,6 +44,7 @@ vi:
         full_name: Họ và tên
         birth_date: Ngày tháng năm sinh của con
         grade: Lớp học của con trong năm học
+        previous_grade: Lớp học của con trong năm học
 
     models:
       parent:

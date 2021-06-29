@@ -8,6 +8,7 @@
 #  full_name      :string           not null
 #  grade          :integer          default("TPS")
 #  last_name      :string           not null
+#  previous_grade :integer          default("None")
 #  public_comment :text
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
@@ -53,6 +54,26 @@ class Child < ApplicationRecord
     "1ere": 14,
     Term: 15
   }
+
+  enum previous_grade: {
+    None: -1,
+    TPS: 0,
+    PS: 1,
+    MS: 2,
+    GS: 3,
+    CP: 4,
+    CE1: 5,
+    CE2: 6,
+    CM1: 7,
+    CM2: 8,
+    "6e": 9,
+    "5e": 10,
+    "4e": 11,
+    "3e": 12,
+    "2nd": 13,
+    "1ere": 14,
+    Term: 15
+  }, _prefix: true
 
   def age
     ((Time.zone.now - birth_date.to_time) / 1.year.seconds).floor
