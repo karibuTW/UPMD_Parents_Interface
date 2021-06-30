@@ -2,7 +2,7 @@ class PullHelloassoDataJob < ApplicationJob
   queue_as :default
   after_perform :send_email
 
-  def perform(email)
+  def perform(email=nil)
     @email = email
     Helloasso::Order.process_orders
   end
