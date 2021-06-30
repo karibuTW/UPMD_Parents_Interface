@@ -1,10 +1,10 @@
 <nav>
 
-  <div class="mx-auto px-2 sm:px-6 lg:px-8 py-5 flex flex-col md:flex-row">
+  <div class="flex flex-col px-2 py-5 mx-auto sm:px-6 lg:px-8 md:flex-row">
     <div>
-      <%= image_tag 'banner.jpeg', class: 'h-20' %>
+      <%= image_tag 'banner.jpg', class: 'h-20' %>
     </div>
-    <div class="flex flex-col md:flex-row flex justify-self-end">
+    <div class="flex flex-col md:flex-row justify-self-end">
       <%= link_to t("edit_profile"), edit_parent_registration_path, class: "form-button m-3 h-10" %>
       <%= link_to t("logout"), destroy_parent_session_path, method: :delete, class: "form-button m-3 h-10" %>
     </div>
@@ -13,38 +13,38 @@
 </nav>
 
 <main class="p-5">
-  <div class="badges flex flex-col md:flex-row">
+  <div class="flex flex-col badges md:flex-row">
     <% if current_parent.mailing_list %>
-      <div class="p-3 m-3 rounded-lg text-indigo-500">
+      <div class="p-3 m-3 text-indigo-500 rounded-lg">
         <i class="fas fa-check-circle"></i>
         <%= t("newsletter.signed_up") %>
       </div>
     <% else %>
-      <div class="p-3 m-3 rounded-lg text-red-500">
+      <div class="p-3 m-3 text-red-500 rounded-lg">
         <i class="fas fa-times-circle"></i>
         <%= t("newsletter.not_signed_up") %>
       </div>
     <% end %>
 
     <% if current_parent.has_current_bus_registration? %>
-      <div class="p-3 m-3 rounded-lg text-indigo-500">
+      <div class="p-3 m-3 text-indigo-500 rounded-lg">
         <i class="fas fa-check-circle"></i>
         <%= t("bus_service.availing", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
       </div>
     <% else %>
-      <div class="p-3 m-3 rounded-lg text-red-500">
+      <div class="p-3 m-3 text-red-500 rounded-lg">
         <i class="fas fa-times-circle"></i>
         <%= t("bus_service.not_availing", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
       </div>
     <% end %>
 
     <% if current_parent.paid_member? %>
-      <div class="p-3  m-3 rounded-lg text-indigo-500">
+      <div class="p-3 m-3 text-indigo-500 rounded-lg">
         <i class="fas fa-check-circle"></i>
         <%= t("payment.paid", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
       </div>
     <% else %>
-      <div class="p-3  m-3 rounded-lg text-red-500">
+      <div class="p-3 m-3 text-red-500 rounded-lg">
         <i class="fas fa-times-circle"></i>
         <%= t("payment.not paid", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
         <%= link_to "Pay with HelloAsso", "https://www.helloasso.com/associations/union-des-parents-du-lycee-marguerite-duras/adhesions/adhesion-2021-2022-2", class: "form-button" %>
@@ -52,46 +52,46 @@
     <% end %>
 
     <% if current_parent.donated? %>
-      <div class="p-3  m-3 rounded-lg text-indigo-500">
+      <div class="p-3 m-3 text-indigo-500 rounded-lg">
         <i class="fas fa-check-circle"></i>
         <%= t("donation.donated", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
       </div>
     <% else %>
-      <div class="p-3  m-3 rounded-lg text-red-500">
+      <div class="p-3 m-3 text-red-500 rounded-lg">
         <i class="fas fa-times-circle"></i>
         <%= t("donation.not_donated", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
       </div>
     <% end %>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2">
-    <div class="text-center p-0 md: p-3">
+    <div class="p-0 p-3 text-center md:">
       <h2 class="text-2xl text-blue">Your information</h2>
-      <table class="m-0 md:m-2 w-auto md:w-full">
+      <table class="w-auto m-0 md:m-2 md:w-full">
         <% [:email, :first_name, :last_name, :full_name, :phone_number, :address].each do |s| %>
           <tr>
-            <td class="border-2 py-2 md:p-2"><%= t("activerecord.attributes.parent.#{s.to_s}") %></td>
-            <td class="border-2 py-2 md:p-2"><%= current_parent.send(s) %></td>
+            <td class="py-2 border-2 md:p-2"><%= t("activerecord.attributes.parent.#{s.to_s}") %></td>
+            <td class="py-2 border-2 md:p-2"><%= current_parent.send(s) %></td>
           </tr>
         <% end %>
         <tr>
-          <td class="border-2 py-2 md:p-2"><%= t("activerecord.attributes.parent.preferred_language") %></td>
-          <td class="border-2 py-2 md:p-2"><%= ({ en: "English", fr: "French", vi: "Vietnamese" })[current_parent.preferred_language.to_sym] %></td>
+          <td class="py-2 border-2 md:p-2"><%= t("activerecord.attributes.parent.preferred_language") %></td>
+          <td class="py-2 border-2 md:p-2"><%= ({ en: "English", fr: "French", vi: "Vietnamese" })[current_parent.preferred_language.to_sym] %></td>
         </tr>
       </table>
     </div>
-    <div class="text-center p-3">
+    <div class="p-3 text-center">
       <h2 class="text-2xl text-blue">Secondary parent</h2>
       <% if current_parent.secondary_parent.present? %>
-        <table class="m-0 md:m-2 w-full">
+        <table class="w-full m-0 md:m-2">
           <% [:email, :first_name, :last_name, :full_name, :phone_number, :address].each do |s| %>
             <tr>
-              <td class="border-2 py-2 md:p-2"><%= t("activerecord.attributes.secondary_parent.#{s.to_s}") %></td>
-              <td class="border-2 py-2 md:p-2"><%= current_parent.secondary_parent.send(s) %></td>
+              <td class="py-2 border-2 md:p-2"><%= t("activerecord.attributes.secondary_parent.#{s.to_s}") %></td>
+              <td class="py-2 border-2 md:p-2"><%= current_parent.secondary_parent.send(s) %></td>
             </tr>
           <% end %>
           <tr>
-            <td class="border-2 py-2 md:p-2"><%= t("activerecord.attributes.parent.preferred_language") %></td>
-            <td class="border-2 py-2 md:p-2"><%= ({ en: "English", fr: "French", vi: "Vietnamese" })[current_parent.secondary_parent.preferred_language.to_sym] %></td>
+            <td class="py-2 border-2 md:p-2"><%= t("activerecord.attributes.parent.preferred_language") %></td>
+            <td class="py-2 border-2 md:p-2"><%= ({ en: "English", fr: "French", vi: "Vietnamese" })[current_parent.secondary_parent.preferred_language.to_sym] %></td>
           </tr>
         </table>
       <% else %>
@@ -99,15 +99,15 @@
       <% end %>
 
     </div>
-    <div class="text-center p-0 md:p-3 col-span-1 md:col-span-2">
+    <div class="p-0 text-center md:p-3 col-span-1 md:col-span-2">
       <h2 class="text-2xl text-blue">Your kids</h2>
       <% if current_parent.children.empty? %>
         Not added
       <% else %>
-        <table class="m-0 md:m-2 w-full">
+        <table class="w-full m-0 md:m-2">
           <tr>
             <% [:first_name, :last_name, :full_name, :previous_grade, :grade, :birth_date, :age].each do |s| %>
-              <th class="border-2 py-2 md:p-2"><%= t("activerecord.attributes.child.#{s.to_s}") %>
+              <th class="py-2 border-2 md:p-2"><%= t("activerecord.attributes.child.#{s.to_s}") %>
                 <% if s == :previous_grade %>
                   (<%= Setting.current_school_year_start - 1 %> - <%= Setting.current_school_year_start %>)
                 <% end %>
@@ -120,7 +120,7 @@
           <% current_parent.children.each do |child| %>
             <tr>
             <% [:first_name, :last_name, :full_name, :previous_grade, :grade, :birth_date, :age].each do |s| %>
-                <td class="border-2 py-2 md:p-2"><%= child.send(s) %></td>
+                <td class="py-2 border-2 md:p-2"><%= child.send(s) %></td>
             <% end %>
             </tr>
           <% end %>
