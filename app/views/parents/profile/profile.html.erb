@@ -13,7 +13,7 @@
 </nav>
 
 <main class="p-5">
-  <div class="flex flex-col badges md:flex-row">
+  <div class="grid grid-cols-1 md:grid-cols-4 text-center">
     <% if current_parent.mailing_list %>
       <div class="p-3 m-3 text-indigo-500 rounded-lg">
         <i class="fas fa-check-circle"></i>
@@ -47,7 +47,7 @@
       <div class="p-3 m-3 text-red-500 rounded-lg">
         <i class="fas fa-times-circle"></i>
         <%= t("payment.not paid", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
-        <%= link_to "Pay with HelloAsso", "https://www.helloasso.com/associations/union-des-parents-du-lycee-marguerite-duras/adhesions/adhesion-2021-2022-2", class: "form-button" %>
+        <%= link_to "Pay with HelloAsso", "https://www.helloasso.com/associations/union-des-parents-du-lycee-marguerite-duras/adhesions/adhesion-2021-2022-2", class: "form-button block" %>
       </div>
     <% end %>
 
