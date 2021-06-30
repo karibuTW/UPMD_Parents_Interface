@@ -40,11 +40,11 @@ class Parents::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     super
-    if resource.persisted? && !params[:bus_registration] && resource.has_current_bus_registration?
+    if resource.persisted? && params[:bus_registration] == 'no' && resource.has_current_bus_registration?
       resource.current_bus_registration.destroy
     end
 
-    if resource.persisted? && params[:bus_registration] && !resource.has_current_bus_registration?
+    if resource.persisted? && params[:bus_registration] == 'yes' && !resource.has_current_bus_registration?
       BusService.create(parent: resource, year: Setting.current_school_year_start)
     end
   end
