@@ -43,7 +43,7 @@ en:
         one: Parent
         other: Parents
       secondary_parent:
-        one: Secondary parent
+        one: Second parent
         other: Secondary parents
       child:
         one: Child
@@ -156,6 +156,7 @@ en:
       unlocked: Your account has been unlocked successfully. Please sign in to continue.
   errors:
     messages:
+      taken: already used
       already_confirmed: was already confirmed, please try signing in
       confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
       expired: has expired, please request a new one

@@ -108,11 +108,14 @@ en:
       donation: UPMD thanks you for your donation
 
   join_mailing_list: Join our mailing list
-  avail_bus_service: Avail bus service for year %{year_start} - %{year_end}
-  optional_secondary_parent: Secondary parent (optional)
-  delete_secondary_parent: Delete this secondary parent
+  avail_bus_service: Need to register to school Bus service for year %{year_start} - %{year_end} ?
+  optional_secondary_parent: Second parent (optional)
+  delete_secondary_parent: Delete this second parent
   phone_no_with_country_code: Phone number with country code
   information_about_children: Information about your children
   remove_child: Remove child
   add_child: Add child
   pay_with_helloasso: Pay with Helloasso
+  edit_for_bus: Edit your profile to register the bus service
+  y: "Yes"
+  n: "No"

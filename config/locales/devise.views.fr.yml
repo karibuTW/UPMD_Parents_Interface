@@ -50,8 +50,8 @@ fr:
         one: Parent
         other: Parents
       secondary_parent:
-        one: Parent Secondaire
-        other: Parents Secondaires
+        one: Second parent
+        other: Second parents
       child:
         one: Enfant
         other: Enfants
@@ -163,6 +163,7 @@ fr:
       unlocked: Votre compte a bien été déverrouillé. Veuillez vous connecter.
   errors:
     messages:
+      taken: déjà utilisé
       already_confirmed: a déjà été confirmé(e)
       confirmation_period_expired: doit être confirmé(e) en %{period}, veuillez en demander un(e) autre
       expired: est expiré, veuillez en demander un autre

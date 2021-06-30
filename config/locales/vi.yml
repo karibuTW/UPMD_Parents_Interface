@@ -74,7 +74,7 @@ vi:
 
 
   join_mailing_list: Tham gia danh sách gửi thư của chúng tôi
-  avail_bus_service: Sử dụng dịch vụ xe buýt năm %{year_start} - %{year_end}
+  avail_bus_service: Cần đăng ký dịch vụ Xe buýt đến trường cho năm học %{year_start} - %{year_end} ?
   optional_secondary_parent: Phụ huynh thứ hai (tùy chọn)
   delete_secondary_parent: Xóa phụ huynh thứ hai này
   phone_no_with_country_code: Số điện thoại có mã quốc gia
@@ -82,3 +82,6 @@ vi:
   remove_child: Xóa con
   add_child: Thêm con
   pay_with_helloasso: Thanh toán bằng HelloAsso
+  edit_for_bus: Chỉnh sửa hồ sơ của bạn để đăng ký dịch vụ xe đưa đón học sinh
+  y: CÓ
+  n: KHÔNG

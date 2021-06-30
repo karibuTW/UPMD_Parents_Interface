@@ -77,11 +77,14 @@ fr:
       donation: L'UPMD vous remercie pour votre don
 
   join_mailing_list: Rejoignez notre liste de diffusion
-  avail_bus_service: Utilisation du service de bus pour l'année %{year_start} - %{year_end}
-  optional_secondary_parent: Parent secondaire (facultatif)
-  delete_secondary_parent: Supprimer ce parent secondaire
+  avail_bus_service: Besoin du service de transport scolaire pour l'année %{year_start} - %{year_end} ?
+  optional_secondary_parent: Second parent (facultatif)
+  delete_secondary_parent: Supprimer ce second parent
   phone_no_with_country_code: Numéro de téléphone avec l'indicatif du pays
   information_about_children: Informations sur vos enfants
   remove_child: Supprimer un enfant
   add_child: Ajouter un enfant
   pay_with_helloasso: Payer avec HelloAsso
+  edit_for_bus: Modifer le profil pour ajouter l'inscription bus
+  y: Oui
+  n: Non

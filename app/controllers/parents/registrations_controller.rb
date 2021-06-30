@@ -12,7 +12,7 @@ class Parents::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
-    resource.bus_services.build(year: Setting.current_school_year_start) if params[:bus_registration]
+    resource.bus_services.build(year: Setting.current_school_year_start) if params[:bus_registration] == 'yes'
     resource.save
     yield resource if block_given?
     if resource.persisted?
