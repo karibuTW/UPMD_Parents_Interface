@@ -15,7 +15,7 @@
 <main class="p-5">
   <div class="grid grid-cols-1 md:grid-cols-4 text-center">
     <% if current_parent.mailing_list %>
-      <div class="p-3 m-3 text-indigo-500 rounded-lg">
+      <div class="p-3 m-3 text-blue rounded-lg">
         <i class="fas fa-check-circle"></i>
         <%= t("newsletter.signed_up") %>
       </div>
@@ -27,7 +27,7 @@
     <% end %>
 
     <% if current_parent.has_current_bus_registration? %>
-      <div class="p-3 m-3 text-indigo-500 rounded-lg">
+      <div class="p-3 m-3 text-blue rounded-lg">
         <i class="fas fa-check-circle"></i>
         <%= t("bus_service.availing", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
       </div>
@@ -40,7 +40,7 @@
     <% end %>
 
     <% if current_parent.paid_member? %>
-      <div class="p-3 m-3 text-indigo-500 rounded-lg">
+      <div class="p-3 m-3 text-blue rounded-lg">
         <i class="fas fa-check-circle"></i>
         <%= t("payment.paid", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
       </div>
@@ -53,7 +53,7 @@
     <% end %>
 
     <% if current_parent.donated? %>
-      <div class="p-3 m-3 text-indigo-500 rounded-lg">
+      <div class="p-3 m-3 text-blue rounded-lg">
         <i class="fas fa-check-circle"></i>
         <%= t("donation.donated", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
       </div>
