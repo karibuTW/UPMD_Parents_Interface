@@ -2,9 +2,9 @@
 
   <div class="flex flex-col px-2 py-5 mx-auto sm:px-6 lg:px-8 md:flex-row">
     <div>
-      <%= image_tag 'banner.jpg', class: 'h-20' %>
+      <%= image_tag 'logo2.png', class: 'w-28 h-28 rounded-full m-5' %>
     </div>
-    <div class="flex flex-col md:flex-row justify-self-end">
+    <div class="flex flex-col md:flex-row justify-self-end mt-8">
       <%= link_to t("edit_profile"), edit_parent_registration_path, class: "form-button m-3 h-10" %>
       <%= link_to t("logout"), destroy_parent_session_path, method: :delete, class: "form-button m-3 h-10" %>
     </div>
@@ -13,99 +13,89 @@
 </nav>
 
 <main class="p-5">
-  <div class="grid grid-cols-1 md:grid-cols-4 text-center">
-    <% if current_parent.mailing_list %>
-      <div class="p-3 m-3 text-blue rounded-lg">
-        <i class="fas fa-check-circle"></i>
-        <%= t("newsletter.signed_up") %>
-      </div>
-    <% else %>
-      <div class="p-3 m-3 text-red-500 rounded-lg">
-        <i class="fas fa-times-circle"></i>
-        <%= t("newsletter.not_signed_up") %>
-      </div>
-    <% end %>
 
-    <% if current_parent.has_current_bus_registration? %>
-      <div class="p-3 m-3 text-blue rounded-lg">
-        <i class="fas fa-check-circle"></i>
-        <%= t("bus_service.availing", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
-      </div>
-    <% else %>
-      <div class="p-3 m-3 text-red-500 rounded-lg">
-        <i class="fas fa-times-circle"></i>
-        <%= t("bus_service.not_availing", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
-        <%= link_to t("edit_for_bus"), edit_parent_registration_path, class: "form-button block" %>
-      </div>
-    <% end %>
-
-    <% if current_parent.paid_member? %>
-      <div class="p-3 m-3 text-blue rounded-lg">
-        <i class="fas fa-check-circle"></i>
-        <%= t("payment.paid", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
-      </div>
-    <% else %>
-      <div class="p-3 m-3 text-red-500 rounded-lg">
-        <i class="fas fa-times-circle"></i>
-        <%= t("payment.not paid", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
-        <%= link_to t("pay_with_helloasso"), "https://www.helloasso.com/associations/union-des-parents-du-lycee-marguerite-duras/adhesions/adhesion-2021-2022-2", class: "form-button block" %>
-      </div>
-    <% end %>
-
-    <% if current_parent.donated? %>
-      <div class="p-3 m-3 text-blue rounded-lg">
-        <i class="fas fa-check-circle"></i>
-        <%= t("donation.donated", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
-      </div>
-    <% else %>
-      <div class="p-3 m-3 text-red-500 rounded-lg">
-        <i class="fas fa-times-circle"></i>
-        <%= t("donation.not_donated", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
-      </div>
-    <% end %>
-  </div>
   <div class="grid grid-cols-1 md:grid-cols-2">
-    <div class="p-0 p-3 text-center md:">
-      <h2 class="text-2xl text-blue">Your information</h2>
-      <table class="w-auto m-0 md:m-2 md:w-full">
+    <div class="p-0 p-3">
+      <h2 class="text-2xl text-white bg-blue p-5 text-center"><%= t("profile_title") %></h2>
+      <table class="w-auto mt-2 md:w-full">
         <% [:email, :first_name, :last_name, :full_name, :phone_number, :address].each do |s| %>
           <tr>
-            <td class="py-2 border-2 md:p-2"><%= t("activerecord.attributes.parent.#{s.to_s}") %></td>
-            <td class="py-2 border-2 md:p-2"><%= current_parent.send(s) %></td>
+            <td class="py-2 border-2 md:p-2 text-right"><%= t("activerecord.attributes.parent.#{s.to_s}") %></td>
+            <td class="py-2 border-2 md:p-2 text-center"><%= current_parent.send(s) %></td>
           </tr>
         <% end %>
         <tr>
-          <td class="py-2 border-2 md:p-2"><%= t("activerecord.attributes.parent.preferred_language") %></td>
-          <td class="py-2 border-2 md:p-2"><%= ({ en: "English", fr: "French", vi: "Vietnamese" })[current_parent.preferred_language.to_sym] %></td>
+          <td class="py-2 border-2 md:p-2 text-right"><%= t("activerecord.attributes.parent.preferred_language") %></td>
+          <td class="py-2 border-2 md:p-2 text-center"><%= ({ en: "English", fr: "French", vi: "Vietnamese" })[current_parent.preferred_language.to_sym] %></td>
+        </tr>
+        <tr>
+          <td class="py-2 border-2 md:p-2 text-right">
+            <%= t("payment.title", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
+          </td>
+          <td class="py-2 border-2 md:p-2 text-center">
+            <%= current_parent.paid_member? ? t("paid") : t("not paid") %>
+            <%= link_to t("pay_with_helloasso"),
+                        "https://www.helloasso.com/associations/union-des-parents-du-lycee-marguerite-duras/adhesions/adhesion-2021-2022-2",
+                        class: "form-button block" unless current_parent.paid_member? %>
+          </td>
+        </tr>
+        <tr>
+          <td class="py-2 border-2 md:p-2 text-right">
+            <%= t("bus_service.title", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
+          </td>
+          <td class="py-2 border-2 md:p-2 text-center">
+            <%= current_parent.has_current_bus_registration? ? t("registered") : t("not_registered") %>
+            <%= link_to t("edit_for_bus"), edit_parent_registration_path, class: "form-button block" unless current_parent.has_current_bus_registration?%>
+          </td>
+        </tr>
+        <tr>
+          <td class="py-2 border-2 md:p-2 text-right">
+            <%= t("newsletter.title", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
+
+          </td>
+          <td class="py-2 border-2 md:p-2 text-center">
+            <%= current_parent.mailing_list ? t("registered") : t("not_registered") %>
+
+          </td>
+        </tr>
+        <tr>
+          <td class="py-2 border-2 md:p-2 text-right">
+            <%= t("donation.title", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
+
+          </td>
+          <td class="py-2 border-2 md:p-2 text-center">
+            <%= current_parent.donated? ? t("donated") : t("not_donated") %>
+          </td>
         </tr>
       </table>
+
     </div>
     <div class="p-3 text-center">
-      <h2 class="text-2xl text-blue">Secondary parent</h2>
+      <h2 class="text-2xl text-white bg-blue p-5"><%= t("activerecord.models.secondary_parent.one") %></h2>
       <% if current_parent.secondary_parent.present? %>
-        <table class="w-full m-0 md:m-2">
+        <table class="w-full mt-2">
           <% [:email, :first_name, :last_name, :full_name, :phone_number, :address].each do |s| %>
             <tr>
-              <td class="py-2 border-2 md:p-2"><%= t("activerecord.attributes.secondary_parent.#{s.to_s}") %></td>
-              <td class="py-2 border-2 md:p-2"><%= current_parent.secondary_parent.send(s) %></td>
+              <td class="py-2 border-2 md:p-2 text-right"><%= t("activerecord.attributes.secondary_parent.#{s.to_s}") %></td>
+              <td class="py-2 border-2 md:p-2 text-center"><%= current_parent.secondary_parent.send(s) %></td>
             </tr>
           <% end %>
           <tr>
-            <td class="py-2 border-2 md:p-2"><%= t("activerecord.attributes.parent.preferred_language") %></td>
-            <td class="py-2 border-2 md:p-2"><%= ({ en: "English", fr: "French", vi: "Vietnamese" })[current_parent.secondary_parent.preferred_language.to_sym] %></td>
+            <td class="py-2 border-2 md:p-2 text-right"><%= t("activerecord.attributes.parent.preferred_language") %></td>
+            <td class="py-2 border-2 md:p-2 text-center"><%= ({ en: "English", fr: "French", vi: "Vietnamese" })[current_parent.secondary_parent.preferred_language.to_sym] %></td>
           </tr>
         </table>
       <% else %>
-        <span>Not added</span>
+        <span><%= t("information_not_added") %></span>
       <% end %>
 
     </div>
     <div class="p-0 text-center md:p-3 col-span-1 md:col-span-2">
-      <h2 class="text-2xl text-blue">Your kids</h2>
+      <h2 class="text-2xl text-white bg-blue p-5"><%= t("information_about_children") %></h2>
       <% if current_parent.children.empty? %>
-        Not added
+        <%= t("information_not_added") %>
       <% else %>
-        <table class="w-full m-0 md:m-2">
+        <table class="w-full mt-2">
           <tr>
             <% [:first_name, :last_name, :full_name, :previous_grade, :grade, :birth_date, :age].each do |s| %>
               <th class="py-2 border-2 md:p-2"><%= t("activerecord.attributes.child.#{s.to_s}") %>

@@ -49,15 +49,19 @@ en:
     1ere:  Eleventh grade (1ere)
     Term:  Twelfth grade (Term)
   newsletter:
+    title: 'Newsletter %{year_start} - %{year_end}'
     signed_up: Signed up for newsletter
     not_signed_up: Not signed up for newsletter
   bus_service:
+    title: 'Bus service %{year_start} - %{year_end}'
     availing: 'Availing bus service for %{year_start} - %{year_end}'
     not_availing: 'Not availing bus service for %{year_start} - %{year_end}'
   payment:
+    title: 'Membership %{year_start} - %{year_end}'
     paid: 'Paid fees for %{year_start} - %{year_end}'
     not paid: 'Not paid fees for %{year_start} - %{year_end}'
   donation:
+    title: 'Donation %{year_start} - %{year_end}'
     donated: 'Donated for %{year_start} - %{year_end}'
     not_donated: 'Not donated for %{year_start} - %{year_end}'
   profile_title: Your information

@@ -18,15 +18,22 @@ fr:
     1ere:  Première
     Term:  Terminale
   newsletter:
+    title: 'Newsletter %{year_start} - %{year_end}'
     signed_up: Abonné à la newletter
     not_signed_up: Non abonné à la newsletter
   bus_service:
+    title: 'Bus service %{year_start} - %{year_end}'
+
     availing: 'Utilisation du service de bus %{year_start} - %{year_end}'
     not_availing: 'Non utilisation du service de bus %{year_start} - %{year_end}'
   payment:
+    title: 'Membership %{year_start} - %{year_end}'
+
     paid: 'Frais payés pour %{year_start} - %{year_end}'
     not paid: 'Frais non payés pour %{year_start} - %{year_end}'
   donation:
+    title: 'Donation %{year_start} - %{year_end}'
+
     donated: 'Don pour %{year_start} - %{year_end}'
     not_donated: 'Pas de don pour %{year_start} - %{year_end}'
   profile_title: Vos données personnelles
