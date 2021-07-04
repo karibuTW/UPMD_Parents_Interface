@@ -105,6 +105,7 @@ GEM
     faker (2.18.0)
       i18n (>= 1.6, < 2)
     ffi (1.15.1)
+    foreman (0.87.2)
     formtastic (4.0.0)
       actionpack (>= 5.2.0)
     formtastic_i18n (0.7.0)
@@ -313,6 +314,7 @@ DEPENDENCIES
   devise-i18n
   factory_bot_rails
   faker
+  foreman
   httparty
   jbuilder (~> 2.7)
   letter_opener
