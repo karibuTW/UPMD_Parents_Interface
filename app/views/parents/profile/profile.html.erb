@@ -64,7 +64,7 @@
 
           </td>
           <td class="py-2 border-2 md:p-2 text-center">
-            <%= current_parent.donated? ? t("donated") : t("not_donated") %>
+            <%= current_parent.donated? ? current_parent.donation_amount / 100 : t("not_donated") %>
           </td>
         </tr>
       </table>

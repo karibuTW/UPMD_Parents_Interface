@@ -22,12 +22,12 @@ fr:
     signed_up: Abonné à la newletter
     not_signed_up: Non abonné à la newsletter
   bus_service:
-    title: 'Bus service %{year_start} - %{year_end}'
+    title: 'Bus %{year_start} - %{year_end}'
 
     availing: 'Utilisation du service de bus %{year_start} - %{year_end}'
     not_availing: 'Non utilisation du service de bus %{year_start} - %{year_end}'
   payment:
-    title: 'Membership %{year_start} - %{year_end}'
+    title: 'Adhésion %{year_start} - %{year_end}'
 
     paid: 'Frais payés pour %{year_start} - %{year_end}'
     not paid: 'Frais non payés pour %{year_start} - %{year_end}'
@@ -95,3 +95,8 @@ fr:
   edit_for_bus: Modifer le profil pour ajouter l'inscription bus
   y: Oui
   n: Non
+  registered: Inscrit
+  not_registered: Non inscrit
+  paid: Paiement reçu
+  not_paid: Paiement en attente
+  not_donated: Pas encore de donation

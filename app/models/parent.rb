@@ -99,8 +99,12 @@ class Parent < ApplicationRecord
     !current_year_helloasso_orders.empty?
   end
 
+  def donation_orders
+    current_year_helloasso_orders.where('amount_total > 1110 OR amount_discount > 1110')
+  end
+
   def donated?
-    !current_year_helloasso_orders.where('amount_total > 1110 OR amount_discount > 1110').empty?
+    !donation_orders.empty?
   end
 
   def display_name
@@ -114,4 +118,17 @@ class Parent < ApplicationRecord
   def current_year_helloasso_order
     helloasso_orders.where(year: Setting.current_school_year_start)
   end
+
+  def donation_amount
+    amount = 0
+    donation_orders.each do |o|
+      if o.amount_total > 1110
+        amount += (o.amount_total - 1110)
+      elsif o.amount_discount > 1110
+        amount += (o.amount_discount - 1110)
+      end
+    end
+    amount
+  end
+
 end

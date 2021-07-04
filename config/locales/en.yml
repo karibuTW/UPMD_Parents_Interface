@@ -53,7 +53,7 @@ en:
     signed_up: Signed up for newsletter
     not_signed_up: Not signed up for newsletter
   bus_service:
-    title: 'Bus service %{year_start} - %{year_end}'
+    title: 'Bus %{year_start} - %{year_end}'
     availing: 'Availing bus service for %{year_start} - %{year_end}'
     not_availing: 'Not availing bus service for %{year_start} - %{year_end}'
   payment:
@@ -123,3 +123,8 @@ en:
   edit_for_bus: Edit your profile to register the bus service
   y: "Yes"
   n: "No"
+  registered: Registered
+  not_registered: Not registered
+  paid: Payment registered
+  not_paid: Payment pending
+  not_donated: No donation yet

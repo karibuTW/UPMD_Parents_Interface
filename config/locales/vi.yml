@@ -18,15 +18,19 @@ vi:
     1ere: Lớp 11 (1ere)
     Term: Lớp 12 (Term)
   newsletter:
+    title: 'Bản tin %{year_start} - %{year_end}'
     signed_up: Đăng ký nhận Bản tin
     not_signed_up: Không đăng ký nhận Bản tin
   bus_service:
+    title: 'Xe buýt %{year_start} - %{year_end}'
     availing: 'Sử dụng dịch vụ xe buýt %{year_start} - %{year_end}'
     not_availing: 'Không sử dụng dịch vụ xe buýt %{year_start} - %{year_end}'
   payment:
+    title: 'Thành viên %{year_start} - %{year_end}'
     paid: 'Phí nộp cho cả năm %{year_start} - %{year_end}'
     not paid: 'Phí không nộp cho cả năm %{year_start} - %{year_end}'
   donation:
+    title: 'Đóng góp %{year_start} - %{year_end}'
     donated: 'Có quyên góp %{year_start} - %{year_end}'
     not_donated: 'Không quyên góp  %{year_start} - %{year_end}'
   profile_title: Thông tin của bạn
@@ -85,3 +89,8 @@ vi:
   edit_for_bus: Chỉnh sửa hồ sơ của bạn để đăng ký dịch vụ xe đưa đón học sinh
   y: CÓ
   n: KHÔNG
+  registered: Đã đăng ký
+  not_registered: Chưa đăng ký
+  paid: Thanh toán đã đăng ký
+  not_paid: Thanh toán đang chờ xử lý
+  not_donated: Chưa có đóng góp
