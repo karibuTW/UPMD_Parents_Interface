@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: UPI_production
-  username: UPI
+  database: myupmd
+  username: myupmd
   password: <%= ENV['UPI_DATABASE_PASSWORD'] %>
