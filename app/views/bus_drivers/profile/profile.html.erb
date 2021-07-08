@@ -41,7 +41,7 @@
     </thead>
 
     <% @children.each do |child| %>
-      <% if child.parent.has_current_bus_registration? %>
+      <% if child.taking_bus %>
         <tr>
           <% [:first_name, :last_name, :birth_date, :age, :grade, :public_comment].each do |s| %>
             <td class="p-1 md:px-4 md:py-3"><%= child.send(s) %></td>

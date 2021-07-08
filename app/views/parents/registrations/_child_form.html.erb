@@ -65,6 +65,15 @@
     <% end %>
   </div>
 
+  <div class="flex flex-wrap mb-6">
+    <div class="field">
+      <%= f.label :taking_bus,
+                  t("avail_bus_service", year_start: Setting.current_school_year_start,
+                    year_end: Setting.current_school_year_end), class: "mx-3 uppercase font-bold" %>
+      <%= f.check_box :taking_bus %>
+    </div>
+  </div>
+
 
 
   <button type="button" data-action="nested-form#remove" class="form-button mb-6">

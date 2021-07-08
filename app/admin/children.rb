@@ -7,7 +7,8 @@ ActiveAdmin.register Child do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :first_name, :last_name, :full_name, :birth_date, :previous_grade, :grade, :parent_id, :age, :public_comment
+  permit_params :first_name, :last_name, :full_name, :birth_date, :previous_grade, :grade, :parent_id, :age,
+                :public_comment, :taking_bus
   #
   # or
   #
@@ -23,7 +24,7 @@ ActiveAdmin.register Child do
   filter :birth_date
   filter :grade, as: :select, collection: Child.grades.keys.to_a
   filter :age
-
+  filter :taking_bus
   show do
 
     attributes_table do
@@ -38,6 +39,7 @@ ActiveAdmin.register Child do
       row "Grade (#{Setting.current_school_year_start} - #{Setting.current_school_year_end})" do
         child.grade
       end
+      row :taking_bus
       row :public_comment
     end
 
@@ -83,6 +85,7 @@ ActiveAdmin.register Child do
     f.semantic_errors
     f.inputs :parent, :first_name, :last_name, :full_name, :grade
     f.input :birth_date, as: :date_picker
+    f.input :taking_bus
     f.input :public_comment
     f.actions
   end
@@ -108,6 +111,7 @@ ActiveAdmin.register Child do
     column :age
     column('Unaccompanied?') { |child| child.unaccompanied? ? 'Y':'N' }
     column :grade
+    column :taking_bus
     column('ID') { |child| child.parent.id }
     column('First Name') { |child| child.parent.first_name }
     column('Last Name') { |child| child.parent.last_name }

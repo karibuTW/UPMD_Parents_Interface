@@ -10,6 +10,7 @@
 #  last_name      :string           not null
 #  previous_grade :integer          default("None")
 #  public_comment :text
+#  taking_bus     :boolean          default(FALSE)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  parent_id      :bigint           not null

@@ -18,7 +18,7 @@ class BusDrivers::ProfileController < ApplicationController
           csv << csv_headers
           @children = @q.result.includes(:parent)
           @children.each do |child|
-            csv << child.to_csv
+            csv << child.to_csv if child.taking_bus
           end
         end
         send_data rawcsv, filename: "children-#{Date.today}.csv"
