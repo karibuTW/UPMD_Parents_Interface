@@ -1,6 +1,6 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
-
-
   def select_for_grades
     Child.grades.keys.to_a.map do |grade|
       [I18n.t("grades.#{grade}"), grade]
@@ -20,9 +20,9 @@ module ApplicationHelper
 
   def locale_map(keys)
     locales = {
-      en: "English",
-      fr: "French",
-      vi: "Vietnamese"
+      vi: 'Vietnamese',
+      fr: 'French',
+      en: 'English'
     }.freeze
     keys.map { |l| [locales[l.to_sym], l] }
   end
