@@ -37,6 +37,15 @@
             <%= link_to t("pay_with_helloasso"),
                         "https://www.helloasso.com/associations/union-des-parents-du-lycee-marguerite-duras/adhesions/adhesion-2021-2022-2",
                         class: "form-button block" unless current_parent.paid_member? %>
+            <% if current_parent.paid_member? %>
+              <div>
+                <span>HelloAsso Order ID: </span>
+
+                <span class="text-blue">#<%= current_parent.current_year_helloasso_order.map { |o| "#{o.helloasso_order_id}" }.join ',' %></span>
+
+              </div>
+
+            <% end %>
           </td>
         </tr>
         <tr>

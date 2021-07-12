@@ -7,7 +7,7 @@ ActiveAdmin.register HelloassoOrder do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :parent_id, :amount_total, :amount_vat, :amount_discount, :discount_code_id, :helloasso_order_id, :date, :year
+  permit_params :parent_id, :amount_total, :amount_vat, :amount_discount, :discount_code_id, :helloasso_order_id, :date, :year, :form_slug
   #
   # or
   #

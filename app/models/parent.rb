@@ -46,9 +46,9 @@ class Parent < ApplicationRecord
   # validates :address, presence: true
 
   enum preferred_language: {
-    en: 0,
+    vi: 0,
     fr: 1,
-    vi: 2
+    en: 2
   }
 
 
