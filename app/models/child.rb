@@ -96,7 +96,7 @@ class Child < ApplicationRecord
     csv_row << full_name
     csv_row << birth_date
     csv_row << age
-    csv_row << unaccompanied? ? 'Y':'N'
+    csv_row << (unaccompanied? ? 'Y':'N')
     csv_row << grade
 
     csv_row << parent.first_name
@@ -115,5 +115,59 @@ class Child < ApplicationRecord
     csv_row << secondary_parent&.phone_number
     csv_row << secondary_parent&.address
 
+    end
+
+  def to_bus_csv
+    csv_row = []
+
+    # SBS
+    8.times do
+      csv_row << nil
+    end
+    csv_row << (parent.paid_member? ? parent.current_year_helloasso_order&.date : nil )
+    csv_row << (parent.paid_member? ? parent.current_year_helloasso_order&.helloasso_id : nil )
+    csv_row << (parent.paid_member? ? "Paid" : "Not paid")
+    csv_row << nil
+    csv_row << (parent.renewed_bus_service? ? 'Renew' : 'New')
+    csv_row << id
+    csv_row << nil
+    csv_row << first_name
+    csv_row << last_name
+    csv_row << full_name
+    csv_row << birth_date
+    csv_row << age
+    csv_row << (unaccompanied? ? 'Y':'N')
+    csv_row << nil
+    csv_row << grade
+    csv_row << nil
+    csv_row << public_comment
+    15.times do
+      csv_row << nil
+    end
+    csv_row << parent.id
+    csv_row << nil
+    csv_row << parent.first_name
+    csv_row << parent.last_name
+    csv_row << parent.full_name
+    csv_row << parent.preferred_language
+    csv_row << parent.email
+    csv_row << parent.phone_number
+    csv_row << parent.address
+
+    csv_row << secondary_parent&.id
+    csv_row << nil
+    csv_row << secondary_parent&.first_name
+    csv_row << secondary_parent&.last_name
+    csv_row << secondary_parent&.full_name
+    csv_row << secondary_parent&.preferred_language
+    csv_row << secondary_parent&.email
+    csv_row << secondary_parent&.phone_number
+    csv_row << secondary_parent&.address
+
+    3.times do
+      csv_row << nil
+    end
+
+    csv_row
   end
 end
