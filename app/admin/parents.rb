@@ -28,6 +28,7 @@ ActiveAdmin.register Parent do
   filter :last_name
   filter :full_name
   filter :mailing_list
+  filter :preferred_language, as: :select, collection: Parent.preferred_languages.keys.to_a
   filter :children_grade_eq, as: :select, label: 'Grade of children', collection: Child.grades.keys.to_a
   filter :bus_services_year, as: :numeric, label: 'Has bus service for year'
 
