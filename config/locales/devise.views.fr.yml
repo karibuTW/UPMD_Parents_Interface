@@ -45,6 +45,7 @@ fr:
         birth_date: Date de naissance
         grade: Classe
         previous_grade: Classe
+        conditions: Toutes conditions à connaître (Allergies, handicaps, ...)
     models:
       parent:
         one: Parent

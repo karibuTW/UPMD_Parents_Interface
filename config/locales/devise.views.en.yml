@@ -38,6 +38,7 @@ en:
         birth_date: Birth date
         grade: Grade
         previous_grade: Grade
+        conditions: Any condition to be aware of (Allergy, handicap,...)
     models:
       parent:
         one: Parent

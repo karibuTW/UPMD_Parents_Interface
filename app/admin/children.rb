@@ -40,6 +40,7 @@ ActiveAdmin.register Child do
         child.grade
       end
       row :taking_bus
+      row :conditions
       row :public_comment
     end
 
@@ -86,6 +87,7 @@ ActiveAdmin.register Child do
     f.inputs :parent, :first_name, :last_name, :full_name, :grade
     f.input :birth_date, as: :date_picker
     f.input :taking_bus
+    f.input :conditions
     f.input :public_comment
     f.actions
   end
@@ -112,6 +114,7 @@ ActiveAdmin.register Child do
     column('Unaccompanied?') { |child| child.unaccompanied? ? 'Y':'N' }
     column :grade
     column :taking_bus
+    column :conditions
     column('ID') { |child| child.parent.id }
     column('First Name') { |child| child.parent.first_name }
     column('Last Name') { |child| child.parent.last_name }

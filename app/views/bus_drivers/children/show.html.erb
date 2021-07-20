@@ -3,14 +3,14 @@
     <div class="text-center p-3">
       <h2 class="text-2xl">Information for <%= @child.full_name %></h2>
       <table class="m-2 w-full">
-        <% [ :first_name, :last_name, :full_name, :grade, :birth_date, :age, :unaccompanied?].each do |s| %>
+        <% [ :first_name, :last_name, :full_name, :grade, :birth_date, :age, :unaccompanied?, :conditions].each do |s| %>
           <tr>
-            <td class="border-2 p-2"><%= t("parent.attributes.#{s.to_s}") %></td>
+            <td class="border-2 p-2"><%= t("activerecord.attributes.child.#{s.to_s}") %></td>
             <td class="border-2 p-2"><%= @child.send(s) %></td>
           </tr>
         <% end %>
         <tr>
-          <td class="border-2 p-2"><%= t("parent.attributes.public_comment") %></td>
+          <td class="border-2 p-2"><%= "Comment" %></td>
           <td class="border-2 p-2"><%= @child.public_comment %></td>
         </tr>
       </table>
@@ -26,7 +26,7 @@
             </tr>
           <% end %>
           <tr>
-            <td class="border-2 p-2"><%= t("parent.attributes.public_comment") %></td>
+            <td class="border-2 p-2"><%= "Comment" %></td>
             <td class="border-2 p-2"><%= @child.parent.public_comment %></td>
           </tr>
         </table>

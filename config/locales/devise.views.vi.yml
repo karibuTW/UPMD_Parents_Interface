@@ -45,7 +45,7 @@ vi:
         birth_date: Ngày tháng năm sinh của con
         grade: Lớp học của con trong năm học
         previous_grade: Lớp học của con trong năm học
-
+        conditions: Bất kỳ tình trạng nào cần lưu ý (Dị ứng, khuyết tật, ...)
     models:
       parent:
         one: Cha/ Mẹ

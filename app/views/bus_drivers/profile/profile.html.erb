@@ -33,7 +33,7 @@
   <table class="w-full text-left rounded-lg text-sm md:text-base">
     <thead>
     <tr>
-      <% [:first_name, :last_name, :birth_date, :age, :grade].each do |s| %>
+      <% [:first_name, :last_name, :birth_date, :age, :grade, :conditions].each do |s| %>
         <th class="p-1 md:px-4 md:py-3"><%= sort_link(@q, s) %></th>
       <% end %>
       <th class="p-1 md:px-4 md:py-3">Comments</th>
@@ -43,7 +43,7 @@
     <% @children.each do |child| %>
       <% if child.taking_bus %>
         <tr>
-          <% [:first_name, :last_name, :birth_date, :age, :grade, :public_comment].each do |s| %>
+          <% [:first_name, :last_name, :birth_date, :age, :grade, :conditions, :public_comment].each do |s| %>
             <td class="p-1 md:px-4 md:py-3"><%= child.send(s) %></td>
           <% end %>
           <td class="p-1 md:px-4 md:py-3"><%= link_to "View", bus_drivers_child_path(child), class: "form-button" %></td>

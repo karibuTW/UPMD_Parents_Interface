@@ -4,6 +4,7 @@
 #
 #  id             :bigint           not null, primary key
 #  birth_date     :date             not null
+#  conditions     :string
 #  first_name     :string           not null
 #  full_name      :string           not null
 #  grade          :integer          default("TPS")
@@ -140,6 +141,7 @@ class Child < ApplicationRecord
     csv_row << nil
     csv_row << grade
     csv_row << nil
+    csv_row << conditions
     csv_row << public_comment
     15.times do
       csv_row << nil

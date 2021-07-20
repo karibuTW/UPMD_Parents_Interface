@@ -7,7 +7,7 @@ class BusDrivers::ProfileController < ApplicationController
     csv_headers = ['ID SBS', 'SBS Balance',	'Scholarship',	'Mask/Card',	'Remarq Past',	'Date meeting',
                    'Contrat', 'Paid new year',	'HelloAsso/Form',	'HelloAsso ID',	'Paid?',	'Prev ID',	'Renew?',	'ID',
                    'QR Code',	'First Name',	'Last Name',	'Full Name',	'Date of Birth',	'Age',	'Unaccompanied?',
-                   'Grade Level',	'Grade Name',	'Class Name',	'Note',	'MON',	'TUE',	'WED',	'THU',	'FRI',	'A MON',
+                   'Grade Level',	'Grade Name',	'Class Name', 'Conditions',	'Note',	'MON',	'TUE',	'WED',	'THU',	'FRI',	'A MON',
                    'A TUE',	'A WED',	'A THU',	'A FRI', 'B MON', 'B TUE',	'B WED',	'B THU',	'B FRI',	'ID',	'QR Code',
                    'First Name',	'Last Name',	'Full Name',	'Language',	'Email Address',	'Phone Number',	'Address',
                    'ID',	'QR Code',	'First Name',	'Last Name',	'Full Name',	'Language',	'Email Address',

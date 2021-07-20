@@ -65,6 +65,17 @@
     <% end %>
   </div>
 
+  <div class="py-1">
+    <% invalid = f.object.errors.include?(:conditions) %>
+    <%= f.label :conditions, class: "form-label" %>
+    <%= f.text_area :conditions, class: "form-input #{invalid ? 'invalid' : 'valid'}" %>
+    <% if invalid %>
+      <% f.object.errors.full_messages_for(:conditions).each do |error_message| %>
+        <p class="text-red-500 text-xs italic"><%= error_message %></p>
+      <% end %>
+    <% end %>
+  </div>
+
   <div class="flex flex-wrap mb-6">
     <div class="field">
       <%= f.label :taking_bus,

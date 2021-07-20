@@ -4,6 +4,7 @@
 #
 #  id             :bigint           not null, primary key
 #  birth_date     :date             not null
+#  conditions     :string
 #  first_name     :string           not null
 #  full_name      :string           not null
 #  grade          :integer          default("TPS")
