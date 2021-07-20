@@ -124,8 +124,8 @@ class Child < ApplicationRecord
     8.times do
       csv_row << nil
     end
-    csv_row << (parent.paid_member? ? parent.current_year_helloasso_order&.date : nil )
-    csv_row << (parent.paid_member? ? parent.current_year_helloasso_order&.helloasso_id : nil )
+    csv_row << (parent.paid_member? ? parent.current_year_helloasso_orders&.first&.date : nil )
+    csv_row << (parent.paid_member? ? parent.current_year_helloasso_order&.first&.helloasso_order_id : nil )
     csv_row << (parent.paid_member? ? "Paid" : "Not paid")
     csv_row << nil
     csv_row << (parent.renewed_bus_service? ? 'Renew' : 'New')
