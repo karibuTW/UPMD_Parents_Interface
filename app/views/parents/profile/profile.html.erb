@@ -119,9 +119,10 @@
           </tr>
           <% current_parent.children.each do |child| %>
             <tr>
-            <% [:first_name, :last_name, :full_name, :previous_grade, :grade, :birth_date, :age, :taking_bus].each do |s| %>
+            <% [:first_name, :last_name, :full_name, :previous_grade, :grade, :birth_date, :age].each do |s| %>
                 <td class="py-2 border-2 md:p-2"><%= child.send(s) %></td>
             <% end %>
+              <td class="py-2 border-2 md:p-2"><%= child.taking_bus ? t("y") : t("n") %></td>
             </tr>
           <% end %>
 
