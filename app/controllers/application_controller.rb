@@ -45,4 +45,15 @@ class ApplicationController < ActionController::Base
   def access_denied(exception)
     redirect_to admin_dashboard_path, alert: exception.message
   end
+
+  private
+
+  # Overwriting the sign_out redirect path method
+  def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope == :bus_driver
+      new_bus_driver_session_path
+    else
+      root_path
+    end
+  end
 end
