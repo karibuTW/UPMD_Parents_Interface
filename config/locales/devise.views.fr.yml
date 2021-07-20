@@ -46,6 +46,8 @@ fr:
         grade: Classe
         previous_grade: Classe
         conditions: Toutes conditions à connaître (Allergies, handicaps, ...)
+        taking_bus: Prend bus
+        age: Âge
     models:
       parent:
         one: Parent

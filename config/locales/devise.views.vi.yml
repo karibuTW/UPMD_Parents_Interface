@@ -46,6 +46,8 @@ vi:
         grade: Lớp học của con trong năm học
         previous_grade: Lớp học của con trong năm học
         conditions: Bất kỳ tình trạng nào cần lưu ý (Dị ứng, khuyết tật, ...)
+        taking_bus: Đi xe buýt trường học
+        age: Tuổi tác
     models:
       parent:
         one: Cha/ Mẹ
