@@ -95,6 +95,9 @@ class Parent < ApplicationRecord
     helloasso_orders.current_year
   end
 
+  def payment_date
+    current_year_helloasso_orders.first&.date
+  end
   def paid_member?
     !current_year_helloasso_orders.empty?
   end

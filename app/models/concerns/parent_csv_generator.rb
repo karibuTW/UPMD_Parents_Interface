@@ -15,6 +15,7 @@ module ParentCsvGenerator
       csv_row << updated_at
       csv_row << (order.present? ? order.helloasso_order_id : nil)
       csv_row << (paid_member? ? 'Yes' : 'No')
+      csv_row << payment_date
       csv_row << (donated? ? 'Yes' : 'No')
       csv_row <<  if order.present?
                     (order.payment_method == 'Card' ? 'Credit Card' : 'Non Credit Card')

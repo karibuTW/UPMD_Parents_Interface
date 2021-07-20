@@ -52,4 +52,5 @@ class SecondaryParent < ApplicationRecord
   delegate :new_bus_service?, to: :parent
   delegate :paid_member?, to: :parent
   delegate :donated?, to: :parent
+  delegate :payment_date, to: :parent
 end

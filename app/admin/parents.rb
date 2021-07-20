@@ -48,6 +48,7 @@ ActiveAdmin.register Parent do
     column :paid_member?
     column :donated?
     column :current_year_helloasso_order
+    column :payment_date
     actions
   end
   show do |parent|
@@ -65,6 +66,7 @@ ActiveAdmin.register Parent do
       row :paid_member?
       row :donated?
       row :current_year_helloasso_order
+      row :payment_date
       row :public_comment
     end
 
@@ -164,7 +166,7 @@ ActiveAdmin.register Parent do
 
   collection_action :download_as_csv, method: :get do
     # define your own headers
-    csv_headers = ['Registration Date', 'Last Update', 'HelloAsso ID', 'Paid?', 'Donations', 'Payment Method',
+    csv_headers = ['Registration Date', 'Last Update', 'HelloAsso ID', 'Paid?', 'Payment Date', 'Donations', 'Payment Method',
                    'Code Used', 'Payment Received By', 'Confirmation', 'Bus',
                    'Parent', 'First Name', 'Last Name', 'Full Name', 'Language', 'Email Address', 'Phone Number',
                    'Address', '1st Child - First Name', '1st Child - Last Name', '1st Child - Full Name',
