@@ -5,7 +5,7 @@
       <%= image_tag 'logo2.png', class: 'w-28 h-28 rounded-full m-5' %>
     </div>
     <div class="flex flex-col md:flex-row justify-self-end mt-8">
-      <%= link_to t("edit_profile"), edit_parent_registration_path, class: "form-button m-3 h-10" %>
+      <%= link_to t("edit_profile"), edit_parent_registration_path, class: "form-button m-3 h-10", data: { turbolinks: false } %>
       <%= link_to t("logout"), destroy_parent_session_path, method: :delete, class: "form-button m-3 h-10" %>
     </div>
 
