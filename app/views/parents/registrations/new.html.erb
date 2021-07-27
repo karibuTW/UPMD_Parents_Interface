@@ -170,7 +170,7 @@
                         year_end: Setting.current_school_year_end), class: "mx-3 uppercase font-bold" %>
           <%#= check_box_tag :bus_registration %>
           <%= f.label :bus_registration, t('y') %>
-          <%= radio_button_tag :bus_registration, 'yes' %>
+          <%= radio_button_tag :bus_registration, 'yes', checked: true %>
           <%= f.label :bus_registration, t('n') %>
           <%= radio_button_tag :bus_registration, 'no' %>
         </div>
