@@ -164,6 +164,22 @@ ActiveAdmin.register Parent do
     end
   end
 
+  action_item :confirm_account, only: [:show] do
+    a(href: confirm_account_admin_parent_path(id: params[:id])) do
+      'Confirm account'
+    end
+  end
+
+  member_action :confirm_account, method: :get do
+    if resource.confirmed?
+      redirect_to resource_path, notice: "Already confirmed!"
+    else
+      resource.confirm
+      redirect_to resource_path, notice: "Confirmed!"
+    end
+
+  end
+
   collection_action :download_as_csv, method: :get do
     # define your own headers
     csv_headers = ['Registration Date', 'Last Update', 'HelloAsso ID', 'Paid?', 'Payment Date', 'Donations', 'Payment Method',
