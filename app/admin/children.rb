@@ -25,6 +25,7 @@ ActiveAdmin.register Child do
   filter :grade, as: :select, collection: Child.grades.keys.to_a
   filter :age
   filter :taking_bus
+  filter :parent_helloasso_orders_helloasso_order_id_eq, label: "Helloasso Order ID"
   show do
 
     attributes_table do

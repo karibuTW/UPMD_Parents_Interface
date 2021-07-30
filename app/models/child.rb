@@ -38,6 +38,7 @@ class Child < ApplicationRecord
     Arel.sql("date_part('year', age(birth_date))")
   end
   delegate :secondary_parent, to: :parent
+  delegate :helloasso_orders, to: :parent
   enum grade: {
     TPS: 0,
     PS: 1,

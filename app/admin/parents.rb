@@ -31,6 +31,7 @@ ActiveAdmin.register Parent do
   filter :preferred_language, as: :select, collection: Parent.preferred_languages.keys.to_a
   filter :children_grade_eq, as: :select, label: 'Grade of children', collection: Child.grades.keys.to_a
   filter :bus_services_year, as: :numeric, label: 'Has bus service for year'
+  filter :helloasso_orders_helloasso_order_id_eq, label: "Helloasso Order ID"
 
   index download_links: false do
     selectable_column
