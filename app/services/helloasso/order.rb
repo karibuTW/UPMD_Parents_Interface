@@ -122,7 +122,7 @@ module Helloasso
 
     def self.process_orders
       @accounts_with_donations = {}
-      response = get_records({ withDetails: true, pageSize: 99_999_999 })
+      response = get_records({ withDetails: true, pageSize: 99 })
       cont = response['pagination']['continuationToken']
       response['data'].each do |data|
         process_order data

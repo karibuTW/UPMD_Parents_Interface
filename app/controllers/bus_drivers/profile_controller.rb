@@ -3,7 +3,7 @@ class BusDrivers::ProfileController < ApplicationController
 
   def profile
     @q = Child.ransack(params[:q])
-    @children = @q.result.includes(:parent).page(params[:page])
+    @children = @q.result.where(taking_bus: true ).includes(:parent).page(params[:page])
     csv_headers = ['ID SBS', 'SBS Balance',	'Scholarship',	'Mask/Card',	'Remarq Past',	'Date meeting',
                    'Contrat', 'Paid new year',	'HelloAsso/Form',	'HelloAsso ID',	'Paid?',	'Prev ID',	'Renew?',	'ID',
                    'QR Code',	'First Name',	'Last Name',	'Full Name',	'Date of Birth',	'Age',	'Unaccompanied?',

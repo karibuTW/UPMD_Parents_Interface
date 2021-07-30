@@ -4,7 +4,7 @@ class BusDrivers::ChildrenController < ApplicationController
 
   def show
     @child = Child.find(params[:id])
-    unless @child.parent.has_current_bus_registration?
+    unless @child.taking_bus?
       redirect_to bus_drivers_root_path, notice: 'Not found'
     end
   end

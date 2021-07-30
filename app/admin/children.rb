@@ -8,7 +8,7 @@ ActiveAdmin.register Child do
   # Uncomment all parameters which should be permitted for assignment
   #
   permit_params :first_name, :last_name, :full_name, :birth_date, :previous_grade, :grade, :parent_id, :age,
-                :public_comment, :taking_bus
+                :public_comment, :taking_bus, :conditions
   #
   # or
   #

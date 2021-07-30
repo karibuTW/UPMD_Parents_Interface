@@ -31,7 +31,11 @@ class Child < ApplicationRecord
   validates :last_name, presence: true
   validates :birth_date, presence: true
   validates :full_name, presence: true
-
+  #
+  # after_create :send_new_mail_to_bus_driver
+  # after_update :send_modified_mail_to_bus_driver
+  after_save :send_mail_to_bus_driver
+  after_destroy :send_deleted_mail_to_bus_driver
   scope :unaccompanied, -> { where("date_part('year', age(birth_date)) >= 12") }
 
   ransacker :age, type: :numeric do
@@ -84,6 +88,27 @@ class Child < ApplicationRecord
 
   def unaccompanied?
     age >= 12
+  end
+
+  def send_new_mail_to_bus_driver
+    BusDriverMailer.with(child: self).new_child.deliver_later if taking_bus?
+  end
+
+  def send_modified_mail_to_bus_driver
+    BusDriverMailer.with(child: self).modified_child.deliver_later if taking_bus?
+  end
+
+  def send_deleted_mail_to_bus_driver
+    BusDriverMailer.with(child: self.attributes).deleted_child.deliver_later if taking_bus?
+  end
+
+  def send_mail_to_bus_driver
+    return unless taking_bus?
+    if saved_change_to_id?
+      send_new_mail_to_bus_driver
+    else
+      send_modified_mail_to_bus_driver
+    end
   end
 
   def to_csv
