@@ -3,7 +3,7 @@
   <div class="field">
     <% invalid = f.object.errors.include?(:email) %>
     <%= f.label :email, class: "form-label" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email",
+    <%= f.email_field :email, autocomplete: "email",
                       class: "form-input #{invalid ? 'invalid' : 'valid'}", placeholder: "example@example.com" %>
     <% if invalid %>
       <% f.object.errors.full_messages_for(:email).each do |error_message| %>
