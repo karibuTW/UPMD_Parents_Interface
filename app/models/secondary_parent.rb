@@ -8,6 +8,7 @@
 #  first_name         :string           not null
 #  full_name          :string           not null
 #  last_name          :string           not null
+#  nationalities      :string           default([]), is an Array
 #  phone_number       :string           not null
 #  preferred_language :integer          default("en"), not null
 #  created_at         :datetime         not null
@@ -53,4 +54,9 @@ class SecondaryParent < ApplicationRecord
   delegate :paid_member?, to: :parent
   delegate :donated?, to: :parent
   delegate :payment_date, to: :parent
+
+  scope :nationalities_in_array, ->(nation) { where('? = ANY(nationalities)', nation) }
+  def self.ransackable_scopes(_auth_object = nil)
+    %i[nationalities_in_array]
+  end
 end

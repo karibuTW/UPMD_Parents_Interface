@@ -31,6 +31,7 @@ vi:
         first_name: Tên của phụ huynh
         last_name: Họ của phụ huynh
         full_name: Họ và tên
+        nationality: Quốc tịch
       secondary_parent:
         address: Địa chỉ nơi ở tại Việt Nam
         phone_number: Số điện thoại di động
@@ -38,6 +39,7 @@ vi:
         first_name: Tên của phụ huynh
         last_name: Họ của phụ huynh
         full_name: Họ và tên
+        nationality: Quốc tịch
       child:
         first_name: Tên của phụ huynh
         last_name: Họ của phụ huynh
@@ -48,6 +50,7 @@ vi:
         conditions: Bất kỳ tình trạng nào cần lưu ý (Dị ứng, khuyết tật, ...)
         taking_bus: Đi xe buýt trường học
         age: Tuổi tác
+        nationality: Quốc tịch
     models:
       parent:
         one: Cha/ Mẹ

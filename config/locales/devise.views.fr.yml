@@ -31,6 +31,7 @@ fr:
         first_name: Prénom
         last_name: Nom
         full_name: Nom complet
+        nationality: Nationalité
       secondary_parent:
         address: Adresse Postale
         phone_number: Numéro de téléphone
@@ -38,6 +39,7 @@ fr:
         first_name: Prénom
         last_name: Nom
         full_name: Nom complet
+        nationality: Nationalité
       child:
         first_name: Prénom
         last_name: Nom
@@ -48,6 +50,7 @@ fr:
         conditions: Toutes conditions à connaître (Allergies, handicaps, ...)
         taking_bus: Prend bus
         age: Âge
+        nationality: Nationalité
     models:
       parent:
         one: Parent

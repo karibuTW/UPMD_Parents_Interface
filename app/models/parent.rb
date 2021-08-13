@@ -13,6 +13,7 @@
 #  full_name              :string
 #  last_name              :string           not null
 #  mailing_list           :boolean          default(TRUE), not null
+#  nationalities          :string           default([]), is an Array
 #  phone_number           :string
 #  preferred_language     :integer          default("vi"), not null
 #  public_comment         :string
@@ -51,6 +52,7 @@ class Parent < ApplicationRecord
     en: 2
   }
 
+  scope :nationalities_in_array, ->(nation) { where('? = ANY(nationalities)', nation) }
 
   has_one :secondary_parent, dependent: :destroy
 
@@ -64,7 +66,7 @@ class Parent < ApplicationRecord
   accepts_nested_attributes_for :bus_services, reject_if: :all_blank, allow_destroy: true
 
   def self.ransackable_scopes(_auth_object = nil)
-    %i[new_bus_service_eq]
+    %i[new_bus_service_eq nationalities_in_array]
   end
 
   def current_bus_registration

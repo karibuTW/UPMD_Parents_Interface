@@ -13,6 +13,7 @@
 #  full_name              :string
 #  last_name              :string           not null
 #  mailing_list           :boolean          default(TRUE), not null
+#  nationalities          :string           default([]), is an Array
 #  phone_number           :string
 #  preferred_language     :integer          default("vi"), not null
 #  public_comment         :string

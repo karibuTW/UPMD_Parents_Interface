@@ -8,7 +8,7 @@ ActiveAdmin.register Child do
   # Uncomment all parameters which should be permitted for assignment
   #
   permit_params :first_name, :last_name, :full_name, :birth_date, :previous_grade, :grade, :parent_id, :age,
-                :public_comment, :taking_bus, :conditions
+                :public_comment, :taking_bus, :conditions, :nationalitites
   #
   # or
   #
@@ -26,6 +26,7 @@ ActiveAdmin.register Child do
   filter :age
   filter :taking_bus
   filter :parent_helloasso_orders_helloasso_order_id_eq, label: "Helloasso Order ID"
+  filter :nationalities_in_array, as: :select, collection: proc{ nations_map }, label: "Nationality"
   show do
 
     attributes_table do
@@ -87,6 +88,7 @@ ActiveAdmin.register Child do
     f.semantic_errors
     f.inputs :parent, :first_name, :last_name, :full_name, :grade
     f.input :birth_date, as: :date_picker
+    f.input :nationalities, as: :select, collection: nations_map, multiple: true
     f.input :taking_bus
     f.input :conditions
     f.input :public_comment
@@ -111,6 +113,9 @@ ActiveAdmin.register Child do
     column :last_name
     column :full_name
     column :birth_date
+    column :nationality do |p|
+      p.nationalities.filter{ |n| !n.blank? }.map { |n| I18n.t("nations.#{n}") }.join(",")
+    end
     column :age
     column('Unaccompanied?') { |child| child.unaccompanied? ? 'Y':'N' }
     column :grade

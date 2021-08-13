@@ -31,6 +31,7 @@ en:
         first_name: First name
         last_name: Last name
         full_name: Full name
+        nationality: Nationality
       child:
         first_name: First name
         last_name: Last name
@@ -41,6 +42,7 @@ en:
         conditions: Any condition to be aware of (Allergy, handicap,...)
         taking_bus: Taking Bus
         age: Age
+        nationality: Nationality
     models:
       parent:
         one: Parent

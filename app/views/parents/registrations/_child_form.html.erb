@@ -44,6 +44,19 @@
   </div>
 
   <div class="py-1">
+    <% invalid = f.object.errors.include?(:nationalities) %>
+    <%= f.label :nationalities, t("activerecord.attributes.parent.nationality"), class: "form-label" %>
+    <%= f.select :nationalities, nations_map, {},
+                 class: "form-input #{invalid ? 'invalid' : 'valid'}", multiple: true,
+                 data: { controller: 'slimselect' } %>
+    <% if invalid %>
+      <% f.object.errors.full_messages_for(:nationalities).each do |error_message| %>
+        <p class="text-red-500 text-xs italic"><%= error_message %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="py-1">
     <% invalid = f.object.errors.include?(:grade) %>
     <%= f.label :previous_grade, "#{t('activerecord.attributes.child.grade')} (#{Setting.current_school_year_start - 1} - #{Setting.current_school_year_start})", class: "form-label" %>
     <%= f.select :previous_grade, select_for_previous_grades, {}, class: "form-input #{invalid ? 'invalid' : 'valid'}" %>

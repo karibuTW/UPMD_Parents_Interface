@@ -29,6 +29,10 @@
           <td class="py-2 border-2 md:p-2 text-center"><%= ({ en: "English", fr: "French", vi: "Vietnamese" })[current_parent.preferred_language.to_sym] %></td>
         </tr>
         <tr>
+          <td class="py-2 border-2 md:p-2 text-right"><%= t("activerecord.attributes.parent.nationality") %></td>
+          <td class="py-2 border-2 md:p-2 text-center"><%= current_parent.nationalities.filter{ |n| !n.blank? }.map { |n| t("nations.#{n}") }.join(",") %></td>
+        </tr>
+        <tr>
           <td class="py-2 border-2 md:p-2 text-right">
             <%= t("payment.title", year_start: Setting.current_school_year_start, year_end: Setting.current_school_year_end) %>
           </td>
@@ -93,6 +97,10 @@
             <td class="py-2 border-2 md:p-2 text-right"><%= t("activerecord.attributes.parent.preferred_language") %></td>
             <td class="py-2 border-2 md:p-2 text-center"><%= ({ en: "English", fr: "French", vi: "Vietnamese" })[current_parent.secondary_parent.preferred_language.to_sym] %></td>
           </tr>
+          <tr>
+            <td class="py-2 border-2 md:p-2 text-right"><%= t("activerecord.attributes.parent.nationality") %></td>
+            <td class="py-2 border-2 md:p-2 text-center"><%= current_parent.secondary_parent.nationalities.filter{ |n| !n.blank? }.map { |n| t("nations.#{n}") }.join(",") %></td>
+          </tr>
         </table>
       <% else %>
         <span><%= t("information_not_added") %></span>
@@ -106,7 +114,7 @@
       <% else %>
         <table class="w-full mt-2">
           <tr>
-            <% [:first_name, :last_name, :full_name, :previous_grade, :grade, :birth_date, :age, :conditions, :taking_bus].each do |s| %>
+            <% [:first_name, :last_name, :full_name, :previous_grade, :grade, :birth_date, :age, :conditions, :taking_bus, :nationality].each do |s| %>
               <th class="py-2 border-2 md:p-2"><%= t("activerecord.attributes.child.#{s.to_s}") %>
                 <% if s == :previous_grade %>
                   (<%= Setting.current_school_year_start - 1 %> - <%= Setting.current_school_year_start %>)
@@ -123,6 +131,7 @@
                 <td class="py-2 border-2 md:p-2"><%= child.send(s) %></td>
             <% end %>
               <td class="py-2 border-2 md:p-2"><%= child.taking_bus ? t("y") : t("n") %></td>
+              <td class="py-2 border-2 md:p-2"><%= child.nationalities.filter{ |n| !n.blank? }.map { |n| t("nations.#{n}") }.join(",") %></td>
             </tr>
           <% end %>
 

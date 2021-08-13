@@ -50,6 +50,7 @@ module ParentCsvGenerator
       csv_row << preferred_language
       csv_row << email
       csv_row << phone_number
+      csv_row << nationalities.filter{ |n| !n.blank? }.join(",")
       csv_row << address
 
       children.limit(5).each do |child|

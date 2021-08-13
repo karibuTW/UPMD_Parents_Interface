@@ -9,6 +9,7 @@
 #  full_name      :string           not null
 #  grade          :integer          default("TPS")
 #  last_name      :string           not null
+#  nationalities  :string           default([]), is an Array
 #  previous_grade :integer          default("None")
 #  public_comment :text
 #  taking_bus     :boolean          default(FALSE)

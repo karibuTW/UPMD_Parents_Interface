@@ -10,6 +10,8 @@
 // Active Admin's got SASS!
 
 @import '~arctic_admin/src/scss/main';
+@import '~activeadmin_addons/src/stylesheets/all';
+
 // Overriding any non-variable Sass must be done after the fact.
 // For example, to change the default status-tag color:
 //

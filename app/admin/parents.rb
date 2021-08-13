@@ -9,7 +9,7 @@ ActiveAdmin.register Parent do
   #
   permit_params :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at,
                 :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email, :password, :password_confirmation,
-                :first_name, :last_name, :full_name, :phone_number, :address, :preferred_language, :mailing_list, :public_comment,
+                :first_name, :last_name, :full_name, :phone_number, :address, :preferred_language, :mailing_list, :public_comment, { nationalities: [] },
                 children_attributes: %i[id _destroy first_name last_name full_name grade birth_date],
                 secondary_parent_attributes: %i[id _destroy email first_name last_name full_name
                                                 address preferred_language phone_number primary_parent_id],
@@ -28,6 +28,7 @@ ActiveAdmin.register Parent do
   filter :last_name
   filter :full_name
   filter :mailing_list
+  filter :nationalities_in_array, as: :select, collection: proc{ nations_map }, label: "Nationality"
   filter :preferred_language, as: :select, collection: Parent.preferred_languages.keys.to_a
   filter :children_grade_eq, as: :select, label: 'Grade of children', collection: Child.grades.keys.to_a
   filter :bus_services_year, as: :numeric, label: 'Has bus service for year'
@@ -41,6 +42,9 @@ ActiveAdmin.register Parent do
     column :last_name
     column :full_name
     column :phone_number
+    column :nationalities do |p|
+      p.nationalities.map { |n| I18n.t("nations.#{n}") unless n.blank? }
+    end
     column :address
     column :preferred_language
     column :mailing_list
@@ -59,6 +63,7 @@ ActiveAdmin.register Parent do
       row :last_name
       row :full_name
       row :phone_number
+      row :nationalities
       row :address
       row :preferred_language
       row :mailing_list
@@ -82,6 +87,7 @@ ActiveAdmin.register Parent do
           row :last_name
           row :full_name
           row :phone_number
+          row :nationalities
           row :address
           row :preferred_language
         end
@@ -126,17 +132,21 @@ ActiveAdmin.register Parent do
       f.input :last_name
       f.input :full_name
       f.input :phone_number
+      f.input :nationalities, as: :select, collection: nations_map, multiple: true
       f.input :address
       f.input :preferred_language
       f.input :public_comment, as: :text
 
       f.has_many :secondary_parent, heading: 'Secondary Parent', allow_destroy: true, class: 'has-one' do |sp|
         sp.inputs :email, :first_name, :last_name, :full_name, :address, :phone_number, :preferred_language
+        sp.input :nationalities, as: :select, collection: nations_map, multiple: true
       end
 
       f.has_many :children, allow_destroy: true, heading: 'Children' do |p|
         p.inputs :first_name, :last_name, :full_name, :grade
         p.input :birth_date, as: :date_picker
+        p.input :nationalities, as: :select, collection: nations_map, multiple: true
+
       end
 
       f.has_many :bus_services, allow_destroy: true, heading: 'Bus Services' do |p|
@@ -146,6 +156,7 @@ ActiveAdmin.register Parent do
     f.actions
   end
   controller do
+    helper ApplicationHelper
     def scoped_collection
       super.includes(:children, :secondary_parent, :bus_services)
     end
@@ -185,7 +196,7 @@ ActiveAdmin.register Parent do
     # define your own headers
     csv_headers = ['Registration Date', 'Last Update', 'HelloAsso ID', 'Paid?', 'Payment Date', 'Donations', 'Payment Method',
                    'Code Used', 'Payment Received By', 'Confirmation', 'Bus',
-                   'Parent', 'First Name', 'Last Name', 'Full Name', 'Language', 'Email Address', 'Phone Number',
+                   'Parent', 'First Name', 'Last Name', 'Full Name', 'Language', 'Email Address', 'Phone Number', 'Nationality',
                    'Address', '1st Child - First Name', '1st Child - Last Name', '1st Child - Full Name',
                    '1st Child - Date of Birth', '1st Child - Age', '1st Child - Grade Name', '2nd Child - First Name',
                    '2nd Child - Last Name', '2nd Child - Full Name', '2nd Child - Date of Birth',

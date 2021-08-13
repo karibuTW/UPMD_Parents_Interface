@@ -9,6 +9,7 @@
 #  full_name      :string           not null
 #  grade          :integer          default("TPS")
 #  last_name      :string           not null
+#  nationalities  :string           default([]), is an Array
 #  previous_grade :integer          default("None")
 #  public_comment :text
 #  taking_bus     :boolean          default(FALSE)
@@ -37,10 +38,16 @@ class Child < ApplicationRecord
   after_save :send_mail_to_bus_driver
   after_destroy :send_deleted_mail_to_bus_driver
   scope :unaccompanied, -> { where("date_part('year', age(birth_date)) >= 12") }
+  scope :nationalities_in_array, ->(nation) { where('? = ANY(nationalities)', nation) }
 
   ransacker :age, type: :numeric do
     Arel.sql("date_part('year', age(birth_date))")
   end
+
+  def self.ransackable_scopes(_auth_object = nil)
+    %i[nationalities_in_array]
+  end
+
   delegate :secondary_parent, to: :parent
   delegate :helloasso_orders, to: :parent
   enum grade: {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_20_052805) do
+ActiveRecord::Schema.define(version: 2021_08_09_162603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2021_07_20_052805) do
     t.integer "previous_grade", default: -1
     t.boolean "taking_bus", default: false
     t.string "conditions"
+    t.string "nationalities", default: [], array: true
     t.index ["parent_id"], name: "index_children_on_parent_id"
   end
 
@@ -173,6 +174,7 @@ ActiveRecord::Schema.define(version: 2021_07_20_052805) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "public_comment"
+    t.string "nationalities", default: [], array: true
     t.index ["confirmation_token"], name: "index_parents_on_confirmation_token", unique: true
     t.index ["email"], name: "index_parents_on_email", unique: true
     t.index ["reset_password_token"], name: "index_parents_on_reset_password_token", unique: true
@@ -189,6 +191,7 @@ ActiveRecord::Schema.define(version: 2021_07_20_052805) do
     t.string "email", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "nationalities", default: [], array: true
     t.index ["parent_id"], name: "index_secondary_parents_on_parent_id"
   end
 

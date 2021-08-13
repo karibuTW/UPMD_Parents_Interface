@@ -8,6 +8,7 @@
 #  first_name         :string           not null
 #  full_name          :string           not null
 #  last_name          :string           not null
+#  nationalities      :string           default([]), is an Array
 #  phone_number       :string           not null
 #  preferred_language :integer          default("en"), not null
 #  created_at         :datetime         not null

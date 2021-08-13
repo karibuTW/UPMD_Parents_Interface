@@ -26,4 +26,8 @@ module ApplicationHelper
     }.freeze
     keys.map { |l| [locales[l.to_sym], l] }
   end
+
+  def nations_map
+    I18n.t(".")[:nations].keys.map { |n| [ I18n.t("nations.#{n}"), n ] }
+  end
 end
