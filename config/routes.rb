@@ -20,5 +20,10 @@ Rails.application.routes.draw do
     devise_for :parents, controllers: { registrations: 'parents/registrations', confirmations: 'parents/confirmations' }
     root to: 'static_pages#home'
   end
+  require 'sidekiq/web'
+
+  authenticate :admin_user, ->(user) { user.is_a? AdminUser } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
 end
