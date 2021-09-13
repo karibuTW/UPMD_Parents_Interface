@@ -33,7 +33,7 @@
 class Parent < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
   include ParentCsvGenerator
@@ -113,7 +113,7 @@ class Parent < ApplicationRecord
   end
 
   def display_name
-    full_name.present? ? full_name : email
+    full_name.present? ? "#{full_name} (#{email})" : email
   end
 
   def locale

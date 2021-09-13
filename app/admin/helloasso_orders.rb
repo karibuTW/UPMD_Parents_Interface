@@ -41,6 +41,7 @@ ActiveAdmin.register HelloassoOrder do
   filter :form_slug
   filter :discount_code
   filter :year
+  filter :helloasso_order_id
 
   index download_links: [:csv] do
     selectable_column
