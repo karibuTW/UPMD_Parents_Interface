@@ -3,6 +3,7 @@ class MoosendJob < ApplicationJob
 
     def perform()
       add_exisiting_parents_to_mossend
+      add_exisiting_scondary_parents_to_mossend
     end
 
     def add_exisiting_parents_to_mossend
