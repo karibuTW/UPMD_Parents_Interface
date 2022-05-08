@@ -17,6 +17,7 @@ class MoosendJob < ApplicationJob
             unless response["Error"].present?
               parent.update!(moosend_id: response["Context"]["ID"])
             end
+            sleep 2
           end
         end
       end
@@ -34,6 +35,7 @@ class MoosendJob < ApplicationJob
             unless response["Error"].present?
               parent.update!(moosend_id: response["Context"]["ID"])
             end
+            sleep 2
           end
         end
       end
