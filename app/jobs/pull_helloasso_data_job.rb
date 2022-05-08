@@ -1,6 +1,6 @@
 class PullHelloassoDataJob < ApplicationJob
   queue_as :default
-  after_perform :send_email
+  # after_perform :send_email  removed
 
   def perform(email=nil)
     @email = email

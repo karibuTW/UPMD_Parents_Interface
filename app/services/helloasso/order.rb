@@ -115,8 +115,8 @@ module Helloasso
         parent = Parent.find_by_email(email)
 
         send_new_account_mail parent, status
-        send_payment_mail parent, status
-        send_donation_mail parent, status
+        # send_payment_mail parent, status
+        # send_donation_mail parent, status
       end
     end
 
