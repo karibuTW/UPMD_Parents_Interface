@@ -10,6 +10,9 @@ class MoosendJob < ApplicationJob
       Parent.all.each do |parent|
         unless parent.moosend_id.present?
           response = ::Moosend.add_email_to_mailing_list(parent.parent_hash)
+          p '==========================================================================================='
+          p response
+          p '==========================================================================================='
           unless response["Error"].present?
             parent.update!(moosend_id: response["Context"]["ID"])
           end
@@ -22,6 +25,9 @@ class MoosendJob < ApplicationJob
       SecondaryParent.all.each do |parent|
         unless parent.moosend_id.present?
           response = ::Moosend.add_email_to_mailing_list(parent.parent_hash)
+          p '==========================================================================================='
+          p response
+          p '==========================================================================================='
           unless response["Error"].present?
             parent.update!(moosend_id: response["Context"]["ID"])
           end
