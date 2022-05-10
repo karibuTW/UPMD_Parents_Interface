@@ -180,9 +180,9 @@
                                            year_end: Setting.current_school_year_end), class: "mx-3 uppercase font-bold" %>
           <%#= check_box_tag :bus_registration, current_parent.has_current_bus_registration?,  current_parent.has_current_bus_registration? %>
           <%= f.label :bus_registration, t('y') %>
-          <%= radio_button_tag :bus_registration, 'yes', current_parent.has_current_bus_registration? %>
+          <%= radio_button_tag :bus_registration, 'yes', true %>
           <%= f.label :bus_registration, t('n') %>
-          <%= radio_button_tag :bus_registration, 'no', !current_parent.has_current_bus_registration? %>
+          <%= radio_button_tag :bus_registration, 'no' %>
         </div>
       </div>
 
