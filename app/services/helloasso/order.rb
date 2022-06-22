@@ -35,48 +35,80 @@ module Helloasso
 
       return if HelloassoOrder.exists? helloasso_order_id: data['id']
 
+      # data['payments'].to_a.each do |payment|
+      #   # break from state where order is cancled
+      #   if payment['state'] == "Canceled"
+      #     return
+      #   end
+      # end
+
       payer = JSON.parse(get_order_by_order_no(data['id']).body)
       parent = Parent.find_by_email(payer.dig('payer', 'email'))
       new_account = parent.nil?
       password = SecureRandom.hex(8)
-      if new_account
 
-        parent = Parent.new email: payer.dig('payer', 'email'),
-                            first_name: payer.dig('payer', 'firstName'), last_name: payer.dig('payer', 'lastName'),
-                            password: password, password_confirmation: password# , confirmed_at: Time.now.utc
+      if new_account
+        parent = Parent.new(
+          email: payer.dig('payer', 'email'),
+          first_name: payer.dig('payer', 'firstName'), 
+          last_name: payer.dig('payer', 'lastName'),
+          password: password, 
+          password_confirmation: password
+        )
         parent.skip_confirmation_notification!
         parent.save
         # ParentMailer.with(user: parent, token: parent.confirmation_token, password: password).send_new_account_mail.deliver_later
       end
 
-      order = HelloassoOrder.create(parent: parent, amount_total: data.dig('amount', 'total'),
-                                    amount_vat: data.dig('amount', 'vat'), form_slug: Setting.helloasso_current_form_id,
-                                    amount_discount: data.dig('amount', 'discount'), helloasso_order_id: data['id'],
-                                    date: data['date'], year: Setting.current_school_year_start)
-
+      order = HelloassoOrder.create(
+        parent: parent, 
+        amount_total: data.dig('amount', 'total'),
+        amount_vat: data.dig('amount', 'vat'), 
+        form_slug: Setting.helloasso_current_form_id,
+        amount_discount: data.dig('amount', 'discount'), 
+        helloasso_order_id: data['id'],
+        date: data['date'], 
+        year: Setting.current_school_year_start
+      )
 
       donated = (order.amount_total > 1110) || (order.amount_discount > 1110)
 
       data['items'].to_a.each do |item|
-        order_item = HelloassoOrderItem.create(helloasso_order: order, amount: item['amount'], order_item_type: item['type'],
-                                               state: item['state'], discount_code: item.dig('discount', 'code'),
-                                               discount_amount: item.dig('discount', 'amount'),
-                                               price_category: item['priceCategory'], membership_card_url: item['membershipCardUrl'],
-                                               cancelled: item['isCanceled'], order_item_id: item['id'], date: item['date'])
+        order_item = HelloassoOrderItem.create(
+          helloasso_order: order, 
+          amount: item['amount'], 
+          order_item_type: item['type'],
+          state: item['state'], 
+          discount_code: item.dig('discount', 'code'),
+          discount_amount: item.dig('discount', 'amount'),
+          price_category: item['priceCategory'], 
+          membership_card_url: item['membershipCardUrl'],
+          cancelled: item['isCanceled'], 
+          order_item_id: item['id'],
+          date: item['date']
+        )
+
         if order_item.discount_code.present?
           order.update discount_code: DiscountCode.find_by_code(order_item.discount_code), confirmation: "NO"
         end
       end
 
       data['payments'].to_a.each do |payment|
-
-        payment = HelloassoPayment.create(helloasso_order: order, amount_tip: payment['amountTip'],
-                                          cash_out_state: payment['cashOutState'],
-                                          payment_receipt_url: payment['paymentReceiptUrl'], fiscal_receipt_url: payment['fiscalReceiptUrl'],
-                                          helloasso_payment_id: payment['id'], amount: payment['amount'],
-                                          date: payment['date'], payment_means: payment['paymentMeans'], state: payment['state'],
-                                          payment_type: payment['type'])
+        payment = HelloassoPayment.create(
+          helloasso_order: order, 
+          amount_tip: payment['amountTip'],
+          cash_out_state: payment['cashOutState'],
+          payment_receipt_url: payment['paymentReceiptUrl'], 
+          fiscal_receipt_url: payment['fiscalReceiptUrl'],
+          helloasso_payment_id: payment['id'], 
+          amount: payment['amount'],
+          date: payment['date'], 
+          payment_means: payment['paymentMeans'], 
+          state: payment['state'],
+          payment_type: payment['type']
+        )
       end
+
       if @accounts_with_donations[parent.email].present?
         @accounts_with_donations[parent.email][:donated] = donated
       else
