@@ -35,12 +35,12 @@ module Helloasso
 
       return if HelloassoOrder.exists? helloasso_order_id: data['id']
 
-      # data['payments'].to_a.each do |payment|
-      #   # break from state where order is cancled
-      #   if payment['state'] == "Canceled"
-      #     return
-      #   end
-      # end
+      data['payments'].to_a.each do |payment|
+        # break from state where order is cancled
+        if payment['state'] == "Canceled"
+          return
+        end
+      end
 
       payer = JSON.parse(get_order_by_order_no(data['id']).body)
       parent = Parent.find_by_email(payer.dig('payer', 'email'))
