@@ -30,9 +30,8 @@ ActiveAdmin.register HelloassoOrder do
   end
 
   collection_action :fetch_data, method: :get do
-    PullHelloassoDataJob.perform_later current_admin_user.email
-    redirect_to admin_helloasso_orders_path,
-                notice: 'The job was succcessfully enqueued. You will be notified via email when it finishes.'
+    PullHelloassoDataJob.perform_later(current_admin_user.email)
+    redirect_to admin_helloasso_orders_path, notice: 'The job was succcessfully enqueued. You will be notified via email when it finishes.'
   end
 
   filter :parent
@@ -63,10 +62,10 @@ ActiveAdmin.register HelloassoOrder do
     column :amount_total
     column(:discount_code) { |o| o.discount_code.code if o.discount_code.present? }
     column :payment_method
-    column(:first_name) { |o| o.parent.first_name }
-    column(:last_name) { |o| o.parent.last_name }
+    column(:first_name) { |o| o.parent&.first_name }
+    column(:last_name) { |o| o.parent&.last_name }
     column :date
-    column(:email) { |o| o.parent.email }
+    column(:email) { |o| o.parent&.email }
     column :attestation_url
   end
 end
