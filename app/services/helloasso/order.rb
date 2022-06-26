@@ -43,13 +43,13 @@ module Helloasso
       end
 
       payer = JSON.parse(get_order_by_order_no(data['id']).body)
-      parent = Parent.find_by_email(payer.dig('payer', 'email'))
+      parent = Parent.find_by_email(payer.dig('payer', 'email').downcase)
       new_account = parent.nil?
       password = SecureRandom.hex(8)
 
       if new_account
         parent = Parent.new(
-          email: payer.dig('payer', 'email'),
+          email: payer.dig('payer', 'email').downcase,
           first_name: payer.dig('payer', 'firstName'), 
           last_name: payer.dig('payer', 'lastName'),
           password: password, 
@@ -157,12 +157,12 @@ module Helloasso
       response = get_records({ withDetails: true, pageSize: 99 })
       cont = response['pagination']['continuationToken']
       response['data'].each do |data|
-        process_order data
+        process_order(data)
       end
       loop do
-        response = get_records({ withDetails: true, continuationToken: response['pagination']['continuationToken'] })
+        response = get_records({ withDetails: true, continuationToken: response['pagination']['continuationToken'] })        
         response['data'].to_a.each do |data|
-          process_order data
+          process_order(data)
         end
         break if cont == response['pagination']['continuationToken']
 
