@@ -25,5 +25,8 @@ Rails.application.routes.draw do
   authenticate :admin_user, ->(user) { user.is_a? AdminUser } do
     mount Sidekiq::Web => '/sidekiq'
   end
+  
+  get '/dbback' ,to: 'application#create_db_backup' , as: :admin_db_backup
+  get '/donwloaddbbackup' ,to: 'application#download_db_backup', as: :admin_download_db
 
 end
