@@ -124,5 +124,6 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = Rails.application.credentials.dig(:smtp)
   config.action_mailer.default_options = {from: 'contact@upmd.fr'}
-  RAILS_DEFAULT_LOGGER = Logger.new('log/production.log')
+  RAILS_DEFAULT_LOGGER = Logger.new('log/Production.log')
+  logger = Logger.new('log/Production.log')
 end
