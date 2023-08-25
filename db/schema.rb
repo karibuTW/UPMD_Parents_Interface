@@ -173,7 +173,7 @@ ActiveRecord::Schema.define(version: 2022_05_06_075709) do
     t.boolean "mailing_list", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "public_comment"
+    t.text "public_comment"
     t.string "nationalities", default: [], array: true
     t.string "moosend_id"
     t.index ["confirmation_token"], name: "index_parents_on_confirmation_token", unique: true
@@ -203,25 +203,6 @@ ActiveRecord::Schema.define(version: 2022_05_06_075709) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["var"], name: "index_settings_on_var", unique: true
-  end
-
-  create_table "viewers", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["confirmation_token"], name: "index_viewers_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_viewers_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_viewers_on_reset_password_token", unique: true
   end
 
   add_foreign_key "bus_services", "parents"

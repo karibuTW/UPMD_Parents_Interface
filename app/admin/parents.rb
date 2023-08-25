@@ -95,7 +95,7 @@ ActiveAdmin.register Parent do
         end
       else
         div do
-          p "No secondary parent"
+          div "No secondary parent"
         end
       end
     end
