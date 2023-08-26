@@ -52,6 +52,7 @@ module Helloasso
           email: payer.dig('payer', 'email').downcase,
           first_name: payer.dig('payer', 'firstName'), 
           last_name: payer.dig('payer', 'lastName'),
+          full_name: payer.dig('payer', 'firstName') + ' ' + payer.dig('payer', 'lastName'),
           password: password, 
           password_confirmation: password
         )
