@@ -41,8 +41,8 @@ vi:
         full_name: Họ và tên
         nationality: Quốc tịch
       child:
-        first_name: Tên của phụ huynh
-        last_name: Họ của phụ huynh
+        first_name: Tên của đứa trẻ
+        last_name: Họ của đứa trẻ
         full_name: Họ và tên
         birth_date: Ngày tháng năm sinh của con
         grade: Lớp học của con trong năm học
