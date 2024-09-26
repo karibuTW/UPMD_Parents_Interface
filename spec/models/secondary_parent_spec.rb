@@ -13,6 +13,7 @@
 #  preferred_language :integer          default("en"), not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  moosend_id         :string
 #  parent_id          :bigint           not null
 #
 # Indexes

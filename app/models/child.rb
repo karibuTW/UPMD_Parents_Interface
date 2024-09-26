@@ -40,6 +40,14 @@ class Child < ApplicationRecord
   scope :unaccompanied, -> { where("date_part('year', age(birth_date)) >= 12") }
   scope :nationalities_in_array, ->(nation) { where('? = ANY(nationalities)', nation) }
 
+  after_create_commit :update_parent_info
+
+  def update_parent_info
+    if parent.present?
+      parent.update_info_to_moosend
+    end
+  end
+  
   ransacker :age, type: :numeric do
     Arel.sql("date_part('year', age(birth_date))")
   end

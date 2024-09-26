@@ -28,6 +28,13 @@ class HelloassoOrder < ApplicationRecord
   has_many :helloasso_payments, dependent: :destroy
   belongs_to :discount_code, inverse_of: :helloasso_orders, optional: true
   validates :helloasso_order_id, uniqueness: true
+  after_create_commit :update_parent_info
+
+  def update_parent_info
+    if parent.present?
+      parent.update_info_to_moosend
+    end
+  end
 
   scope :current_year, -> { where form_slug: Setting.helloasso_current_form_id }
 
@@ -56,4 +63,6 @@ class HelloassoOrder < ApplicationRecord
   def amount_discount_formatted
     amount_discount / 100
   end
+
+  
 end

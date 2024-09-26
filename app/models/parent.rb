@@ -16,13 +16,14 @@
 #  nationalities          :string           default([]), is an Array
 #  phone_number           :string
 #  preferred_language     :integer          default("vi"), not null
-#  public_comment         :string
+#  public_comment         :text
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  moosend_id             :string
 #
 # Indexes
 #
@@ -85,12 +86,20 @@ class Parent < ApplicationRecord
     !previous_bus_registration.nil?
   end
 
-  def renewed_bus_service?
-    has_current_bus_registration? && has_previous_bus_registration?
-  end
+  # def renewed_bus_service?
+  #   has_current_bus_registration? && has_previous_bus_registration?
+  # end
+
+  # def new_bus_service?
+  #   has_current_bus_registration? && !has_previous_bus_registration?
+  # end
 
   def new_bus_service?
-    has_current_bus_registration? && !has_previous_bus_registration?
+    bus_services.find_by(year: Setting.current_school_year_start - 1).nil?
+  end
+
+  def renewed_bus_service?
+    bus_services.find_by(year: Setting.current_school_year_start - 1).present? && bus_services.find_by(year: Setting.current_school_year_start).present?
   end
 
   def current_year_helloasso_orders
@@ -110,6 +119,11 @@ class Parent < ApplicationRecord
 
   def donated?
     !donation_orders.empty?
+  end
+
+
+  def all_halloasso_orders
+    helloasso_orders&.pluck(:helloasso_order_id)
   end
 
   def display_name

@@ -23,6 +23,14 @@ ActiveAdmin.register_page "Dashboard" do
       div do
         span "Number of donors: #{HelloassoOrder.where("amount_total > 1110").count}"
       end
+
+      div do
+        link_to "Donwload DB Backup" , admin_download_db_path
+      end
+
+      div do
+        link_to "Create DB Backup" , admin_db_backup_path
+      end
     end
   end
 end

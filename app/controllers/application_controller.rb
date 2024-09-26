@@ -1,7 +1,21 @@
 # frozen_string_literal: true
-
 class ApplicationController < ActionController::Base
   before_action :switch_locale
+
+  def create_db_backup
+    system("mkdir ../dbbackups")
+    @time_stamp = Time.now.strftime("%d_%m_%Y") + "_backup.tar"
+    @db_name = 'myupmd'
+    @command = "pg_dump -F t #{@db_name} > ../dbbackups/#{@time_stamp}"
+    system(@command)
+    redirect_to admin_root_path, notice:"DB backup created #{@time_stamp}"
+  end
+
+  def download_db_backup
+    @time_stamp = Time.now.strftime("%d_%m_%Y") + "_backup.tar"
+    send_file("../dbbackups/#{@time_stamp}")
+  end
+
 
   protected
 

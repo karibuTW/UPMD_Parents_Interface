@@ -40,7 +40,7 @@
           <td class="py-2 border-2 md:p-2 text-center">
             <%= current_parent.paid_member? ? t("paid") : t("not paid") %>
             <%= link_to t("pay_with_helloasso"),
-                        "https://www.helloasso.com/associations/union-des-parents-du-lycee-marguerite-duras/adhesions/adhesion-2021-2022-2",
+                        "https://www.helloasso.com/associations/#{Setting.helloasso_organization_slug}/adhesions/#{Setting.helloasso_current_form_id}",
                         class: "form-button block" unless current_parent.paid_member? %>
             <% if current_parent.paid_member? %>
               <div>

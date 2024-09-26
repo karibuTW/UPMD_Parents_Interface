@@ -22,7 +22,8 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  # config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.public_file_server.enabled = true
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
@@ -96,6 +97,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.serve_static_assets = true
+
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
@@ -124,5 +127,6 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = Rails.application.credentials.dig(:smtp)
   config.action_mailer.default_options = {from: 'contact@upmd.fr'}
-  config.logger = RemoteSyslogLogger.new('logs3.papertrailapp.com', 42737)
+  RAILS_DEFAULT_LOGGER = Logger.new('log/Production.log')
+  logger = Logger.new('log/Production.log')
 end

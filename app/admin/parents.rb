@@ -54,6 +54,7 @@ ActiveAdmin.register Parent do
     column :donated?
     column :current_year_helloasso_order
     column :payment_date
+    column :previous_helloasso_orders
     actions
   end
   show do |parent|
@@ -74,6 +75,7 @@ ActiveAdmin.register Parent do
       row :current_year_helloasso_order
       row :payment_date
       row :public_comment
+      row :all_helloasso_orders
     end
 
     panel 'Secondary parent' do
@@ -93,7 +95,7 @@ ActiveAdmin.register Parent do
         end
       else
         div do
-          p 'No secondary parent'
+          div "No secondary parent"
         end
       end
     end
